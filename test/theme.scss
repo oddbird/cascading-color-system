@@ -23,3 +23,24 @@
 [data-ccs-theme="contrast"] {
   --ccs-contrast--theme: 200%;
 }
+
+
+// links
+a {
+  --link--default: --ccs-prime--fg1;
+
+  &:link,
+  &:visited {
+    color: var(--link, var(--link--default));
+    text-decoration-color: var(--ccs-prime);
+    text-underline-offset: 0.125em;
+    text-decoration-thickness: 0.125em;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    --link: var(--ccs-accent--fg4);
+    text-decoration-color: var(--ccs-accent);
+  }
+}

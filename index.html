@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ccs-theme="default" data-ccs-colors>
+<html lang="en" data-ccs-theme="triad" data-ccs-colors>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,14 @@
 </head>
 <body>
   <h1>Cascading Color Systems</h1>
+
+  <nav>
+    <ul>
+      <li><a href="https://github.com/mirisuzanne/cascading-color-system">Github</a></li>
+      <li><a href="https://miriam.codes/">Miriam</a></li>
+      <li><a href="https://cascading-colors.netlify.com/">Demo Site</a></li>
+    </ul>
+  </nav>
 
   <p>
     Generate dynamic and themable color palettes
@@ -44,7 +52,7 @@
       <label data-field for="ccs-theme-select">
         <span data-label>theme:</span>
         <select name="ccs-theme-select" id="ccs-theme-select">
-          <option value="default" selected>
+          <option value="default">
             default
           </option>
           <option value="complement">
@@ -53,7 +61,7 @@
           <option value="adjacent">
             adjacent
           </option>
-          <option value="triad">
+          <option value="triad" selected>
             triad
           </option>
           <option value="contrast">

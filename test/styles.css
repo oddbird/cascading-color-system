@@ -267,6 +267,20 @@ html {
   --ccs-contrast--theme: 200%;
 }
 
+a {
+  --link--default: --ccs-prime--fg1;
+}
+a:link, a:visited {
+  color: var(--link, var(--link--default));
+  text-decoration-color: var(--ccs-prime);
+  text-underline-offset: 0.125em;
+  text-decoration-thickness: 0.125em;
+}
+a:hover, a:focus, a:active {
+  --link: var(--ccs-accent--fg4);
+  text-decoration-color: var(--ccs-accent);
+}
+
 menu {
   background: var(--callout);
   padding: 1em;
@@ -467,6 +481,10 @@ select {
 html {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: calc(1em + 0.25vw);
+}
+
+nav li {
+  margin: 0.5em 0;
 }
 
 body {
