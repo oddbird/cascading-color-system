@@ -1,0 +1,57 @@
+@mixin colors(
+  $steps: 4,
+  $fades: true
+) {
+  // offset steps
+  --ccs-steps: var(--ccs-steps--config, 4);
+  --ccs-step: calc(var(--ccs-contrast) / var(--ccs-steps));
+
+  // fade background
+  --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
+
+  // combined sl values
+  --ccs-sl: var(--ccs-s), var(--ccs-l);
+
+  // main colors
+  --ccs-prime: hsl(var(--ccs-h--prime), var(--ccs-sl));
+  --ccs-accent: hsl(var(--ccs-h--accent), var(--ccs-sl));
+
+  @if ($fades) {
+    --ccs-fade: #{if(type-of($fades) == 'number', $fades, 1)};
+    --ccs-sla--fade: var(--ccs-s--contrast), var(--ccs-l), var(--ccs-fade);
+    --ccs-prime--fade: hsla(var(--ccs-h--prime), var(--ccs-sla--fade));
+    --ccs-accent--fade: hsla(var(--ccs-h--accent), var(--ccs-sla--fade));
+  }
+
+  @for $i from 1 through $steps {
+    $bg: 'bg#{$i}';
+    $fg: 'fg#{$i}';
+
+    // lightness steps
+    --ccs-l--#{$bg}: calc(var(--ccs-l) + var(--ccs-step) * #{$i} * var(--ccs-mode));
+    --ccs-l--#{$fg}: calc(var(--ccs-l) - var(--ccs-step) * #{$i} * var(--ccs-mode));
+
+    // saturation steps
+    --ccs-s--#{$fg}: calc(var(--ccs-s) - var(--ccs-step) * #{$i});
+    --ccs-s--#{$bg}: calc(var(--ccs-s) - var(--ccs-fade-background, 0%) - var(--ccs-step) * #{$i});
+
+    // step sl
+    --ccs-sl--#{$fg}: var(--ccs-s--#{$fg}), var(--ccs-l--#{$fg});
+    --ccs-sl--#{$bg}: var(--ccs-s--#{$bg}), var(--ccs-l--#{$bg});
+
+    // color steps
+    --ccs-prime--#{$fg}: hsl(var(--ccs-h--prime), var(--ccs-sl--#{$fg}));
+    --ccs-prime--#{$bg}: hsl(var(--ccs-h--prime), var(--ccs-sl--#{$bg}));
+    --ccs-accent--#{$fg}: hsl(var(--ccs-h--accent), var(--ccs-sl--#{$fg}));
+    --ccs-accent--#{$bg}: hsl(var(--ccs-h--accent), var(--ccs-sl--#{$bg}));
+
+    @if ($fades) {
+      --ccs-sla--#{$fg}-fade: var(--ccs-s--contrast), var(--ccs-l--#{$fg}), var(--ccs-fade);
+      --ccs-sla--#{$bg}-fade: var(--ccs-s--contrast), var(--ccs-l--#{$bg}), var(--ccs-fade);
+      --ccs-prime--#{$fg}-fade: hsla(var(--ccs-h--prime), var(--ccs-sla--#{$fg}-fade));
+      --ccs-prime--#{$bg}-fade: hsla(var(--ccs-h--prime), var(--ccs-sla--#{$bg}-fade));
+      --ccs-accent--#{$fg}-fade: hsla(var(--ccs-h--accent), var(--ccs-sla--#{$fg}-fade));
+      --ccs-accent--#{$bg}-fade: hsla(var(--ccs-h--accent), var(--ccs-sla--#{$bg}-fade));
+      }
+  }
+}

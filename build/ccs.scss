@@ -1,0 +1,5 @@
+@use '../sass/ccs';
+
+[data-ccs-colors] {
+  @include ccs.colors;
+}

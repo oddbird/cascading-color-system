@@ -1,0 +1,17 @@
+{
+  "name": "cascading-color-systems",
+  "version": "1.0.0",
+  "description": "generate dynamic color palettes with custom properties",
+  "main": "index.js",
+  "repository": "git@github.com:mirisuzanne/cascading-color-system.git",
+  "author": "Miriam Suzanne <miriam@oddbird.net>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "1.23.0-module.beta.1"
+  },
+  "scripts": {
+    "build": "sass build/ccs.scss build/ccs.css",
+    "test": "sass test/test.scss test/test.css"
+  }
+}

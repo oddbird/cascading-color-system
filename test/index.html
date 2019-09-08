@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-ccs-theme="default" data-ccs-colors>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="test.css">
+  <title>Cascading Color Systems</title>
+</head>
+<body>
+  <h1>Cascading Color Systems</h1>
+
+  <menu data-ccs="menu">
+    <div class="color-btns">
+      <button
+        data-ccs="invert"
+        type="button">
+        invert
+      </button>
+      <button
+        data-ccs="unset"
+        type="button"
+        hidden>
+        reset
+      </button>
+    </div>
+
+    <div class="color-fields">
+      <label data-field for="ccs-theme-select">
+        <span data-label>theme:</span>
+        <select name="ccs-theme-select" id="ccs-theme-select">
+          <option value="default" selected>
+            default
+          </option>
+          <option value="complement">
+            complement
+          </option>
+          <option value="adjacent">
+            adjacent
+          </option>
+          <option value="triad">
+            triad
+          </option>
+          <option value="contrast">
+            contrast
+          </option>
+        </select>
+      </label>
+      <label data-field for="ccs-hue-select">
+        <span data-label>hue:</span>
+        <input id="ccs-hue-select" type="range" min="0" max="360" value="330">
+      </label>
+      <label data-field for="ccs-saturation-select">
+        <span data-label>saturation:</span>
+        <input id="ccs-saturation-select" type="range" min="0" max="100" value="80">
+      </label>
+      <label data-field for="ccs-lightness-select">
+        <span data-label>lightness:</span>
+        <input id="ccs-lightness-select" type="range" min="25" max="75" value="50">
+      </label>
+      <label data-field for="ccs-contrast-select">
+        <span data-label>contrast:</span>
+        <input id="ccs-contrast-select" type="range" min="25" max="150" value="45">
+      </label>
+    </div>
+  </menu>
+  <main>
+    <section class="palette" role="presentation">
+      <h2 data-ccs-colors="invert">prime</h2>
+      <div style="--show: var(--prime-palette)"></div>
+    </section>
+
+    <section class="palette" role="presentation">
+      <h2 data-ccs-colors="invert">accent</h2>
+      <div style="--show: var(--accent-palette)"></div>
+    </section>
+  </main>
+
+  <script type="text/javascript" src="../index.js"></script>
+</body>
+</html>

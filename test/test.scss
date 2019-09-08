@@ -1,0 +1,88 @@
+@use 'remedy';
+@use '../sass/ccs' with (
+  $prime-hue: 330,
+  $accent-hue: null,
+  $lightness: null,
+  $saturation: null,
+  $contrast: null,
+  $fade-background: 20%,
+);
+
+
+// Colors
+// ------
+
+$steps: 4;
+
+[data-ccs-colors] {
+  @include ccs.colors($steps, 0.95);
+
+  background: var(--ccs-accent--bg3);
+  color: var(--ccs-accent--fg3);
+}
+
+[data-ccs-theme="contrast"] {
+  --ccs-contrast--theme: 200%;
+}
+
+
+// palettes
+// --------
+
+.palette {
+  background: linear-gradient(
+      45deg,
+      var(--ccs-fg--full) 25%,
+      transparent 25% 75%,
+      var(--ccs-fg--full) 75%
+    ),
+    linear-gradient(
+      45deg,
+      var(--ccs-fg--full) 25%,
+      transparent 25% 75%,
+      var(--ccs-fg--full) 75%
+    )
+    var(--ccs-bg--full);
+  background-size: 1em 1em;
+  background-position: 0 0, 0.5em 0.5em;
+  border: 2px solid var(--ccs-fg--full);
+  margin: 1em 0;
+
+  h2 {
+    font: inherit;
+    margin: 0;
+  }
+}
+
+
+// show
+// ----
+
+$prime-main: ();
+$prime-fade: ();
+$accent-main: ();
+$accent-fade: ();
+
+@for $i from (0 - $steps) through $steps {
+  $n: $i + $steps;
+  $pos: abs($i);
+  $stops: calc(var(--stop) * #{$n}) calc(var(--stop) * #{$n + 1});
+  $var: if($i == $pos, '--fg', '--bg');
+  $var: if($i == 0, '', '#{$var}#{$pos}');
+  $fade: if($var != '', '#{$var}-fade', '--fade');
+
+  $prime-main: append($prime-main, var(--ccs-prime#{$var}) $stops, comma);
+  $prime-fade: append($prime-fade, var(--ccs-prime#{$fade}) $stops, comma);
+  $accent-main: append($accent-main, var(--ccs-accent#{$var}) $stops, comma);
+  $accent-fade: append($accent-fade, var(--ccs-accent#{$fade}) $stops, comma);
+}
+
+[style*='--show'] {
+  --stop: calc(100% / (var(--ccs-steps) * 2 + 1));
+  --prime-palette: linear-gradient(to right, #{$prime-main}), linear-gradient(to right, #{$prime-fade});
+  --accent-palette: linear-gradient(to right, #{$accent-main}), linear-gradient(to right, #{$accent-fade});
+  background-image: var(--show);
+  background-size: 100% 50%, 100% 100%;
+  background-repeat: no-repeat;
+  height: 3em;
+}

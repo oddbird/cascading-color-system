@@ -1,0 +1,32 @@
+$prime-hue: 330 !default;
+$accent-hue: null !default;
+
+$lightness: null !default;
+$saturation: null !default;
+$contrast: null !default;
+
+$fade-background: 20% !default;
+
+html {
+  // config
+  @if ($prime-hue) { --ccs-prime--config: #{$prime-hue}; }
+  @if ($accent-hue) { --ccs-accent--config: #{$accent-hue}; }
+  @if ($lightness) { --ccs-lightness--config: #{$lightness}; }
+  @if ($saturation) { --ccs-saturation--config: #{$saturation}; }
+  @if ($contrast) { --ccs-contrast--config: #{$contrast}; }
+  @if ($fade-background) { --ccs-fade-bg--config: #{$fade-background}; }
+
+  // mode
+  --ccs-mode--os: 1;
+
+  // fallback values, in case variables are not supported
+  background: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 5%);
+
+  @media (prefers-color-scheme: dark) {
+    --ccs-mode--os: -1;
+    background: hsl(0, 0%, 5%);
+    color: hsl(0, 0%, 95%);
+  }
+}
+
