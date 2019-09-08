@@ -1,0 +1,163 @@
+menu {
+  background: var(--callout);
+  padding: 1em;
+  margin: 1em 0;
+}
+
+.color-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+button {
+  --btn-bg--default: var(--ccs-prime--fg2);
+  --btn-fg--default: var(--ccs-prime--bg4);
+
+  background: var(--btn-bg, var(--btn-bg--default));
+  color: var(--btn-fg, var(--btn-fg--default));
+  cursor: pointer;
+  border: 2px solid;
+  font: inherit;
+  padding: 0.25em 0.5em;
+
+  &:hover,
+  &:focus {
+    --btn-bg: var(--ccs-prime--fg3);
+  }
+
+  &:active {
+    box-shadow: 2px 2px 0 var(--ccs-prime--bg4) inset;
+  }
+}
+
+[data-field] {
+  display: block;
+}
+
+[data-label] {
+  display: block;
+  font-size: 0.75em;
+  font-style: italic;
+}
+
+input,
+select {
+  width: 100%;
+}
+
+.color-fields {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+}
+
+// ranges
+// ------
+
+@mixin range-track {
+  &::-webkit-slider-runnable-track {
+    @content;
+  }
+  &::-moz-range-track {
+    @content;
+  }
+  &::-ms-track {
+    @content;
+  }
+}
+
+@mixin range-thumb {
+  &::-webkit-slider-thumb {
+    transform: translateY(-35%);
+    @content;
+  }
+  &::-moz-range-thumb {
+    @content;
+  }
+  &::-ms-thumb {
+    @content;
+  }
+}
+
+
+$rainbow: ();
+@for $hue from 1 through 36 {
+  $rainbow: append($rainbow, hsl($hue * 10, 80%, 40%), comma);
+}
+
+[for='ccs-hue-select'] {
+  display: var(--custom-hue, block);
+}
+
+[for='ccs-lightness-select'] {
+  display: var(--custom-light, block);
+}
+
+[for='ccs-saturation-select'] {
+  display: var(--custom-sat, block);
+}
+
+[for='ccs-contrast-select'] {
+  display: var(--custom-contrast, block);
+}
+
+[type='range'] {
+  appearance: none;
+  background: transparent;
+  height: 1em;
+  max-width: 100%;
+  padding: 0;
+
+  @include range-track {
+    appearance: none;
+    height: 1em;
+    background: var(--callout);
+    border-radius: 0.25em;
+    border: 2px solid;
+    cursor: pointer;
+  }
+
+  @include range-thumb {
+    appearance: none;
+    border: 2px solid var(--ccs-accent--fg3);
+    height: 1em;
+    width: 0.5em;
+    border-radius: 0.25em;
+    background: var(--ccs-prime);
+    cursor: pointer;
+  }
+}
+
+[id='ccs-hue-select'] {
+  @include range-track {
+    background: linear-gradient(to right, $rainbow);
+  }
+}
+
+[id='ccs-lightness-select'] {
+  @include range-track {
+    background: linear-gradient(to right, hsl(0, 0%, 25%), silver);
+  }
+}
+
+[id='ccs-saturation-select'] {
+  // 0.1% so that units aren't removed in minification
+  @include range-track {
+    background-image: linear-gradient(
+      to right,
+      hsl(var(--ccs-h--prime, 0), 0.1%, var(--ccs-l, 50%)),
+      hsl(var(--ccs-h--prime, 0), 100%, var(--ccs-l, 50%))
+    );
+  }
+}
+
+[id='ccs-contrast-select'] {
+  @include range-track {
+    background: linear-gradient(to right, gray, white),
+      linear-gradient(to right, gray, black);
+    background-size: 100% 50%, 100% 100%;
+    background-position: top left, bottom left;
+    background-repeat: no-repeat;
+  }
+}

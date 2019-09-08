@@ -1,30 +1,4 @@
-@use 'remedy';
-@use '../sass/ccs' with (
-  $prime-hue: 330,
-  $accent-hue: null,
-  $lightness: null,
-  $saturation: null,
-  $contrast: null,
-  $fade-background: 20%,
-);
-
-
-// Colors
-// ------
-
-$steps: 4;
-
-[data-ccs-colors] {
-  @include ccs.colors($steps, 0.95);
-
-  background: var(--ccs-accent--bg3);
-  color: var(--ccs-accent--fg3);
-}
-
-[data-ccs-theme="contrast"] {
-  --ccs-contrast--theme: 200%;
-}
-
+@use 'config';
 
 // palettes
 // --------
@@ -63,8 +37,8 @@ $prime-fade: ();
 $accent-main: ();
 $accent-fade: ();
 
-@for $i from (0 - $steps) through $steps {
-  $n: $i + $steps;
+@for $i from (0 - config.$steps) through config.$steps {
+  $n: $i + config.$steps;
   $pos: abs($i);
   $stops: calc(var(--stop) * #{$n}) calc(var(--stop) * #{$n + 1});
   $var: if($i == $pos, '--fg', '--bg');

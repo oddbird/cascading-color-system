@@ -1,0 +1,25 @@
+@use 'config';
+@use '../sass/ccs' with (
+  $prime-hue: config.$prime-hue,
+  $accent-hue: config.$accent-hue,
+  $lightness: config.$lightness,
+  $saturation: config.$saturation,
+  $contrast: config.$contrast,
+  $fade-background: config.$fade-background,
+);
+
+
+// Colors
+// ------
+
+[data-ccs-colors] {
+  @include ccs.colors(config.$steps, 0.95);
+
+  --callout: var(--ccs-accent--bg3-fade);
+  background: var(--ccs-accent--bg4);
+  color: var(--ccs-prime--fg4);
+}
+
+[data-ccs-theme="contrast"] {
+  --ccs-contrast--theme: 200%;
+}

@@ -1,0 +1,15 @@
+@use 'remedy';
+@use 'theme';
+@use 'menu';
+@use 'palette';
+
+html {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: calc(1em + 0.25vw);
+}
+
+body {
+  padding: 1em;
+  margin: 0 auto;
+  max-width: 40em;
+}

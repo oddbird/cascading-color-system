@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "sass build/ccs.scss build/ccs.css",
-    "test": "sass test/test.scss test/test.css"
+    "test": "sass test/styles.scss test/styles.css",
+    "watch": "sass --watch test/styles.scss test/styles.css"
   }
 }
