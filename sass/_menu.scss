@@ -1,0 +1,15 @@
+[data-ccs='hue-select'] {
+  display: var(--ccs-custom-hue, block);
+}
+
+[data-ccs='lightness-select'] {
+  display: var(--ccs-custom-lightness, block);
+}
+
+[data-ccs='saturation-select'] {
+  display: var(--ccs-custom-saturation, block);
+}
+
+[data-ccs='contrast-select'] {
+  display: var(--ccs-custom-contrast, block);
+}

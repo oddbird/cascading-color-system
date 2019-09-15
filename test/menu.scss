@@ -86,22 +86,6 @@ $rainbow: ();
   $rainbow: append($rainbow, hsl($hue * 10, 80%, 40%), comma);
 }
 
-[for='ccs-hue-select'] {
-  display: var(--custom-hue, block);
-}
-
-[for='ccs-lightness-select'] {
-  display: var(--custom-light, block);
-}
-
-[for='ccs-saturation-select'] {
-  display: var(--custom-sat, block);
-}
-
-[for='ccs-contrast-select'] {
-  display: var(--custom-contrast, block);
-}
-
 [type='range'] {
   appearance: none;
   background: transparent;

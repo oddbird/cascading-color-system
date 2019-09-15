@@ -49,7 +49,7 @@
     </div>
 
     <div class="color-fields">
-      <label data-field for="ccs-theme-select">
+      <label data-ccs="theme-select" for="ccs-theme-select">
         <span data-label>theme:</span>
         <select name="ccs-theme-select" id="ccs-theme-select">
           <option value="default">
@@ -69,19 +69,19 @@
           </option>
         </select>
       </label>
-      <label data-field for="ccs-hue-select">
+      <label data-ccs="hue-select" for="ccs-hue-select">
         <span data-label>hue:</span>
         <input id="ccs-hue-select" type="range" min="0" max="360" value="330">
       </label>
-      <label data-field for="ccs-saturation-select">
+      <label data-ccs="saturation-select" for="ccs-saturation-select">
         <span data-label>saturation:</span>
         <input id="ccs-saturation-select" type="range" min="0" max="100" value="80">
       </label>
-      <label data-field for="ccs-lightness-select">
+      <label data-ccs="lightness-select" for="ccs-lightness-select">
         <span data-label>lightness:</span>
         <input id="ccs-lightness-select" type="range" min="25" max="75" value="50">
       </label>
-      <label data-field for="ccs-contrast-select">
+      <label data-ccs="contrast-select" for="ccs-contrast-select">
         <span data-label>contrast:</span>
         <input id="ccs-contrast-select" type="range" min="25" max="150" value="45">
       </label>
@@ -90,12 +90,12 @@
   <main>
     <section class="palette" role="presentation">
       <h2 data-ccs-colors="invert">prime</h2>
-      <div style="--show: var(--prime-palette)"></div>
+      <div style="--show: var(--prime-gradient), var(--prime-gradient--fade)"></div>
     </section>
 
     <section class="palette" role="presentation">
       <h2 data-ccs-colors="invert">accent</h2>
-      <div style="--show: var(--accent-palette)"></div>
+      <div style="--show: var(--accent-gradient), var(--accent-gradient--fade)"></div>
     </section>
   </main>
 

@@ -45,3 +45,8 @@
 [data-ccs-theme='adjacent'] {
   --ccs-accent--theme: calc(var(--ccs-h--prime) + (60 * var(--ccs-mode)));
 }
+
+[data-ccs-theme="contrast"] {
+  --ccs-contrast: 200%;
+  --ccs-custom-contrast: none;
+}

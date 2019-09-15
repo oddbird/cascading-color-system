@@ -5,8 +5,8 @@
   --ccs-mode--invert: calc(-1 * var(--ccs-mode));
 
   // full contrast colors, foreground and background
-  --ccs-bg--full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
-  --ccs-fg--full: hsl(0, 0%, calc(100% * var(--ccs-mode--invert)));
+  --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
+  --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-mode--invert)));
 }
 
 [data-ccs-colors='invert'] {

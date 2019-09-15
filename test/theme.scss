@@ -1,33 +1,21 @@
 @use 'config';
-@use '../sass/ccs' with (
-  $prime-hue: config.$prime-hue,
-  $accent-hue: config.$accent-hue,
-  $lightness: config.$lightness,
-  $saturation: config.$saturation,
-  $contrast: config.$contrast,
-  $fade-background: config.$fade-background,
-);
 
 
 // Colors
 // ------
 
 [data-ccs-colors] {
-  @include ccs.colors(config.$steps, 0.95);
+  @include config.colors;
 
-  --callout: var(--ccs-accent--bg3-fade);
-  background: var(--ccs-accent--bg4);
-  color: var(--ccs-prime--fg4);
-}
-
-[data-ccs-theme="contrast"] {
-  --ccs-contrast--theme: 200%;
+  --callout: var(--ccs-accent--bg#{config.$steps - 1}-fade);
+  background: var(--ccs-accent--bg-full);
+  color: var(--ccs-prime--fg-full);
 }
 
 
 // links
 a {
-  --link--default: --ccs-prime--fg1;
+  --link--default: var(--ccs-prime--fg1);
 
   &:link,
   &:visited {

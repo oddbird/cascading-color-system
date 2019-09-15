@@ -6,11 +6,11 @@ const unsetBtn = document.querySelector('[data-ccs="unset"]');
 
 // elements
 const selectElements = {
-  theme: document.querySelector('#ccs-theme-select'),
-  hue: document.querySelector('#ccs-hue-select'),
-  sat: document.querySelector('#ccs-saturation-select'),
-  light: document.querySelector('#ccs-lightness-select'),
-  contrast: document.querySelector('#ccs-contrast-select'),
+  theme: document.querySelector('[data-ccs="theme-select"] select'),
+  hue: document.querySelector('[data-ccs="hue-select"] input'),
+  sat: document.querySelector('[data-ccs="saturation-select"] input'),
+  light: document.querySelector('[data-ccs="lightness-select"] input'),
+  contrast: document.querySelector('[data-ccs="contrast-select"] input'),
 };
 
 // attributes

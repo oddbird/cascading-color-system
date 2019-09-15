@@ -1,20 +1,18 @@
 $prime-hue: 330 !default;
 $accent-hue: null !default;
-
 $lightness: null !default;
 $saturation: null !default;
 $contrast: null !default;
-
-$fade-background: 20% !default;
+$fade-background: null !default;
 
 html {
   // config
-  @if ($prime-hue) { --ccs-prime--config: #{$prime-hue}; }
-  @if ($accent-hue) { --ccs-accent--config: #{$accent-hue}; }
-  @if ($lightness) { --ccs-lightness--config: #{$lightness}; }
-  @if ($saturation) { --ccs-saturation--config: #{$saturation}; }
-  @if ($contrast) { --ccs-contrast--config: #{$contrast}; }
-  @if ($fade-background) { --ccs-fade-bg--config: #{$fade-background}; }
+  @if ($prime-hue) { --ccs-prime--config: #{$prime-hue or 330}; }
+  @if ($accent-hue) { --ccs-accent--config: #{$accent-hue or null}; }
+  @if ($lightness) { --ccs-lightness--config: #{$lightness or null}; }
+  @if ($saturation) { --ccs-saturation--config: #{$saturation or null}; }
+  @if ($contrast) { --ccs-contrast--config: #{$contrast or null}; }
+  @if ($fade-background) { --ccs-fade-background--config: #{$fade-background}; }
 
   // mode
   --ccs-mode--os: 1;
