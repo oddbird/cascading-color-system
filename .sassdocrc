@@ -1,0 +1,30 @@
+theme: herman
+dest: docs/
+src: sass/
+
+display:
+  access:
+    - public
+
+groups:
+  Usage:
+    css: CSS
+  'Sass (optional)':
+    palettes: Color Palettes
+
+herman:
+  extraDocs:
+    - name: 'Changelog'
+      path: CHANGELOG.md
+    - name: 'Contributing'
+      path: CONTRIBUTING.md
+    - name: 'License'
+      path: LICENSE
+  extraLinks:
+    - name: 'Demo'
+      url: 'http://oddbird.net/'
+    - name: 'OddBird'
+    - name: 'Miriam Suzanne'
+      url: 'http://oddbird.net/'
+    - name: 'OddBird'
+      url: 'http://oddbird.net/'

@@ -1,21 +1,3 @@
-// The default theme is monochrome.
-// We also provide pre-defined
-// `complement`, `triad`, and `adjacent` themes
-// based on the primary hue provided.
-//
-// # theme api (units required):
-// --ccs-prime--theme
-// --ccs-accent--theme
-// --ccs-s--theme
-// --ccs-l--theme
-// --ccs-contrast--theme
-//
-// # user api (no units):
-// --ccs-prime--user
-// --ccs-s--user
-// --ccs-l--user
-// --ccs-contrast--user
-
 [data-ccs-theme] {
   // optionally set `--ccs-prime--user-*` values with JS
   --ccs-h--prime: var(--ccs-prime--user, var(--ccs-prime--theme, var(--ccs-prime--config)));

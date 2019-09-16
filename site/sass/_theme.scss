@@ -3,10 +3,7 @@
 
 // Colors
 // ------
-
 [data-ccs-colors] {
-  @include config.colors;
-
   --callout: var(--ccs-accent--bg#{config.$steps - 1}-fade);
   background: var(--ccs-accent--bg-full);
   color: var(--ccs-prime--fg-full);
@@ -14,8 +11,9 @@
 
 
 // links
+// -----
 a {
-  --link--default: var(--ccs-prime--fg1);
+  --link--default: var(--ccs-prime--fg#{config.$steps - 2});
 
   &:link,
   &:visited {
@@ -28,7 +26,7 @@ a {
   &:hover,
   &:focus,
   &:active {
-    --link: var(--ccs-accent--fg4);
+    --link: var(--ccs-accent--fg-full);
     text-decoration-color: var(--ccs-accent);
   }
 }

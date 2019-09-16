@@ -1,0 +1,21 @@
+/// # Plain CSS
+/// **Sass is not required** if you are happy with the default settings.
+/// We have generated all the required CSS output
+/// with 4 tints and shades in each color palette.
+///
+/// ```
+/// <path-to-package>/css/ccs.css
+/// ```
+///
+/// You can copy-paste this file wherever you need it,
+/// and use the CSS directly.
+/// If you are using Sass
+/// (Dart-Sass v1.23+ required)
+/// Import the `sass/ccs` file with your custom configuration:
+///
+/// ```scss
+///  @use '<path-to-package>/sass/ccs' with (/* <configuration> */);
+/// ```
+///
+/// @group css
+@use 'ccs' with ($build: true);

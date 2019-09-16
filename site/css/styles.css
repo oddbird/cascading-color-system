@@ -322,13 +322,16 @@ html {
   --accent-gradient: linear-gradient(to right, var(--ccs-accent--bg6) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-accent--bg5) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-accent--bg4) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-accent--bg3) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-accent--bg2) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-accent--bg1) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-accent) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-accent--fg1) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-accent--fg2) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-accent--fg3) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-accent--fg4) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-accent--fg5) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-accent--fg6) calc(var(--stop) * 12) calc(var(--stop) * 13));
   --prime-gradient--fade: linear-gradient(to right, var(--ccs-prime--bg6-fade) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-prime--bg5-fade) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-prime--bg4-fade) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-prime--bg3-fade) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-prime--bg2-fade) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-prime--bg1-fade) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-prime--fade) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-prime--fg1-fade) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-prime--fg2-fade) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-prime--fg3-fade) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-prime--fg4-fade) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-prime--fg5-fade) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-prime--fg6-fade) calc(var(--stop) * 12) calc(var(--stop) * 13));
   --accent-gradient--fade: linear-gradient(to right, var(--ccs-accent--bg6-fade) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-accent--bg5-fade) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-accent--bg4-fade) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-accent--bg3-fade) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-accent--bg2-fade) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-accent--bg1-fade) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-accent--fade) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-accent--fg1-fade) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-accent--fg2-fade) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-accent--fg3-fade) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-accent--fg4-fade) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-accent--fg5-fade) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-accent--fg6-fade) calc(var(--stop) * 12) calc(var(--stop) * 13));
+}
+
+[data-ccs-colors] {
   --callout: var(--ccs-accent--bg5-fade);
   background: var(--ccs-accent--bg-full);
   color: var(--ccs-prime--fg-full);
 }
 
 a {
-  --link--default: var(--ccs-prime--fg1);
+  --link--default: var(--ccs-prime--fg4);
 }
 a:link, a:visited {
   color: var(--link, var(--link--default));
@@ -337,7 +340,7 @@ a:link, a:visited {
   text-decoration-thickness: 0.125em;
 }
 a:hover, a:focus, a:active {
-  --link: var(--ccs-accent--fg4);
+  --link: var(--ccs-accent--fg-full);
   text-decoration-color: var(--ccs-accent);
 }
 

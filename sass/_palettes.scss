@@ -1,0 +1,190 @@
+/// # Palettes
+/// Once the initial hue, saturation, lightness, contrast,
+/// and theme are in place --
+/// we can generate dynamic palettes based on those values.
+///
+/// While themes can be set universally,
+/// palettes need to be recalculated based on mode.
+/// By default, we apply both to the `[data-ccs-colors]` attribute.
+///
+/// @group palettes
+
+/// The number of tints and shades to create
+/// on either side of the base colors.
+///
+/// @type integer
+/// @group palettes
+$steps: 4 !default;
+
+/// Optionally generate desaturated seconday `*-fade` palettes
+/// for each base palette.
+/// Number values will be used as
+/// the `hsla()` *alpha* value,
+/// adding transparency to the faded palette.
+///
+/// @type boolean | number
+/// @group palettes
+$fades: false !default;
+
+/// Generate a striped gradient for each color palette --
+/// prime, accent, and `*-fade` if required.
+/// These are useful for showing the colors generated.
+///
+/// @type boolean
+/// @group palettes
+$gradients: false !default;
+
+/// Optionally generate CSS for the colors on-load,
+/// rarther than using the provided mixins directly.
+///
+/// @type boolean
+/// @group palettes
+$build: true !default;
+
+// Colors
+// ------
+/// Generate custom-property color palettes
+/// with a given number of tint/shade variations --
+/// dynamically based on the inherited hue, saturation, lightness,
+/// mode (light/dark), and accent theme.
+///
+/// @param {integer} $steps [$steps or 4] -
+///   The number (each) of tints and shades to generate
+/// @param {boolean | number} $fades [$fades] -
+///   Optionally generate desaturated seconday `*-fade` palettes
+///   for each base palette.
+///   Number values will be used as
+///   the `hsla()` *alpha* value,
+///   adding transparency to the faded palette.
+/// @param {boolean} $gradients [$gradients] -
+///   Generate a striped gradient for each color palette --
+///   prime, accent, and `*-fade` if required.
+///   These are useful for showing the colors generated.
+/// @output -
+///   CSS custom properties to generate each color
+///   in the requested palettes,
+///   based on the starting hue, saturation, lightness,
+///   and accent theme.
+/// @group palettes
+@mixin colors(
+  $steps: $steps or 4,
+  $fades: $fades,
+  $gradients: $gradients,
+) {
+  // offset steps
+  --ccs-step: calc(var(--ccs-contrast) / #{$steps});
+
+  // fade background
+  --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
+
+  // combined sl values
+  --ccs-sl: var(--ccs-s), var(--ccs-l);
+
+  // main colors
+  --ccs-prime: hsl(var(--ccs-h--prime), var(--ccs-sl));
+  --ccs-prime--fg-full: var(--ccs-prime--fg#{$steps});
+  --ccs-prime--bg-full: var(--ccs-prime--bg#{$steps});
+  --ccs-accent: hsl(var(--ccs-h--accent), var(--ccs-sl));
+  --ccs-accent--fg-full: var(--ccs-accent--fg#{$steps});
+  --ccs-accent--bg-full: var(--ccs-accent--bg#{$steps});
+
+  @if ($fades) {
+    --ccs-fade: #{if(type-of($fades) == 'number', $fades, 1)};
+    --ccs-sla--fade: var(--ccs-s--contrast), var(--ccs-l), var(--ccs-fade);
+    --ccs-prime--fade: hsla(var(--ccs-h--prime), var(--ccs-sla--fade));
+    --ccs-prime--fg-full-fade: var(--ccs-prime--fg#{$steps}-fade);
+    --ccs-prime--bg-full-fade: var(--ccs-prime--bg#{$steps}-fade);
+    --ccs-accent--fade: hsla(var(--ccs-h--accent), var(--ccs-sla--fade));
+    --ccs-accent--fg-full-fade: var(--ccs-accent--fg#{$steps}-fade);
+    --ccs-accent--bg-full-fade: var(--ccs-accent--bg#{$steps}-fade);
+  }
+
+  @for $i from 1 through $steps {
+    $bg: 'bg#{$i}';
+    $fg: 'fg#{$i}';
+
+    // lightness steps
+    --ccs-l--#{$bg}: calc(var(--ccs-l) + var(--ccs-step) * #{$i} * var(--ccs-mode));
+    --ccs-l--#{$fg}: calc(var(--ccs-l) - var(--ccs-step) * #{$i} * var(--ccs-mode));
+
+    // saturation steps
+    --ccs-s--#{$fg}: calc(var(--ccs-s) - var(--ccs-step) * #{$i});
+    --ccs-s--#{$bg}: calc(var(--ccs-s) - var(--ccs-fade-background, 0%) - var(--ccs-step) * #{$i});
+
+    // step sl
+    --ccs-sl--#{$fg}: var(--ccs-s--#{$fg}), var(--ccs-l--#{$fg});
+    --ccs-sl--#{$bg}: var(--ccs-s--#{$bg}), var(--ccs-l--#{$bg});
+
+    // color steps
+    --ccs-prime--#{$fg}: hsl(var(--ccs-h--prime), var(--ccs-sl--#{$fg}));
+    --ccs-prime--#{$bg}: hsl(var(--ccs-h--prime), var(--ccs-sl--#{$bg}));
+    --ccs-accent--#{$fg}: hsl(var(--ccs-h--accent), var(--ccs-sl--#{$fg}));
+    --ccs-accent--#{$bg}: hsl(var(--ccs-h--accent), var(--ccs-sl--#{$bg}));
+
+    @if ($fades) {
+      --ccs-sla--#{$fg}-fade: var(--ccs-s--contrast), var(--ccs-l--#{$fg}), var(--ccs-fade);
+      --ccs-sla--#{$bg}-fade: var(--ccs-s--contrast), var(--ccs-l--#{$bg}), var(--ccs-fade);
+      --ccs-prime--#{$fg}-fade: hsla(var(--ccs-h--prime), var(--ccs-sla--#{$fg}-fade));
+      --ccs-prime--#{$bg}-fade: hsla(var(--ccs-h--prime), var(--ccs-sla--#{$bg}-fade));
+      --ccs-accent--#{$fg}-fade: hsla(var(--ccs-h--accent), var(--ccs-sla--#{$fg}-fade));
+      --ccs-accent--#{$bg}-fade: hsla(var(--ccs-h--accent), var(--ccs-sla--#{$bg}-fade));
+    }
+  }
+
+  @if ($gradients) {
+    @include gradient($steps, $fades);
+  }
+}
+
+// Gradient
+// --------
+/// Generate striped CSS gradients for each palette.
+/// These are useful for visualizing the available generated colors.
+///
+/// @param {integer} $steps [$steps or 4] -
+///   The number (each) of tints and shades to generate
+/// @param {boolean | number} $fades [$fades] -
+///   Optionally generate desaturated seconday `*-fade` palettes
+///   for each base palette.
+///   Number values will be used as
+///   the `hsla()` *alpha* value,
+///   adding transparency to the faded palette.
+/// @group palettes
+@mixin gradient(
+  $steps: $steps or 4,
+  $fades: $fades,
+) {
+  $prime-main: ();
+  $prime-fade: ();
+  $accent-main: ();
+  $accent-fade: ();
+
+  @for $i from (0 - $steps) through $steps {
+    $n: $i + $steps;
+    $pos: abs($i);
+    $stops: calc(var(--stop) * #{$n}) calc(var(--stop) * #{$n + 1});
+    $var: if($i == $pos, '--fg', '--bg');
+    $var: if($i == 0, '', '#{$var}#{$pos}');
+    $fade: if($var != '', '#{$var}-fade', '--fade');
+
+    $prime-main: append($prime-main, var(--ccs-prime#{$var}) $stops, comma);
+    $prime-fade: append($prime-fade, var(--ccs-prime#{$fade}) $stops, comma);
+    $accent-main: append($accent-main, var(--ccs-accent#{$var}) $stops, comma);
+    $accent-fade: append($accent-fade, var(--ccs-accent#{$fade}) $stops, comma);
+  }
+
+  --stop: calc(100% / (#{$steps} * 2 + 1));
+  --prime-gradient: linear-gradient(to right, #{$prime-main});
+  --accent-gradient: linear-gradient(to right, #{$accent-main});
+
+  @if ($fades) {
+    --prime-gradient--fade: linear-gradient(to right, #{$prime-fade});
+    --accent-gradient--fade: linear-gradient(to right, #{$accent-fade});
+  }
+}
+
+@if ($build) {
+  [data-ccs-colors] {
+    @include colors;
+  }
+}

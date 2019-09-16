@@ -1,8 +1,0 @@
-// use and forward CCS
-@use '../sass/ccs' with (
-  $fade-background: 10%,
-  $steps: 6,
-  $fades: 0.9,
-  $gradient: true,
-);
-@forward '../sass/ccs';
