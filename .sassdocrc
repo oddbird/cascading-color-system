@@ -7,8 +7,9 @@ display:
     - public
 
 groups:
-  Usage:
-    css: CSS
+  Getting Started:
+    import: Import CSS or Sass
+    config: Global Settings
   'Sass (optional)':
     palettes: Color Palettes
 
@@ -22,9 +23,8 @@ herman:
       path: LICENSE
   extraLinks:
     - name: 'Demo'
-      url: 'http://oddbird.net/'
-    - name: 'OddBird'
-    - name: 'Miriam Suzanne'
-      url: 'http://oddbird.net/'
+      url: 'https://cascading-colors.netlify.com/'
+    - name: 'GitHub Source'
+      url: 'https://github.com/mirisuzanne/cascading-color-system'
     - name: 'OddBird'
       url: 'http://oddbird.net/'

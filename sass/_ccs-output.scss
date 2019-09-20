@@ -1,21 +1,38 @@
-/// # Plain CSS
-/// **Sass is not required** if you are happy with the default settings.
-/// We have generated all the required CSS output
-/// with 4 tints and shades in each color palette.
+/// # Import CSS or Sass
+///
+/// @group import
+
+/// ## CSS
+/// If you are happy with the default settings,
+/// you can import the generated CSS directly.
+/// The default import includes 4 themes,
+/// with 4 tints and 4 shades for each color:
 ///
 /// ```
 /// <path-to-package>/css/ccs.css
 /// ```
 ///
-/// You can copy-paste this file wherever you need it,
-/// and use the CSS directly.
+/// @group import
+@use 'ccs' with ($build: true);
+
+/// ## Sass
 /// If you are using Sass
 /// (Dart-Sass v1.23+ required)
-/// Import the `sass/ccs` file with your custom configuration:
+/// Import the `_index.scss` file with your custom configuration.
+/// Sass imports index files by default,
+/// so you can drop the file name from your import if you like:
 ///
 /// ```scss
-///  @use '<path-to-package>/sass/ccs' with (/* <configuration> */);
+///  @use '<path-to-package>/';
 /// ```
 ///
-/// @group css
-@use 'ccs' with ($build: true);
+/// You can also configure the namespace and default settngs:
+///
+/// ```scss
+///  @use '<path-to-package>/' as 'colors' with (
+///    $build: true,
+///    $steps: 6,
+///  );
+/// ```
+///
+/// @group import

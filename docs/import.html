@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <title>CSS | cascading-color-systems Documentation</title>
+  <title>Import CSS or Sass | cascading-color-systems Documentation</title>
 
   <link href="assets/img/favicon.ico" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
@@ -87,12 +87,17 @@
     <div class="nav-subsection">
       <ul>
             <li class="nav-subsection">
-              <h3 class="nav-title">Usage</h3>
+              <h3 class="nav-title">Getting Started</h3>
               <ul>
                 
   
     <li class="nav-item">
-      <a href="css.html" data-nav="is-active">CSS</a>
+      <a href="import.html" data-nav="is-active">Import CSS or<span class="widont">&nbsp;</span>Sass</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="config.html" data-nav="is-not-active">Global Settings</a>
     </li>
   </ul>
             </li>
@@ -118,15 +123,11 @@
         <ul>
           
             <li class="nav-item">
-              <a href="http://oddbird.net/" data-nav="is-not-active">Demo</a>
+              <a href="https://cascading-colors.netlify.com/" data-nav="is-not-active">Demo</a>
             </li>
           
             <li class="nav-item">
-              <a href="" data-nav="is-not-active">OddBird</a>
-            </li>
-          
-            <li class="nav-item">
-              <a href="http://oddbird.net/" data-nav="is-not-active">Miriam Suzanne</a>
+              <a href="https://github.com/mirisuzanne/cascading-color-system" data-nav="is-not-active">GitHub Source</a>
             </li>
           
             <li class="nav-item">
@@ -167,11 +168,11 @@
   <nav class="breadcrumb">
     
     <a href="index.html" >cascading-color-systems</a> »
-    <strong>CSS</strong>
+    <strong>Import CSS or Sass</strong>
   </nav>
 
 
-        <div data-page="css">
+        <div data-page="import">
           
   
     
@@ -196,18 +197,175 @@
 
   
     <div data-item-section="prose" class="text-block">
-      <h1 id="plain-css">Plain CSS</h1>
-<p><strong>Sass is not required</strong> if you are happy with the default settings.
-We have generated all the required CSS output
-with 4 tints and shades in each color<span class="widont">&nbsp;</span>palette.</p>
+      <h1 id="import-css-or-sass">Import CSS or<span class="widont">&nbsp;</span>Sass</h1>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" >
+  
+    
+  
+  
+  
+  
+
+  
+    <div data-item-section="prose" class="text-block">
+      <h2 id="css">CSS</h2>
+<p>If you are happy with the default settings,
+you can import the generated CSS directly.
+The default import includes 4 themes,
+with 4 tints and 4 shades for each<span class="widont">&nbsp;</span>color:</p>
 <pre><code>&lt;path-to-package&gt;/css/ccs.css
 </code></pre>
-<p>You can copy-paste this file wherever you need it,
-and use the CSS directly.
-If you are using Sass
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" >
+  
+    
+  
+  
+  
+  
+
+  
+    <div data-item-section="prose" class="text-block">
+      <h2 id="sass">Sass</h2>
+<p>If you are using Sass
 (Dart-Sass v1.23+ required)
-Import the <code>sass/ccs</code> file with your custom<span class="widont">&nbsp;</span>configuration:</p>
-<pre><code class="lang-scss"> @use '&lt;path-to-package&gt;/sass/ccs' with (/* &lt;configuration&gt; */);
+Import the <code>_index.scss</code> file with your custom configuration.
+Sass imports index files by default,
+so you can drop the file name from your import if you<span class="widont">&nbsp;</span>like:</p>
+<pre><code class="lang-scss"> @use '&lt;path-to-package&gt;/';
+</code></pre>
+<p>You can also configure the namespace and default<span class="widont">&nbsp;</span>settngs:</p>
+<pre><code class="lang-scss"> @use '&lt;path-to-package&gt;/' as 'colors' with (
+   $build: true,
+   $steps: 6,
+ );
 </code></pre>
 
       

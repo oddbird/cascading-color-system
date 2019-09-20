@@ -1,0 +1,1511 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Global Settings | cascading-color-systems Documentation</title>
+
+  <link href="assets/img/favicon.ico" rel="shortcut icon">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/webpack/app_styles.min.css" />
+
+  
+
+  
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+  <symbol id="icon-logo" viewBox="0 0 16 16">
+    <path d="M.2 8L0 7.8v-.2C.8 6.9 1.9 5.9 2.7 5l.4.3c-.5.8-1.1 1.6-1.8 2.3 1 1.2 1 1.3 1.7 2.4l-.4.3c-.4-.4-.5-.6-1-1C1 8.6 1.1 8.7.2 8zM13 10c.6-1.1.7-1.1 1.7-2.4-.6-.6-1.3-1.5-1.7-2.3l.3-.3c.8.8 1.8 1.8 2.7 2.6v.2l-.8.7c-.3.3-1.2 1.1-1.8 1.7L13 10z"/><path d="M2.6 13.1H3c.9 0 1.1-.2 1.1-1.4V4.2c0-1.1-.2-1.4-1.1-1.4h-.4v-.6h4.5v.7h-.3c-.9 0-1.1.2-1.1 1.4v3.2h4.6V4.2c0-1.1-.2-1.4-1.1-1.4h-.3v-.6h4.5v.7H13c-.9 0-1.1.2-1.1 1.4v7.5c0 1.1.2 1.4 1.1 1.4h.4v.7H8.9v-.7h.3c.9 0 1.1-.2 1.1-1.4V8.2H5.7v3.5c0 1.1.2 1.4 1.1 1.4h.3v.7H2.6v-.7z"/>
+  </symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 28">
+    <path d="M24 21v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1V5c0-.547.453-1 1-1h22c.547 0 1 .453 1 1z"/>
+  </symbol>
+</svg>
+
+  <div data-region="app">
+    <header data-region="banner">
+      
+  <button data-nav-toggle data-toggle="button" aria-controls="nav" aria-pressed="false" type="button" data-toggle-synced="false">
+    
+  <svg data-icon="menu" data-icon-size="nav-icon" ><title>menu</title><use xlink:href="#icon-menu" />
+  </svg>
+
+  </button>
+
+
+      <div class="project-title">
+        <a href="index.html" rel="home" class="project-name">cascading-color-systems</a>
+        
+          <span class="project-version">0.1.0</span>
+        
+      </div>
+    </header>
+
+    <div data-region="container">
+      
+  <nav data-region="nav" data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
+    <form action="search.html">
+      <input type="text" name="q" placeholder="Search…" required minlength="3">
+    </form>
+
+    <div class="nav-subsection">
+      <h3 class="nav-home">
+        
+        <a href="index.html" data-nav="is-not-active">cascading-color-systems</a>
+      </h3>
+
+      
+      
+        <ul>
+          
+            
+            <li class="nav-item">
+              <a href="CHANGELOG.html" data-nav="is-not-active">Changelog</a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a href="CONTRIBUTING.html" data-nav="is-not-active">Contributing</a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a href="LICENSE.html" data-nav="is-not-active">License</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+
+    
+    <div class="nav-subsection">
+      <ul>
+            <li class="nav-subsection">
+              <h3 class="nav-title">Getting Started</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="import.html" data-nav="is-not-active">Import CSS or<span class="widont">&nbsp;</span>Sass</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="config.html" data-nav="is-active">Global Settings</a>
+    </li>
+  </ul>
+            </li>
+            <li class="nav-subsection">
+              <h3 class="nav-title">Sass (optional)</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="palettes.html" data-nav="is-not-active">Color Palettes</a>
+    </li>
+  </ul>
+            </li></ul>
+    </div>
+
+    
+    
+      <div class="nav-subsection">
+        <h3 class="nav-title">
+          External Links
+        </h3>
+
+        <ul>
+          
+            <li class="nav-item">
+              <a href="https://cascading-colors.netlify.com/" data-nav="is-not-active">Demo</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="https://github.com/mirisuzanne/cascading-color-system" data-nav="is-not-active">GitHub Source</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="http://oddbird.net/" data-nav="is-not-active">OddBird</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <aside class="footer-credit">
+        <a href="http://oddbird.net/herman/" class="footer-icon">
+          
+  <svg data-icon="logo" data-icon-size="footer-logo" ><use xlink:href="#icon-logo" />
+  </svg>
+
+        </a>
+        <span>
+          Documented with
+          <a href="http://oddbird.net/herman/" class="footer-link">
+            Herman
+          </a>
+        </span>
+        <span>
+          by
+          <a href="http://oddbird.net/" class="footer-link">
+            OddBird
+          </a>
+        </span>
+      </aside>
+    
+  </nav>
+
+
+      <main data-region="main">
+        
+  <nav class="breadcrumb">
+    
+    <a href="index.html" >cascading-color-systems</a> »
+    <strong>Global Settings</strong>
+  </nav>
+
+
+        <div data-page="config">
+          
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" >
+  
+    
+  
+  
+  
+  
+
+  
+    <div data-item-section="prose" class="text-block">
+      <h1 id="configuration">Configuration</h1>
+<p>These settings can be defined directly in CSS,
+or generated from Sass configuration –
+and they provide the baseline defaults for all
+dynamic calculations.
+Each Sass variable has a corresponding custom property
+that can be used<span class="widont">&nbsp;</span>instead.</p>
+<p>By default, all Sass configurations are set to <code>null</code>
+so that they have no output –
+and “factory-default” fallback values are provided
+in CSS calls to <code>var(--name, &lt;fallback&gt;)</code>.
+That ensures that you can set defaults anywhere,
+without running into specificity<span class="widont">&nbsp;</span>conflicts.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--prime-hue">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--prime-hue" class="item-name">$prime-hue</a>
+      
+
+      
+        <span class="value-type">(number |<span class="widont">&nbsp;</span>null)</span>
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$prime-hue: null !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>The color-wheel hue that will act as our default
+for generating all color palettes.
+Hue values should be set without <code>deg</code> units.</p>
+<ul>
+<li>Sass: <code>$prime-hue: 330;</code></li>
+<li>CSS: <code>--ccs-prime--config: 330;</code></li>
+</ul>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--accent-hue">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--accent-hue" class="item-name">$accent-hue</a>
+      
+
+      
+        <span class="value-type">(number |<span class="widont">&nbsp;</span>null)</span>
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$accent-hue: null !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>The color-wheel hue that will act as our default
+for generating accent colors.
+Leave unset, or use Sass <code>null</code> value to generate all palettes from the prime hue.
+Hue values should be set without <code>deg</code> units.</p>
+<ul>
+<li>Sass: <code>$accent-hue: 120;</code></li>
+<li>CSS: <code>--ccs-accent--config: 120;</code></li>
+</ul>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--lightness">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--lightness" class="item-name">$lightness</a>
+      
+
+      
+        <span class="value-type">(percentage |<span class="widont">&nbsp;</span>null)</span>
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$lightness: null !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>The global default lightness percentage for core colors.
+Tints and shades will be generated in even increments
+lighter and darker than this starting<span class="widont">&nbsp;</span>value.</p>
+<ul>
+<li>Sass: <code>$lightness: 50%;</code></li>
+<li>CSS: <code>--ccs-lightness--config: 50%;</code></li>
+</ul>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--saturation">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--saturation" class="item-name">$saturation</a>
+      
+
+      
+        <span class="value-type">(percentage |<span class="widont">&nbsp;</span>null)</span>
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$saturation: null !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>The global default saturation percentage for core colors.
+Tints and shades will be generated in even increments
+less saturated than this starting<span class="widont">&nbsp;</span>value.</p>
+<ul>
+<li>Sass: <code>$saturation: 50%;</code></li>
+<li>CSS: <code>--ccs-saturation--config: 50%;</code></li>
+</ul>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--contrast">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--contrast" class="item-name">$contrast</a>
+      
+
+      
+        <span class="value-type">(percentage |<span class="widont">&nbsp;</span>null)</span>
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$contrast: null !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>The global default contrast range for color palettes.
+Tints and shades will be generated in even increments
+up to the total range of<span class="widont">&nbsp;</span>contrast.</p>
+<ul>
+<li>Sass: <code>$contrast: 45%;</code></li>
+<li>CSS: <code>--ccs-contrast--config: 45%;</code></li>
+</ul>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--fade-background">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--fade-background" class="item-name">$fade-background</a>
+      
+
+      
+        <span class="value-type">(percentage |<span class="widont">&nbsp;</span>null)</span>
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$fade-background: null !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>It can be useful to desaturate background colors
+more quickly than their foreground counterparts.
+Optionally set an additinal saturation-offset
+for background tints/shades
+in relation to the<span class="widont">&nbsp;</span>foreground.</p>
+<ul>
+<li>Sass: <code>$fade-background: 0%;</code></li>
+<li>CSS: <code>--ccs-fade-background--config: 0%;</code></li>
+</ul>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--fallback-dark">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--fallback-dark" class="item-name">$fallback-dark</a>
+      
+
+      
+        <span class="value-type">(color)</span>
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$fallback-dark: hsl(
+  $prime-hue or 330,
+  ($saturation or 50%) - ($contrast or 45%),
+  ($lightness or 50%) - ($contrast or 45%)
+) !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>A dark fallback color
+for browsers that don’t support
+CSS custom properties.
+The default value is based on
+<code>$prime-hue</code>, <code>$saturation</code>, <code>$lightness</code>,
+and maximum <code>$contrast</code>.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--fallback-light">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--fallback-light" class="item-name">$fallback-light</a>
+      
+
+      
+        <span class="value-type">(color)</span>
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$fallback-light: hsl(
+  $prime-hue or 330,
+  ($saturation or 50%) - ($contrast or 45%),
+  ($lightness or 50%) + ($contrast or 45%)
+) !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>A light fallback color
+for browsers that don’t support
+CSS custom properties.
+The default value is based on
+<code>$prime-hue</code>, <code>$saturation</code>, <code>$lightness</code>,
+and maximum <code>$contrast</code>.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="css--CSS%20Configuration">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#css--CSS%20Configuration" class="item-name">CSS Configuration</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">html {
+  // config
+  @if ($prime-hue) { --ccs-prime--config: #{$prime-hue or 330}; }
+  @if ($accent-hue) { --ccs-accent--config: #{$accent-hue or null}; }
+  @if ($lightness) { --ccs-lightness--config: #{$lightness or null}; }
+  @if ($saturation) { --ccs-saturation--config: #{$saturation or null}; }
+  @if ($contrast) { --ccs-contrast--config: #{$contrast or null}; }
+  @if ($fade-background) { --ccs-fade-background--config: #{$fade-background}; }
+
+  // mode
+  --ccs-mode--os: 1;
+
+  // fallback values, in case variables are not supported
+  background: $fallback-light;
+  color: $fallback-dark;
+
+  @media (prefers-color-scheme: dark) {
+    --ccs-mode--os: -1;
+    background: $fallback-dark;
+    color: $fallback-light;
+  }
+}</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Global configuration options should be defined
+with custom properties on the <code>html</code> element.
+You can do that manually,
+or by setting the Sass configuration<span class="widont">&nbsp;</span>variables.</p>
+<p>We also check the user’s color-scheme preference,
+to set <code>--ccs-mode--os</code>,
+and apply the light/dark fallback values
+for browsers without variable<span class="widont">&nbsp;</span>support.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="assets/webpack/runtime.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/common.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/app.min.js"></script>
+  
+</body>
+</html>

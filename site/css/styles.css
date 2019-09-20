@@ -123,21 +123,30 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 html {
-  --ccs-prime--config: 330;
   --ccs-fade-background--config: 10%;
   --ccs-mode--os: 1;
-  background: #f2f2f2;
-  color: #0d0d0d;
+  background: #f3f2f2;
+  color: #0d0c0d;
 }
 @media (prefers-color-scheme: dark) {
   html {
     --ccs-mode--os: -1;
-    background: #0d0d0d;
-    color: #f2f2f2;
+    background: #0d0c0d;
+    color: #f3f2f2;
   }
 }
 
 [data-ccs-colors] {
+  --ccs-h--prime: var(--ccs-prime--user, var(--ccs-prime--theme, var(--ccs-prime--config, 330)));
+  --ccs-h--accent: var(--ccs-accent--theme, var(--ccs-accent--config, var(--ccs-h--prime)));
+  --ccs-contrast--user-percent: calc(var(--ccs-contrast--user) * 1%);
+  --ccs-contrast: var(--ccs-contrast--user-percent, var(--ccs-contrast--theme, var(--ccs-contrast-config, 45%)));
+  --ccs-l--user-percent: calc(var(--ccs-l--user) * 1%);
+  --ccs-l: var(--ccs-l--user-percent, var(--ccs-l--theme, var(--ccs-lightness--config, 50%)));
+  --ccs-l--contrast: calc(var(--ccs-l) + var(--ccs-contrast));
+  --ccs-s--user-percent: calc(var(--ccs-s--user) * 1%);
+  --ccs-s: var(--ccs-s--user-percent, var(--ccs-s--theme, var(--ccs-saturation--config, 50%)));
+  --ccs-s--contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
   --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
   --ccs-mode: var(--ccs-mode--cascade, 1);
   --ccs-mode--invert: calc(-1 * var(--ccs-mode));
@@ -155,19 +164,6 @@ html {
 
 [data-ccs-colors=dark] {
   --ccs-mode--html: -1;
-}
-
-[data-ccs-theme] {
-  --ccs-h--prime: var(--ccs-prime--user, var(--ccs-prime--theme, var(--ccs-prime--config)));
-  --ccs-h--accent: var(--ccs-accent--theme, var(--ccs-accent--config, var(--ccs-h--prime)));
-  --ccs-contrast--user-percent: calc(var(--ccs-contrast--user) * 1%);
-  --ccs-contrast: var(--ccs-contrast--user-percent, var(--ccs-contrast--theme, var(--ccs-contrast-config, 45%)));
-  --ccs-l--user-percent: calc(var(--ccs-l--user) * 1%);
-  --ccs-l: var(--ccs-l--user-percent, var(--ccs-l--theme, var(--ccs-lightness--config, 50%)));
-  --ccs-l--contrast: calc(var(--ccs-l) + var(--ccs-contrast));
-  --ccs-s--user-percent: calc(var(--ccs-s--user) * 1%);
-  --ccs-s: var(--ccs-s--user-percent, var(--ccs-s--theme, var(--ccs-saturation--config, 50%)));
-  --ccs-s--contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
 }
 
 [data-ccs-theme=complement] {

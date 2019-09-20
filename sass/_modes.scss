@@ -1,14 +1,3 @@
-[data-ccs-colors] {
-  // final mode calculations
-  --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
-  --ccs-mode: var(--ccs-mode--cascade, 1);
-  --ccs-mode--invert: calc(-1 * var(--ccs-mode));
-
-  // full contrast colors, foreground and background
-  --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
-  --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-mode--invert)));
-}
-
 [data-ccs-colors='invert'] {
   --ccs-mode: calc(-1 * var(--ccs-mode--cascade, 1));
 }
