@@ -1,0 +1,169 @@
+/// # Configuration
+/// These settings can be defined directly in CSS,
+/// or generated from Sass configuration --
+/// and they provide the baseline defaults for all
+/// dynamic calculations.
+/// Each Sass variable has a corresponding custom property
+/// that can be used instead.
+///
+/// By default, all Sass configurations are set to `null`
+/// so that they have no output --
+/// and "factory-default" fallback values are provided
+/// in CSS calls to `var(--name, <fallback>)`.
+/// That ensures that you can set defaults anywhere,
+/// without running into specificity conflicts.
+///
+/// @group config
+
+// Prime Hue
+// ---------
+/// The color-wheel hue that will act as our default
+/// for generating all color palettes.
+/// Hue values should be set without `deg` units.
+///
+/// - Sass: `$prime-hue: 330;`
+/// - CSS: `--ccs-prime--config: 330;`
+///
+/// @type number | null
+/// @group config
+$prime-hue: null !default;
+
+// Accent Hue
+// ----------
+/// The color-wheel hue that will act as our default
+/// for generating accent colors.
+/// Leave unset, or use Sass `null` value to generate all palettes from the prime hue.
+/// Hue values should be set without `deg` units.
+///
+/// - Sass: `$accent-hue: 120;`
+/// - CSS: `--ccs-accent--config: 120;`
+///
+/// @type number | null
+/// @group config
+$accent-hue: null !default;
+
+// Lightness
+// ---------
+/// The global default lightness percentage for core colors.
+/// Tints and shades will be generated in even increments
+/// lighter and darker than this starting value.
+///
+/// - Sass: `$lightness: 50%;`
+/// - CSS: `--ccs-lightness--config: 50%;`
+///
+/// @type percentage | null
+/// @group config
+$lightness: null !default;
+
+// Saturation
+// ----------
+/// The global default saturation percentage for core colors.
+/// Tints and shades will be generated in even increments
+/// less saturated than this starting value.
+///
+/// - Sass: `$saturation: 50%;`
+/// - CSS: `--ccs-saturation--config: 50%;`
+///
+/// @type percentage | null
+/// @group config
+$saturation: null !default;
+
+// Contrast
+// --------
+/// The global default contrast range for color palettes.
+/// Tints and shades will be generated in even increments
+/// up to the total range of contrast.
+///
+/// - Sass: `$contrast: 45%;`
+/// - CSS: `--ccs-contrast--config: 45%;`
+///
+/// @type percentage | null
+/// @group config
+$contrast: null !default;
+
+// Fade Background
+// ---------------
+/// It can be useful to desaturate background colors
+/// more quickly than their foreground counterparts.
+/// Optionally set an additinal saturation-offset
+/// for background tints/shades
+/// in relation to the foreground.
+///
+/// - Sass: `$fade-background: 0%;`
+/// - CSS: `--ccs-fade-background--config: 0%;`
+///
+/// @type percentage | null
+/// @group config
+$fade-background: null !default;
+
+// Fallback Dark
+// -------------
+/// A dark fallback color
+/// for browsers that don't support
+/// CSS custom properties.
+/// The default value is based on
+/// `$prime-hue`, `$saturation`, `$lightness`,
+/// and maximum `$contrast`.
+///
+/// @type color
+/// @group config
+$fallback-dark: hsl(
+  $prime-hue or 330,
+  ($saturation or 50%) - ($contrast or 45%),
+  ($lightness or 50%) - ($contrast or 45%)
+) !default;
+
+// Fallback Light
+// --------------
+/// A light fallback color
+/// for browsers that don't support
+/// CSS custom properties.
+/// The default value is based on
+/// `$prime-hue`, `$saturation`, `$lightness`,
+/// and maximum `$contrast`.
+///
+/// @type color
+/// @group config
+$fallback-light: hsl(
+  $prime-hue or 330,
+  ($saturation or 50%) - ($contrast or 45%),
+  ($lightness or 50%) + ($contrast or 45%)
+) !default;
+
+// CSS Configuration
+// -----------------
+/// Global configuration options should be defined
+/// with custom properties on the `html` element.
+/// You can do that manually,
+/// or by setting the Sass configuration variables.
+///
+/// We also check the user's color-scheme preference,
+/// to set `--ccs-mode--os`,
+/// and apply the light/dark fallback values
+/// for browsers without variable support.
+///
+/// @name CSS Configuration
+/// @group config
+html {
+  // config
+  @if ($prime-hue) { --ccs-prime--config: #{$prime-hue or 330}; }
+  @if ($accent-hue) { --ccs-accent--config: #{$accent-hue or null}; }
+  @if ($lightness) { --ccs-lightness--config: #{$lightness or null}; }
+  @if ($saturation) { --ccs-saturation--config: #{$saturation or null}; }
+  @if ($contrast) { --ccs-contrast--config: #{$contrast or null}; }
+  @if ($fade-background) { --ccs-fade-background--config: #{$fade-background}; }
+
+  // mode
+  --ccs-mode--os: 1;
+
+  // fallback values, in case variables are not supported
+  background: $fallback-light;
+  color: $fallback-dark;
+
+  @media (prefers-color-scheme: dark) {
+    --ccs-mode--os: -1;
+    background: $fallback-dark;
+    color: $fallback-light;
+  }
+}
+
