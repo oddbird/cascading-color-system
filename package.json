@@ -9,16 +9,18 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "browserify": "^16.5.0",
     "sass": "1.23.0-module.beta.1",
     "sassdoc": "^2.7.1",
     "sassdoc-theme-herman": "^3.0.2"
   },
   "scripts": {
-    "build": "sass sass/_ccs-output.scss css/ccs.css",
-    "sassdoc": "sassdoc sass/",
-    "test": "sass site/sass/styles.scss site/css/styles.css",
-    "docs": "yarn test && yarn sassdoc",
-    "commit": "yarn build && yarn docs",
+    "build-sass": "sass sass/_ccs-output.scss css/ccs.css",
+    "build-docs": "sassdoc sass/",
+    "build-js": "browserify site/index.js -o site/bundle.js",
+    "build-site": "sass site/sass/styles.scss site/css/styles.css",
+    "build": "yarn build-sass && yarn build-docs && yarn build-js && yarn build-site",
+    "commit": "yarn build",
     "watch": "sass --watch site/sass/* site/css/*"
   },
   "files": [
