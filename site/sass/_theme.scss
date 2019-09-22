@@ -4,6 +4,7 @@
 // Colors
 // ------
 [data-ccs-colors] {
+  --ccs-neutral--theme: var(--ccs-h--accent);
   --callout: var(--ccs-accent--bg#{config.$steps - 1}-fade);
   background: var(--ccs-accent--bg-full);
   color: var(--ccs-prime--fg-full);

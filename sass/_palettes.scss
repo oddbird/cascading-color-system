@@ -71,33 +71,36 @@ $build: true !default;
   $fades: $fades,
   $gradients: $gradients,
 ) {
+  $colors: ('prime', 'accent', 'neutral');
+
   // offset steps
   --ccs-step: calc(var(--ccs-contrast) / #{$steps});
 
   // fade background
   --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
 
-  // combined sl values
-  --ccs-sl: var(--ccs-s), var(--ccs-l);
-
   // main colors
-  --ccs-prime: hsl(var(--ccs-h--prime), var(--ccs-sl));
-  --ccs-prime--fg-full: var(--ccs-prime--fg#{$steps});
-  --ccs-prime--bg-full: var(--ccs-prime--bg#{$steps});
-  --ccs-accent: hsl(var(--ccs-h--accent), var(--ccs-sl));
-  --ccs-accent--fg-full: var(--ccs-accent--fg#{$steps});
-  --ccs-accent--bg-full: var(--ccs-accent--bg#{$steps});
+  @each $color in $colors {
+    $sl: var(--ccs-s), var(--ccs-l);
+    $sl-neutral: var(--ccs-s--contrast-bg), var(--ccs-l);
+    $sl: if($color == 'neutral', $sl-neutral, $sl);
+
+    --ccs-#{$color}: hsl(var(--ccs-h--#{$color}), #{$sl});
+    --ccs-#{$color}--fg-full: var(--ccs-#{$color}--fg#{$steps});
+    --ccs-#{$color}--bg-full: var(--ccs-#{$color}--bg#{$steps});
+  }
 
   @if ($fades) {
+    $sla: var(--ccs-s--contrast-bg), var(--ccs-l), var(--ccs-fade);
     --ccs-fade: #{if(type-of($fades) == 'number', $fades, 1)};
-    --ccs-sla--fade: var(--ccs-s--contrast), var(--ccs-l), var(--ccs-fade);
-    --ccs-prime--fade: hsla(var(--ccs-h--prime), var(--ccs-sla--fade));
-    --ccs-prime--fg-full-fade: var(--ccs-prime--fg#{$steps}-fade);
-    --ccs-prime--bg-full-fade: var(--ccs-prime--bg#{$steps}-fade);
-    --ccs-accent--fade: hsla(var(--ccs-h--accent), var(--ccs-sla--fade));
-    --ccs-accent--fg-full-fade: var(--ccs-accent--fg#{$steps}-fade);
-    --ccs-accent--bg-full-fade: var(--ccs-accent--bg#{$steps}-fade);
+
+    @each $color in $colors {
+      --ccs-#{$color}--fade: hsla(var(--ccs-h--#{$color}), #{$sla});
+      --ccs-#{$color}--fg-full-fade: var(--ccs-#{$color}--fg#{$steps}-fade);
+      --ccs-#{$color}--bg-full-fade: var(--ccs-#{$color}--bg#{$steps}-fade);
+    }
   }
+
 
   @for $i from 1 through $steps {
     $bg: 'bg#{$i}';
@@ -109,25 +112,31 @@ $build: true !default;
 
     // saturation steps
     --ccs-s--#{$fg}: calc(var(--ccs-s) - var(--ccs-step) * #{$i});
-    --ccs-s--#{$bg}: calc(var(--ccs-s) - var(--ccs-fade-background, 0%) - var(--ccs-step) * #{$i});
+    --ccs-s--#{$bg}: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * #{$i});
 
-    // step sl
-    --ccs-sl--#{$fg}: var(--ccs-s--#{$fg}), var(--ccs-l--#{$fg});
-    --ccs-sl--#{$bg}: var(--ccs-s--#{$bg}), var(--ccs-l--#{$bg});
+    // sl steps
+    $sl-fg: var(--ccs-s--#{$fg}), var(--ccs-l--#{$fg});
+    $sl-bg: var(--ccs-s--#{$bg}), var(--ccs-l--#{$bg});
+    $sl-fg--neutral: var(--ccs-s--contrast-bg), var(--ccs-l--#{$fg});
+    $sl-bg--neutral: var(--ccs-s--contrast-bg), var(--ccs-l--#{$bg});
 
     // color steps
-    --ccs-prime--#{$fg}: hsl(var(--ccs-h--prime), var(--ccs-sl--#{$fg}));
-    --ccs-prime--#{$bg}: hsl(var(--ccs-h--prime), var(--ccs-sl--#{$bg}));
-    --ccs-accent--#{$fg}: hsl(var(--ccs-h--accent), var(--ccs-sl--#{$fg}));
-    --ccs-accent--#{$bg}: hsl(var(--ccs-h--accent), var(--ccs-sl--#{$bg}));
+    @each $color in $colors {
+      $slf: if($color == 'neutral', $sl-fg--neutral, $sl-fg);
+      $slb: if($color == 'neutral', $sl-bg--neutral, $sl-bg);
+
+      --ccs-#{$color}--#{$fg}: hsl(var(--ccs-h--#{$color}), #{$slf});
+      --ccs-#{$color}--#{$bg}: hsl(var(--ccs-h--#{$color}), #{$slb});
+    }
 
     @if ($fades) {
-      --ccs-sla--#{$fg}-fade: var(--ccs-s--contrast), var(--ccs-l--#{$fg}), var(--ccs-fade);
-      --ccs-sla--#{$bg}-fade: var(--ccs-s--contrast), var(--ccs-l--#{$bg}), var(--ccs-fade);
-      --ccs-prime--#{$fg}-fade: hsla(var(--ccs-h--prime), var(--ccs-sla--#{$fg}-fade));
-      --ccs-prime--#{$bg}-fade: hsla(var(--ccs-h--prime), var(--ccs-sla--#{$bg}-fade));
-      --ccs-accent--#{$fg}-fade: hsla(var(--ccs-h--accent), var(--ccs-sla--#{$fg}-fade));
-      --ccs-accent--#{$bg}-fade: hsla(var(--ccs-h--accent), var(--ccs-sla--#{$bg}-fade));
+      $sla-fg: var(--ccs-s--contrast-bg), var(--ccs-l--#{$fg}), var(--ccs-fade);
+      $sla-bg: var(--ccs-s--contrast-bg), var(--ccs-l--#{$bg}), var(--ccs-fade);
+
+      @each $color in $colors {
+        --ccs-#{$color}--#{$fg}-fade: hsla(var(--ccs-h--#{$color}), #{$sla-fg});
+        --ccs-#{$color}--#{$bg}-fade: hsla(var(--ccs-h--#{$color}), #{$sla-bg});
+      }
     }
   }
 
@@ -154,10 +163,8 @@ $build: true !default;
   $steps: $steps or 4,
   $fades: $fades,
 ) {
-  $prime-main: ();
-  $prime-fade: ();
-  $accent-main: ();
-  $accent-fade: ();
+  $colors: ('prime', 'accent', 'neutral');
+  $gradients: ();
 
   @for $i from (0 - $steps) through $steps {
     $n: $i + $steps;
@@ -167,19 +174,32 @@ $build: true !default;
     $var: if($i == 0, '', '#{$var}#{$pos}');
     $fade: if($var != '', '#{$var}-fade', '--fade');
 
-    $prime-main: append($prime-main, var(--ccs-prime#{$var}) $stops, comma);
-    $prime-fade: append($prime-fade, var(--ccs-prime#{$fade}) $stops, comma);
-    $accent-main: append($accent-main, var(--ccs-accent#{$var}) $stops, comma);
-    $accent-fade: append($accent-fade, var(--ccs-accent#{$fade}) $stops, comma);
+    @each $color in $colors {
+      $main: map-get($gradients, '#{$color}-main') or ();
+      $faded: map-get($gradients, '#{$color}-fade') or ();
+
+      $main: append($main, var(--ccs-#{$color}#{$var}) $stops, comma);
+      $faded: append($faded, var(--ccs-#{$color}#{$fade}) $stops, comma);
+
+      $map: (
+        '#{$color}-main': $main,
+        '#{$color}-fade': $faded,
+      );
+
+      $gradients: map-merge($gradients, $map);
+    }
   }
 
   --stop: calc(100% / (#{$steps} * 2 + 1));
-  --prime-gradient: linear-gradient(to right, #{$prime-main});
-  --accent-gradient: linear-gradient(to right, #{$accent-main});
 
-  @if ($fades) {
-    --prime-gradient--fade: linear-gradient(to right, #{$prime-fade});
-    --accent-gradient--fade: linear-gradient(to right, #{$accent-fade});
+  @each $color in $colors {
+    $main: map-get($gradients, '#{$color}-main');
+    --#{$color}-gradient: linear-gradient(to right, #{$main});
+
+    @if ($fades) {
+      $faded: map-get($gradients, '#{$color}-fade');
+      --#{$color}-gradient--fade: linear-gradient(to right, #{$faded});
+    }
   }
 }
 

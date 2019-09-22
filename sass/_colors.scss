@@ -2,6 +2,7 @@
   // optionally set `--ccs-prime--user-*` values with JS
   --ccs-h--prime: var(--ccs-prime--user, var(--ccs-prime--theme, var(--ccs-prime--config, 330)));
   --ccs-h--accent: var(--ccs-accent--theme, var(--ccs-accent--config, var(--ccs-h--prime)));
+  --ccs-h--neutral: var(--ccs-neutral--theme, var(--ccs-h--prime));
 
   // offset lightness and saturation based on contrast
   --ccs-contrast--user-percent: calc(var(--ccs-contrast--user) * 1%);
@@ -14,6 +15,7 @@
   --ccs-s--user-percent: calc(var(--ccs-s--user) * 1%);
   --ccs-s: var(--ccs-s--user-percent, var(--ccs-s--theme, var(--ccs-saturation--config, 50%)));
   --ccs-s--contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
+  --ccs-s--contrast-bg: calc(var(--ccs-s--contrast) - var(--ccs-fade-background));
 
   // final mode calculations
   --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
