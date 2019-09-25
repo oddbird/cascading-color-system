@@ -7,9 +7,13 @@
   "repository": "mirisuzanne/cascading-color-system",
   "author": "Miriam Suzanne <miriam@oddbird.net>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "core-js": "3"
+  },
   "devDependencies": {
-    "browserify": "^16.5.0",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "sass": "1.23.0-module.beta.1",
     "sassdoc": "^2.7.1",
     "sassdoc-theme-herman": "^3.0.2"
@@ -17,7 +21,7 @@
   "scripts": {
     "build-sass": "sass sass/_ccs-output.scss css/ccs.css",
     "build-docs": "sassdoc sass/",
-    "build-js": "browserify site/index.js -o site/bundle.js",
+    "build-js": "npx babel site/index.js --out-file site/bundle.js",
     "build-site": "sass site/sass/styles.scss site/css/styles.css",
     "build": "yarn build-sass && yarn build-docs && yarn build-js && yarn build-site",
     "commit": "yarn build",

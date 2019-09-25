@@ -1,4 +1,4 @@
-module.exports = function () {
+export default function () {
   // elements
   const root = document.querySelector('html');
   const themeMenu = document.querySelector('[data-ccs="menu"]');

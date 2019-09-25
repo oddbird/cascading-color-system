@@ -1,3 +1,3 @@
-const ccs = require('../index');
+import ccs from '../index';
 
 ccs();
