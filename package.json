@@ -2,18 +2,16 @@
   "name": "cascading-color-systems",
   "version": "0.1.0-beta.3",
   "description": "generate dynamic color palettes with custom properties",
-  "main": "index.js",
+  "main": "dist.js",
+  "module": "index.js",
   "homepage": "https://cascading-colors.netlify.com",
   "repository": "mirisuzanne/cascading-color-system",
   "author": "Miriam Suzanne <miriam@oddbird.net>",
   "license": "MIT",
-  "dependencies": {
-    "core-js": "3"
-  },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
+    "@babel/plugin-transform-modules-umd": "^7.2.0",
     "sass": "1.23.0-module.beta.1",
     "sassdoc": "^2.7.1",
     "sassdoc-theme-herman": "^3.0.2"
@@ -21,7 +19,7 @@
   "scripts": {
     "build-sass": "sass sass/_ccs-output.scss css/ccs.css",
     "build-docs": "sassdoc sass/",
-    "build-js": "npx babel site/index.js --out-file site/bundle.js",
+    "build-js": "yarn babel index.js --out-file dist.js",
     "build-site": "sass site/sass/styles.scss site/css/styles.css",
     "build": "yarn build-sass && yarn build-docs && yarn build-js && yarn build-site",
     "commit": "yarn build",
