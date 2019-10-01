@@ -12,7 +12,7 @@ but only the Sass files can change how many colors are generated.
 
 ## Installation & Requirements
 
-Download the filees from [GitHub][gh],
+Download the files from [GitHub][gh],
 or install using npm or yarn:
 
 ```bash
@@ -31,7 +31,7 @@ The default configuration can be used as plain CSS:
 
 ```html
 <!-- html -->
-<link src="<path-to>/cascading-color-systems/css/ccs.css" rel="stylesheet">
+<link src="<path-to>/cascading-color-systems/css/ccs.css" rel="stylesheet" />
 ```
 
 You can copy that file anywhere you want,
@@ -92,7 +92,7 @@ and fallback values for both modes:
 }
 ```
 
-Add the `data-ccs='root'` attribute to you `html` element
+Add the `data-ccs='root'` attribute to your `html` element
 in order to make your Cascading Colors configuration
 available to an entire page.
 This attribute will also be used by JavaScript
@@ -109,7 +109,7 @@ new colors are needed.
 
 This attribute provides your base colors as custom properties:
 
-- `--ccs-prime`, `--ccs-prime`:
+- `--ccs-prime`, `--ccs-accent`:
   Prime and accent hues, with base lightness and saturation
 - `--ccs-neutral`:
   The neutral hue gets base lightness
@@ -128,7 +128,7 @@ to generate a larger palette:
   the calculated primary hue,
   based on user-settings, theme-settings, and global configuration
 - `--ccs-h--accent`:
-  the calculated acccent hue,
+  the calculated accent hue,
   based on theme-settings, and global configuration
   (there is currently no direct user input for accent hue)
 - `--ccs-h--neutral`:
@@ -194,10 +194,14 @@ using the `[data-ccs-theme]` attribute:
   --ccs-accent--theme: calc(var(--ccs-h--prime) + 180);
 }
 
-[data-ccs-theme='triad'] { /* triad logic*/ }
-[data-ccs-theme='adjacent'] { /* adjacent loogic */ }
+[data-ccs-theme='triad'] {
+  /* triad logic */
+}
+[data-ccs-theme='adjacent'] {
+  /* adjacent logic */
+}
 
-[data-ccs-theme="contrast"] {
+[data-ccs-theme='contrast'] {
   --ccs-contrast: 200%; /* override all other contrast settings */
   --ccs-custom-contrast: none; /* hide [data-ccs="contrast-select"] */
 }
@@ -244,11 +248,22 @@ generate custom properties based on their input,
 store their preferences in `localStorage`,
 or revert back to the configured site defaults.
 
-Using the `dist.js` babel output:
+Use the `dist.js` UMD module directly in a browser:
 
 ```html
 <script type="text/javascript" src="dist.js"></script>
-<script type="text/javascript">ccs.default();</script>
+<script type="text/javascript">
+  ccs.default();
+</script>
+```
+
+Or import and use `index.js`,
+if you have a modern build system with ES Module support:
+
+```js
+import ccs from 'cascading-color-systems';
+
+ccs();
 ```
 
 We provide several hooks for the JS to use
@@ -258,7 +273,6 @@ We provide several hooks for the JS to use
 - `[data-ccs="menu"]`:
   if you hide the settings by default,
   we'll show them when the JS is available
-
 - `[data-ccs="invert"]`:
   a button to toggle light/dark modes
 - `[data-ccs="unset"]`:

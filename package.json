@@ -7,6 +7,9 @@
   "homepage": "https://cascading-colors.netlify.com",
   "repository": "mirisuzanne/cascading-color-system",
   "author": "Miriam Suzanne <miriam@oddbird.net>",
+  "contributors": [
+    "Jonny Gerig Meyer <jonny@oddbird.net>"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.6.2",
@@ -27,6 +30,9 @@
   },
   "files": [
     "css/*.css",
-    "sass/*.scss"
+    "sass/*.scss",
+    "_index.scss",
+    "index.js",
+    "dist.js"
   ]
 }
