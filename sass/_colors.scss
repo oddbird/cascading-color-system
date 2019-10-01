@@ -8,14 +8,17 @@
   --ccs-contrast--user-percent: calc(var(--ccs-contrast--user) * 1%);
   --ccs-contrast: var(--ccs-contrast--user-percent, var(--ccs-contrast--theme, var(--ccs-contrast-config, 45%)));
 
-  // initial lightness and saturation values
+  // initial lightness values
   --ccs-l--user-percent: calc(var(--ccs-l--user) * 1%);
   --ccs-l: var(--ccs-l--user-percent, var(--ccs-l--theme, var(--ccs-lightness--config, 50%)));
-  --ccs-l--contrast: calc(var(--ccs-l) + var(--ccs-contrast));
+  --ccs-l--fg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-mode--invert));
+  --ccs-l--bg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-mode));
+
+  // initial saturation values
   --ccs-s--user-percent: calc(var(--ccs-s--user) * 1%);
   --ccs-s: var(--ccs-s--user-percent, var(--ccs-s--theme, var(--ccs-saturation--config, 50%)));
-  --ccs-s--contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
-  --ccs-s--contrast-bg: calc(var(--ccs-s--contrast) - var(--ccs-fade-background));
+  --ccs-s--fg-contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
+  --ccs-s--bg-contrast: calc(var(--ccs-s--fg-contrast) - var(--ccs-fade-background));
 
   // final mode calculations
   --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
@@ -25,4 +28,22 @@
   // full contrast colors, foreground and background
   --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
   --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-mode--invert)));
+
+  @each $color in ('prime', 'accent', 'neutral') {
+    --ccs-#{$color}: hsl(
+      var(--ccs-h--#{$color}),
+      var(--ccs-s#{if($color == 'neutral', '--bg-contrast', '')}),
+      var(--ccs-l)
+    );
+    --ccs-#{$color}--fg-full: hsl(
+      var(--ccs-h--#{$color}),
+      var(--ccs-s--fg-contrast),
+      var(--ccs-l--fg-contrast)
+    );
+    --ccs-#{$color}--bg-full: hsl(
+      var(--ccs-h--#{$color}),
+      var(--ccs-s--bg-contrast),
+      var(--ccs-l--bg-contrast)
+    );
+  }
 }

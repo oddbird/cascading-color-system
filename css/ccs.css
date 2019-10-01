@@ -1,10 +1,10 @@
-html {
+[data-ccs=root] {
   --ccs-mode--os: 1;
   background: #f3f2f2;
   color: #0d0c0d;
 }
 @media (prefers-color-scheme: dark) {
-  html {
+  [data-ccs=root] {
     --ccs-mode--os: -1;
     background: #0d0c0d;
     color: #f3f2f2;
@@ -19,16 +19,62 @@ html {
   --ccs-contrast: var(--ccs-contrast--user-percent, var(--ccs-contrast--theme, var(--ccs-contrast-config, 45%)));
   --ccs-l--user-percent: calc(var(--ccs-l--user) * 1%);
   --ccs-l: var(--ccs-l--user-percent, var(--ccs-l--theme, var(--ccs-lightness--config, 50%)));
-  --ccs-l--contrast: calc(var(--ccs-l) + var(--ccs-contrast));
+  --ccs-l--fg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-mode--invert));
+  --ccs-l--bg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-mode));
   --ccs-s--user-percent: calc(var(--ccs-s--user) * 1%);
   --ccs-s: var(--ccs-s--user-percent, var(--ccs-s--theme, var(--ccs-saturation--config, 50%)));
-  --ccs-s--contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
-  --ccs-s--contrast-bg: calc(var(--ccs-s--contrast) - var(--ccs-fade-background));
+  --ccs-s--fg-contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
+  --ccs-s--bg-contrast: calc(var(--ccs-s--fg-contrast) - var(--ccs-fade-background));
   --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
   --ccs-mode: var(--ccs-mode--cascade, 1);
   --ccs-mode--invert: calc(-1 * var(--ccs-mode));
   --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
   --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-mode--invert)));
+  --ccs-prime: hsl(
+    var(--ccs-h--prime),
+    var(--ccs-s),
+    var(--ccs-l)
+  );
+  --ccs-prime--fg-full: hsl(
+    var(--ccs-h--prime),
+    var(--ccs-s--fg-contrast),
+    var(--ccs-l--fg-contrast)
+  );
+  --ccs-prime--bg-full: hsl(
+    var(--ccs-h--prime),
+    var(--ccs-s--bg-contrast),
+    var(--ccs-l--bg-contrast)
+  );
+  --ccs-accent: hsl(
+    var(--ccs-h--accent),
+    var(--ccs-s),
+    var(--ccs-l)
+  );
+  --ccs-accent--fg-full: hsl(
+    var(--ccs-h--accent),
+    var(--ccs-s--fg-contrast),
+    var(--ccs-l--fg-contrast)
+  );
+  --ccs-accent--bg-full: hsl(
+    var(--ccs-h--accent),
+    var(--ccs-s--bg-contrast),
+    var(--ccs-l--bg-contrast)
+  );
+  --ccs-neutral: hsl(
+    var(--ccs-h--neutral),
+    var(--ccs-s--bg-contrast),
+    var(--ccs-l)
+  );
+  --ccs-neutral--fg-full: hsl(
+    var(--ccs-h--neutral),
+    var(--ccs-s--fg-contrast),
+    var(--ccs-l--fg-contrast)
+  );
+  --ccs-neutral--bg-full: hsl(
+    var(--ccs-h--neutral),
+    var(--ccs-s--bg-contrast),
+    var(--ccs-l--bg-contrast)
+  );
 }
 
 [data-ccs-colors=invert] {
@@ -78,16 +124,6 @@ html {
 
 [data-ccs-colors] {
   --ccs-step: calc(var(--ccs-contrast) / 4);
-  --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
-  --ccs-prime: hsl(var(--ccs-h--prime), var(--ccs-s), var(--ccs-l));
-  --ccs-prime--fg-full: var(--ccs-prime--fg4);
-  --ccs-prime--bg-full: var(--ccs-prime--bg4);
-  --ccs-accent: hsl(var(--ccs-h--accent), var(--ccs-s), var(--ccs-l));
-  --ccs-accent--fg-full: var(--ccs-accent--fg4);
-  --ccs-accent--bg-full: var(--ccs-accent--bg4);
-  --ccs-neutral: hsl(var(--ccs-h--neutral), var(--ccs-s--contrast-bg), var(--ccs-l));
-  --ccs-neutral--fg-full: var(--ccs-neutral--fg4);
-  --ccs-neutral--bg-full: var(--ccs-neutral--bg4);
   --ccs-l--bg1: calc(var(--ccs-l) + var(--ccs-step) * 1 * var(--ccs-mode));
   --ccs-l--fg1: calc(var(--ccs-l) - var(--ccs-step) * 1 * var(--ccs-mode));
   --ccs-s--fg1: calc(var(--ccs-s) - var(--ccs-step) * 1);
@@ -96,8 +132,8 @@ html {
   --ccs-prime--bg1: hsl(var(--ccs-h--prime), var(--ccs-s--bg1), var(--ccs-l--bg1));
   --ccs-accent--fg1: hsl(var(--ccs-h--accent), var(--ccs-s--fg1), var(--ccs-l--fg1));
   --ccs-accent--bg1: hsl(var(--ccs-h--accent), var(--ccs-s--bg1), var(--ccs-l--bg1));
-  --ccs-neutral--fg1: hsl(var(--ccs-h--neutral), var(--ccs-s--contrast-bg), var(--ccs-l--fg1));
-  --ccs-neutral--bg1: hsl(var(--ccs-h--neutral), var(--ccs-s--contrast-bg), var(--ccs-l--bg1));
+  --ccs-neutral--fg1: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg1));
+  --ccs-neutral--bg1: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg1));
   --ccs-l--bg2: calc(var(--ccs-l) + var(--ccs-step) * 2 * var(--ccs-mode));
   --ccs-l--fg2: calc(var(--ccs-l) - var(--ccs-step) * 2 * var(--ccs-mode));
   --ccs-s--fg2: calc(var(--ccs-s) - var(--ccs-step) * 2);
@@ -106,8 +142,8 @@ html {
   --ccs-prime--bg2: hsl(var(--ccs-h--prime), var(--ccs-s--bg2), var(--ccs-l--bg2));
   --ccs-accent--fg2: hsl(var(--ccs-h--accent), var(--ccs-s--fg2), var(--ccs-l--fg2));
   --ccs-accent--bg2: hsl(var(--ccs-h--accent), var(--ccs-s--bg2), var(--ccs-l--bg2));
-  --ccs-neutral--fg2: hsl(var(--ccs-h--neutral), var(--ccs-s--contrast-bg), var(--ccs-l--fg2));
-  --ccs-neutral--bg2: hsl(var(--ccs-h--neutral), var(--ccs-s--contrast-bg), var(--ccs-l--bg2));
+  --ccs-neutral--fg2: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg2));
+  --ccs-neutral--bg2: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg2));
   --ccs-l--bg3: calc(var(--ccs-l) + var(--ccs-step) * 3 * var(--ccs-mode));
   --ccs-l--fg3: calc(var(--ccs-l) - var(--ccs-step) * 3 * var(--ccs-mode));
   --ccs-s--fg3: calc(var(--ccs-s) - var(--ccs-step) * 3);
@@ -116,8 +152,8 @@ html {
   --ccs-prime--bg3: hsl(var(--ccs-h--prime), var(--ccs-s--bg3), var(--ccs-l--bg3));
   --ccs-accent--fg3: hsl(var(--ccs-h--accent), var(--ccs-s--fg3), var(--ccs-l--fg3));
   --ccs-accent--bg3: hsl(var(--ccs-h--accent), var(--ccs-s--bg3), var(--ccs-l--bg3));
-  --ccs-neutral--fg3: hsl(var(--ccs-h--neutral), var(--ccs-s--contrast-bg), var(--ccs-l--fg3));
-  --ccs-neutral--bg3: hsl(var(--ccs-h--neutral), var(--ccs-s--contrast-bg), var(--ccs-l--bg3));
+  --ccs-neutral--fg3: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg3));
+  --ccs-neutral--bg3: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg3));
   --ccs-l--bg4: calc(var(--ccs-l) + var(--ccs-step) * 4 * var(--ccs-mode));
   --ccs-l--fg4: calc(var(--ccs-l) - var(--ccs-step) * 4 * var(--ccs-mode));
   --ccs-s--fg4: calc(var(--ccs-s) - var(--ccs-step) * 4);
@@ -126,8 +162,8 @@ html {
   --ccs-prime--bg4: hsl(var(--ccs-h--prime), var(--ccs-s--bg4), var(--ccs-l--bg4));
   --ccs-accent--fg4: hsl(var(--ccs-h--accent), var(--ccs-s--fg4), var(--ccs-l--fg4));
   --ccs-accent--bg4: hsl(var(--ccs-h--accent), var(--ccs-s--bg4), var(--ccs-l--bg4));
-  --ccs-neutral--fg4: hsl(var(--ccs-h--neutral), var(--ccs-s--contrast-bg), var(--ccs-l--fg4));
-  --ccs-neutral--bg4: hsl(var(--ccs-h--neutral), var(--ccs-s--contrast-bg), var(--ccs-l--bg4));
+  --ccs-neutral--fg4: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg4));
+  --ccs-neutral--bg4: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg4));
 }
 
 /*# sourceMappingURL=ccs.css.map */

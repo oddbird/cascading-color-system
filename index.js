@@ -1,6 +1,6 @@
 export default function () {
   // elements
-  const root = document.querySelector('html');
+  const root = document.querySelector('[data-ccs="root"]');
   const themeMenu = document.querySelector('[data-ccs="menu"]');
   const modeToggle = document.querySelector('[data-ccs="invert"]');
   const unsetBtn = document.querySelector('[data-ccs="unset"]');

@@ -144,7 +144,7 @@ $fallback-light: hsl(
 ///
 /// @name CSS Configuration
 /// @group config
-html {
+[data-ccs='root'] {
   // config
   @if ($prime-hue) { --ccs-prime--config: #{$prime-hue or 330}; }
   @if ($accent-hue) { --ccs-accent--config: #{$accent-hue or null}; }

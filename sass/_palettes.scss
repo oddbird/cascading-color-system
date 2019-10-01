@@ -76,23 +76,11 @@ $build: true !default;
   // offset steps
   --ccs-step: calc(var(--ccs-contrast) / #{$steps});
 
-  // fade background
-  --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
-
   // main colors
-  @each $color in $colors {
-    $sl: var(--ccs-s), var(--ccs-l);
-    $sl-neutral: var(--ccs-s--contrast-bg), var(--ccs-l);
-    $sl: if($color == 'neutral', $sl-neutral, $sl);
-
-    --ccs-#{$color}: hsl(var(--ccs-h--#{$color}), #{$sl});
-    --ccs-#{$color}--fg-full: var(--ccs-#{$color}--fg#{$steps});
-    --ccs-#{$color}--bg-full: var(--ccs-#{$color}--bg#{$steps});
-  }
-
   @if ($fades) {
-    $sla: var(--ccs-s--contrast-bg), var(--ccs-l), var(--ccs-fade);
+    $sla: var(--ccs-s--bg-contrast), var(--ccs-l), var(--ccs-fade);
     --ccs-fade: #{if(type-of($fades) == 'number', $fades, 1)};
+    --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
 
     @each $color in $colors {
       --ccs-#{$color}--fade: hsla(var(--ccs-h--#{$color}), #{$sla});
@@ -117,8 +105,8 @@ $build: true !default;
     // sl steps
     $sl-fg: var(--ccs-s--#{$fg}), var(--ccs-l--#{$fg});
     $sl-bg: var(--ccs-s--#{$bg}), var(--ccs-l--#{$bg});
-    $sl-fg--neutral: var(--ccs-s--contrast-bg), var(--ccs-l--#{$fg});
-    $sl-bg--neutral: var(--ccs-s--contrast-bg), var(--ccs-l--#{$bg});
+    $sl-fg--neutral: var(--ccs-s--bg-contrast), var(--ccs-l--#{$fg});
+    $sl-bg--neutral: var(--ccs-s--bg-contrast), var(--ccs-l--#{$bg});
 
     // color steps
     @each $color in $colors {
@@ -130,8 +118,8 @@ $build: true !default;
     }
 
     @if ($fades) {
-      $sla-fg: var(--ccs-s--contrast-bg), var(--ccs-l--#{$fg}), var(--ccs-fade);
-      $sla-bg: var(--ccs-s--contrast-bg), var(--ccs-l--#{$bg}), var(--ccs-fade);
+      $sla-fg: var(--ccs-s--bg-contrast), var(--ccs-l--#{$fg}), var(--ccs-fade);
+      $sla-bg: var(--ccs-s--bg-contrast), var(--ccs-l--#{$bg}), var(--ccs-fade);
 
       @each $color in $colors {
         --ccs-#{$color}--#{$fg}-fade: hsla(var(--ccs-h--#{$color}), #{$sla-fg});
