@@ -195,7 +195,7 @@ using the `[data-ccs-theme]` attribute:
 }
 
 [data-ccs-theme='triad'] {
-  /* triad logic*/
+  /* triad logic */
 }
 [data-ccs-theme='adjacent'] {
   /* adjacent logic */
@@ -248,7 +248,7 @@ generate custom properties based on their input,
 store their preferences in `localStorage`,
 or revert back to the configured site defaults.
 
-Using the `dist.js` UMD module directly in a browser:
+Use the `dist.js` UMD module directly in a browser:
 
 ```html
 <script type="text/javascript" src="dist.js"></script>
@@ -257,7 +257,7 @@ Using the `dist.js` UMD module directly in a browser:
 </script>
 ```
 
-Or import and use `index.js` directly,
+Or import and use `index.js`,
 if you have a modern build system with ES Module support:
 
 ```js
