@@ -1,11 +1,10 @@
-@use 'config';
-
+@use '../../sass/ccs';
 
 // Colors
 // ------
 [data-ccs-colors] {
   --ccs-neutral--theme: var(--ccs-h--accent);
-  --callout: var(--ccs-accent--bg#{config.$steps - 1}-fade);
+  --callout: var(--ccs-accent--bg#{ccs.$steps - 1}-fade);
   background: var(--ccs-accent--bg-full);
   color: var(--ccs-prime--fg-full);
 }
@@ -14,7 +13,7 @@
 // links
 // -----
 a {
-  --link--default: var(--ccs-prime--fg#{config.$steps - 2});
+  --link--default: var(--ccs-prime--fg#{ccs.$steps - 2});
 
   &:link,
   &:visited {

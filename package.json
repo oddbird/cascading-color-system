@@ -15,7 +15,7 @@
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
     "@babel/plugin-transform-modules-umd": "^7.2.0",
-    "sass": "1.23.0-module.beta.1",
+    "sass": "^1.23.0",
     "sassdoc": "^2.7.1",
     "sassdoc-theme-herman": "^3.0.2"
   },
