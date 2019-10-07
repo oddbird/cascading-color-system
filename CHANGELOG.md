@@ -1,8 +1,9 @@
 # Changelog
 
-## 0.1.0-beta.5 - 2019/9/30
+## 0.1.0-beta.6 - 2019/10/6
 
 - More organized Sass files
+- FIX: missing files in beta 5…
 
 ## 0.1.0-beta.4 - 2019/9/30
 
