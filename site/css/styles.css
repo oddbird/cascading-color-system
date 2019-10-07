@@ -1,30 +1,61 @@
-/* Global Remedies
-******************/
-/* Use border-box by default, globally */
+/* @docs
+label: Core Remedies
+version: 0.1.0-beta.2
+
+note: |
+  These remedies are recommended
+  as a starter for any project.
+
+category: file
+*/
+/* @docs
+label: Box Sizing
+
+note: |
+  Use border-box by default, globally.
+
+category: global
+*/
 *, ::before, ::after {
   box-sizing: border-box;
 }
 
-/*
-* 1. Consistent line spacing...
-*    CSS Inline Layout Module Level 3: https://drafts.csswg.org/css-inline-3/#line-sizing-property
-* 2. Improve spacing of punctuation marks and script changes in CJK languages
-*    CSS Text Module Level 4: https://drafts.csswg.org/css-text-4/#text-spacing-property
+/* @docs
+label: Line Sizing
+
+note: |
+  Consistent line-spacing,
+  even when inline elements have different line-heights.
+
+links:
+  - https://drafts.csswg.org/css-inline-3/#line-sizing-property
+
+category: global
 */
 html {
   line-sizing: normal;
-  text-spacing: trim-start allow-end trim-adjacent ideograph-alpha ideograph-numeric;
 }
 
-/* Remove the tiny space around the edge of the page */
+/* @docs
+label: Body Margins
+
+note: |
+  Remove the tiny space around the edge of the page.
+
+category: global
+*/
 body {
   margin: 0;
 }
 
-/* Headings
-***********/
-/* Switch to rem units for headings */
-/* @@@ Initial values are based on existing browser defaults */
+/* @docs
+label: Heading Sizes
+
+note: |
+  Switch to rem units for headings
+
+category: typography
+*/
 h1 {
   font-size: 2rem;
 }
@@ -49,29 +80,57 @@ h6 {
   font-size: 0.67rem;
 }
 
-/* Keep h1 margins consistent, even when nested */
+/* @docs
+label: H1 Margins
+
+note: |
+  Keep h1 margins consistent, even when nested.
+
+category: typography
+*/
 h1 {
   margin: 0.67em 0;
 }
 
-/* Typography
-*************/
-/* Overflow by default is bad */
+/* @docs
+label: Pre Wrapping
+
+note: |
+  Overflow by default is bad...
+
+category: typography
+*/
 pre {
   white-space: pre-wrap;
 }
 
-/* Solid, thin horizonatal rules */
+/* @docs
+label: Horizontal Rule
+
+note: |
+  1. Solid, thin horizontal rules
+  2. Remove Firefox `color: gray`
+  3. Remove default `1px` height, and common `overflow: hidden`
+
+category: typography
+*/
 hr {
-  border: 0.5px solid;
+  border-style: solid;
+  border-width: 1px 0 0;
+  color: inherit;
+  height: 0;
+  overflow: visible;
 }
 
-/* Embedded Elements
-********************/
-/*
-* 1. Block display is usually what we want
-* 2. Remove strange space-below when inline
-* 3. Responsive by default
+/* @docs
+label: Responsive Embeds
+
+note: |
+  1. Block display is usually what we want
+  2. Remove strange space-below when inline
+  3. Responsive by default
+
+category: embedded elements
 */
 img, svg, video, canvas, audio, iframe, embed, object {
   display: block;
@@ -79,47 +138,201 @@ img, svg, video, canvas, audio, iframe, embed, object {
   max-width: 100%;
 }
 
-/*
-* Maintain intrinsic aspect ratios when `max-width` is applied
-* (iframe, embed, and object have no intrinsic ratio, set height explicitly)
+/* @docs
+label: Aspect Ratios
+
+note: |
+  Maintain intrinsic aspect ratios when `max-width` is applied.
+  `iframe`, `embed`, and `object` are also embedded,
+  but have no intrinsic ratio,
+  so their `height` needs to be set explicitly.
+
+category: embedded elements
 */
 img, svg, video, canvas {
   height: auto;
 }
 
-/*
-* There is no good reason elements default to 300px,
-* and audio files are unlikely to come with a width attribute
+/* @docs
+label: Audio Width
+
+note: |
+  There is no good reason elements default to 300px,
+  and audio files are unlikely to come with a width attribute.
+
+category: embedded elements
 */
 audio {
   width: 100%;
 }
 
-/* Old Browsers
-***************/
-/* Remove the border on images inside links in IE 10 and earlier */
+/* @docs
+label: Image Borders
+
+note: |
+  Remove the border on images inside links in IE 10 and earlier.
+
+category: legacy browsers
+*/
 img {
   border-style: none;
 }
 
-/* Hide the overflow in IE 10 and earlier */
+/* @docs
+label: SVG Overflow
+
+note: |
+  Hide the overflow in IE 10 and earlier.
+
+category: legacy browsers
+*/
 svg {
   overflow: hidden;
 }
 
-/* Default block display on HTML5 elements */
+/* @docs
+label: HTML5 Elements
+
+note: |
+  Default block display on HTML5 elements
+
+category: legacy browsers
+*/
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
-/*
-* 1. Add the correct box sizing in IE 10
-* 2. Remove the padding in IE 10
+/* @docs
+label: Checkbox & Radio Inputs
+
+note: |
+  1. Add the correct box sizing in IE 10
+  2. Remove the padding in IE 10
+
+category: legacy browsers
 */
 [type=checkbox],
 [type=radio] {
   box-sizing: border-box;
   padding: 0;
+}
+
+[data-ccs-colors] {
+  --ccs-step: calc(var(--ccs-contrast) / 6);
+  --ccs-fade: 0.9;
+  --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
+  --ccs-prime--fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l), var(--ccs-fade));
+  --ccs-prime--fg-full-fade: var(--ccs-prime--fg6-fade);
+  --ccs-prime--bg-full-fade: var(--ccs-prime--bg6-fade);
+  --ccs-accent--fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l), var(--ccs-fade));
+  --ccs-accent--fg-full-fade: var(--ccs-accent--fg6-fade);
+  --ccs-accent--bg-full-fade: var(--ccs-accent--bg6-fade);
+  --ccs-neutral--fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l), var(--ccs-fade));
+  --ccs-neutral--fg-full-fade: var(--ccs-neutral--fg6-fade);
+  --ccs-neutral--bg-full-fade: var(--ccs-neutral--bg6-fade);
+  --ccs-l--bg1: calc(var(--ccs-l) + var(--ccs-step) * 1 * var(--ccs-mode));
+  --ccs-l--fg1: calc(var(--ccs-l) - var(--ccs-step) * 1 * var(--ccs-mode));
+  --ccs-s--fg1: calc(var(--ccs-s) - var(--ccs-step) * 1);
+  --ccs-s--bg1: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 1);
+  --ccs-prime--fg1: hsl(var(--ccs-h--prime), var(--ccs-s--fg1), var(--ccs-l--fg1));
+  --ccs-prime--bg1: hsl(var(--ccs-h--prime), var(--ccs-s--bg1), var(--ccs-l--bg1));
+  --ccs-accent--fg1: hsl(var(--ccs-h--accent), var(--ccs-s--fg1), var(--ccs-l--fg1));
+  --ccs-accent--bg1: hsl(var(--ccs-h--accent), var(--ccs-s--bg1), var(--ccs-l--bg1));
+  --ccs-neutral--fg1: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg1));
+  --ccs-neutral--bg1: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg1));
+  --ccs-prime--fg1-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg1), var(--ccs-fade));
+  --ccs-prime--bg1-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg1), var(--ccs-fade));
+  --ccs-accent--fg1-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg1), var(--ccs-fade));
+  --ccs-accent--bg1-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg1), var(--ccs-fade));
+  --ccs-neutral--fg1-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg1), var(--ccs-fade));
+  --ccs-neutral--bg1-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg1), var(--ccs-fade));
+  --ccs-l--bg2: calc(var(--ccs-l) + var(--ccs-step) * 2 * var(--ccs-mode));
+  --ccs-l--fg2: calc(var(--ccs-l) - var(--ccs-step) * 2 * var(--ccs-mode));
+  --ccs-s--fg2: calc(var(--ccs-s) - var(--ccs-step) * 2);
+  --ccs-s--bg2: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 2);
+  --ccs-prime--fg2: hsl(var(--ccs-h--prime), var(--ccs-s--fg2), var(--ccs-l--fg2));
+  --ccs-prime--bg2: hsl(var(--ccs-h--prime), var(--ccs-s--bg2), var(--ccs-l--bg2));
+  --ccs-accent--fg2: hsl(var(--ccs-h--accent), var(--ccs-s--fg2), var(--ccs-l--fg2));
+  --ccs-accent--bg2: hsl(var(--ccs-h--accent), var(--ccs-s--bg2), var(--ccs-l--bg2));
+  --ccs-neutral--fg2: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg2));
+  --ccs-neutral--bg2: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg2));
+  --ccs-prime--fg2-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg2), var(--ccs-fade));
+  --ccs-prime--bg2-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg2), var(--ccs-fade));
+  --ccs-accent--fg2-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg2), var(--ccs-fade));
+  --ccs-accent--bg2-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg2), var(--ccs-fade));
+  --ccs-neutral--fg2-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg2), var(--ccs-fade));
+  --ccs-neutral--bg2-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg2), var(--ccs-fade));
+  --ccs-l--bg3: calc(var(--ccs-l) + var(--ccs-step) * 3 * var(--ccs-mode));
+  --ccs-l--fg3: calc(var(--ccs-l) - var(--ccs-step) * 3 * var(--ccs-mode));
+  --ccs-s--fg3: calc(var(--ccs-s) - var(--ccs-step) * 3);
+  --ccs-s--bg3: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 3);
+  --ccs-prime--fg3: hsl(var(--ccs-h--prime), var(--ccs-s--fg3), var(--ccs-l--fg3));
+  --ccs-prime--bg3: hsl(var(--ccs-h--prime), var(--ccs-s--bg3), var(--ccs-l--bg3));
+  --ccs-accent--fg3: hsl(var(--ccs-h--accent), var(--ccs-s--fg3), var(--ccs-l--fg3));
+  --ccs-accent--bg3: hsl(var(--ccs-h--accent), var(--ccs-s--bg3), var(--ccs-l--bg3));
+  --ccs-neutral--fg3: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg3));
+  --ccs-neutral--bg3: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg3));
+  --ccs-prime--fg3-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg3), var(--ccs-fade));
+  --ccs-prime--bg3-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg3), var(--ccs-fade));
+  --ccs-accent--fg3-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg3), var(--ccs-fade));
+  --ccs-accent--bg3-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg3), var(--ccs-fade));
+  --ccs-neutral--fg3-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg3), var(--ccs-fade));
+  --ccs-neutral--bg3-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg3), var(--ccs-fade));
+  --ccs-l--bg4: calc(var(--ccs-l) + var(--ccs-step) * 4 * var(--ccs-mode));
+  --ccs-l--fg4: calc(var(--ccs-l) - var(--ccs-step) * 4 * var(--ccs-mode));
+  --ccs-s--fg4: calc(var(--ccs-s) - var(--ccs-step) * 4);
+  --ccs-s--bg4: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 4);
+  --ccs-prime--fg4: hsl(var(--ccs-h--prime), var(--ccs-s--fg4), var(--ccs-l--fg4));
+  --ccs-prime--bg4: hsl(var(--ccs-h--prime), var(--ccs-s--bg4), var(--ccs-l--bg4));
+  --ccs-accent--fg4: hsl(var(--ccs-h--accent), var(--ccs-s--fg4), var(--ccs-l--fg4));
+  --ccs-accent--bg4: hsl(var(--ccs-h--accent), var(--ccs-s--bg4), var(--ccs-l--bg4));
+  --ccs-neutral--fg4: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg4));
+  --ccs-neutral--bg4: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg4));
+  --ccs-prime--fg4-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg4), var(--ccs-fade));
+  --ccs-prime--bg4-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg4), var(--ccs-fade));
+  --ccs-accent--fg4-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg4), var(--ccs-fade));
+  --ccs-accent--bg4-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg4), var(--ccs-fade));
+  --ccs-neutral--fg4-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg4), var(--ccs-fade));
+  --ccs-neutral--bg4-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg4), var(--ccs-fade));
+  --ccs-l--bg5: calc(var(--ccs-l) + var(--ccs-step) * 5 * var(--ccs-mode));
+  --ccs-l--fg5: calc(var(--ccs-l) - var(--ccs-step) * 5 * var(--ccs-mode));
+  --ccs-s--fg5: calc(var(--ccs-s) - var(--ccs-step) * 5);
+  --ccs-s--bg5: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 5);
+  --ccs-prime--fg5: hsl(var(--ccs-h--prime), var(--ccs-s--fg5), var(--ccs-l--fg5));
+  --ccs-prime--bg5: hsl(var(--ccs-h--prime), var(--ccs-s--bg5), var(--ccs-l--bg5));
+  --ccs-accent--fg5: hsl(var(--ccs-h--accent), var(--ccs-s--fg5), var(--ccs-l--fg5));
+  --ccs-accent--bg5: hsl(var(--ccs-h--accent), var(--ccs-s--bg5), var(--ccs-l--bg5));
+  --ccs-neutral--fg5: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg5));
+  --ccs-neutral--bg5: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg5));
+  --ccs-prime--fg5-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg5), var(--ccs-fade));
+  --ccs-prime--bg5-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg5), var(--ccs-fade));
+  --ccs-accent--fg5-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg5), var(--ccs-fade));
+  --ccs-accent--bg5-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg5), var(--ccs-fade));
+  --ccs-neutral--fg5-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg5), var(--ccs-fade));
+  --ccs-neutral--bg5-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg5), var(--ccs-fade));
+  --ccs-l--bg6: calc(var(--ccs-l) + var(--ccs-step) * 6 * var(--ccs-mode));
+  --ccs-l--fg6: calc(var(--ccs-l) - var(--ccs-step) * 6 * var(--ccs-mode));
+  --ccs-s--fg6: calc(var(--ccs-s) - var(--ccs-step) * 6);
+  --ccs-s--bg6: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 6);
+  --ccs-prime--fg6: hsl(var(--ccs-h--prime), var(--ccs-s--fg6), var(--ccs-l--fg6));
+  --ccs-prime--bg6: hsl(var(--ccs-h--prime), var(--ccs-s--bg6), var(--ccs-l--bg6));
+  --ccs-accent--fg6: hsl(var(--ccs-h--accent), var(--ccs-s--fg6), var(--ccs-l--fg6));
+  --ccs-accent--bg6: hsl(var(--ccs-h--accent), var(--ccs-s--bg6), var(--ccs-l--bg6));
+  --ccs-neutral--fg6: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg6));
+  --ccs-neutral--bg6: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg6));
+  --ccs-prime--fg6-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg6), var(--ccs-fade));
+  --ccs-prime--bg6-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg6), var(--ccs-fade));
+  --ccs-accent--fg6-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg6), var(--ccs-fade));
+  --ccs-accent--bg6-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg6), var(--ccs-fade));
+  --ccs-neutral--fg6-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg6), var(--ccs-fade));
+  --ccs-neutral--bg6-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg6), var(--ccs-fade));
+  --stop: calc(100% / (6 * 2 + 1));
+  --prime-gradient: linear-gradient(to right, var(--ccs-prime--bg6) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-prime--bg5) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-prime--bg4) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-prime--bg3) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-prime--bg2) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-prime--bg1) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-prime) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-prime--fg1) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-prime--fg2) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-prime--fg3) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-prime--fg4) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-prime--fg5) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-prime--fg6) calc(var(--stop) * 12) calc(var(--stop) * 13));
+  --prime-gradient--fade: linear-gradient(to right, var(--ccs-prime--bg6-fade) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-prime--bg5-fade) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-prime--bg4-fade) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-prime--bg3-fade) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-prime--bg2-fade) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-prime--bg1-fade) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-prime--fade) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-prime--fg1-fade) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-prime--fg2-fade) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-prime--fg3-fade) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-prime--fg4-fade) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-prime--fg5-fade) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-prime--fg6-fade) calc(var(--stop) * 12) calc(var(--stop) * 13));
+  --accent-gradient: linear-gradient(to right, var(--ccs-accent--bg6) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-accent--bg5) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-accent--bg4) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-accent--bg3) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-accent--bg2) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-accent--bg1) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-accent) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-accent--fg1) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-accent--fg2) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-accent--fg3) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-accent--fg4) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-accent--fg5) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-accent--fg6) calc(var(--stop) * 12) calc(var(--stop) * 13));
+  --accent-gradient--fade: linear-gradient(to right, var(--ccs-accent--bg6-fade) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-accent--bg5-fade) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-accent--bg4-fade) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-accent--bg3-fade) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-accent--bg2-fade) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-accent--bg1-fade) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-accent--fade) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-accent--fg1-fade) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-accent--fg2-fade) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-accent--fg3-fade) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-accent--fg4-fade) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-accent--fg5-fade) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-accent--fg6-fade) calc(var(--stop) * 12) calc(var(--stop) * 13));
+  --neutral-gradient: linear-gradient(to right, var(--ccs-neutral--bg6) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-neutral--bg5) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-neutral--bg4) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-neutral--bg3) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-neutral--bg2) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-neutral--bg1) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-neutral) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-neutral--fg1) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-neutral--fg2) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-neutral--fg3) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-neutral--fg4) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-neutral--fg5) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-neutral--fg6) calc(var(--stop) * 12) calc(var(--stop) * 13));
+  --neutral-gradient--fade: linear-gradient(to right, var(--ccs-neutral--bg6-fade) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-neutral--bg5-fade) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-neutral--bg4-fade) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-neutral--bg3-fade) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-neutral--bg2-fade) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-neutral--bg1-fade) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-neutral--fade) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-neutral--fg1-fade) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-neutral--fg2-fade) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-neutral--fg3-fade) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-neutral--fg4-fade) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-neutral--fg5-fade) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-neutral--fg6-fade) calc(var(--stop) * 12) calc(var(--stop) * 13));
 }
 
 [data-ccs=root] {
@@ -245,124 +458,6 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 [data-ccs=contrast-select] {
   display: var(--ccs-custom-contrast, block);
-}
-
-[data-ccs-colors] {
-  --ccs-step: calc(var(--ccs-contrast) / 6);
-  --ccs-fade: 0.9;
-  --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
-  --ccs-prime--fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l), var(--ccs-fade));
-  --ccs-prime--fg-full-fade: var(--ccs-prime--fg6-fade);
-  --ccs-prime--bg-full-fade: var(--ccs-prime--bg6-fade);
-  --ccs-accent--fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l), var(--ccs-fade));
-  --ccs-accent--fg-full-fade: var(--ccs-accent--fg6-fade);
-  --ccs-accent--bg-full-fade: var(--ccs-accent--bg6-fade);
-  --ccs-neutral--fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l), var(--ccs-fade));
-  --ccs-neutral--fg-full-fade: var(--ccs-neutral--fg6-fade);
-  --ccs-neutral--bg-full-fade: var(--ccs-neutral--bg6-fade);
-  --ccs-l--bg1: calc(var(--ccs-l) + var(--ccs-step) * 1 * var(--ccs-mode));
-  --ccs-l--fg1: calc(var(--ccs-l) - var(--ccs-step) * 1 * var(--ccs-mode));
-  --ccs-s--fg1: calc(var(--ccs-s) - var(--ccs-step) * 1);
-  --ccs-s--bg1: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 1);
-  --ccs-prime--fg1: hsl(var(--ccs-h--prime), var(--ccs-s--fg1), var(--ccs-l--fg1));
-  --ccs-prime--bg1: hsl(var(--ccs-h--prime), var(--ccs-s--bg1), var(--ccs-l--bg1));
-  --ccs-accent--fg1: hsl(var(--ccs-h--accent), var(--ccs-s--fg1), var(--ccs-l--fg1));
-  --ccs-accent--bg1: hsl(var(--ccs-h--accent), var(--ccs-s--bg1), var(--ccs-l--bg1));
-  --ccs-neutral--fg1: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg1));
-  --ccs-neutral--bg1: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg1));
-  --ccs-prime--fg1-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg1), var(--ccs-fade));
-  --ccs-prime--bg1-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg1), var(--ccs-fade));
-  --ccs-accent--fg1-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg1), var(--ccs-fade));
-  --ccs-accent--bg1-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg1), var(--ccs-fade));
-  --ccs-neutral--fg1-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg1), var(--ccs-fade));
-  --ccs-neutral--bg1-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg1), var(--ccs-fade));
-  --ccs-l--bg2: calc(var(--ccs-l) + var(--ccs-step) * 2 * var(--ccs-mode));
-  --ccs-l--fg2: calc(var(--ccs-l) - var(--ccs-step) * 2 * var(--ccs-mode));
-  --ccs-s--fg2: calc(var(--ccs-s) - var(--ccs-step) * 2);
-  --ccs-s--bg2: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 2);
-  --ccs-prime--fg2: hsl(var(--ccs-h--prime), var(--ccs-s--fg2), var(--ccs-l--fg2));
-  --ccs-prime--bg2: hsl(var(--ccs-h--prime), var(--ccs-s--bg2), var(--ccs-l--bg2));
-  --ccs-accent--fg2: hsl(var(--ccs-h--accent), var(--ccs-s--fg2), var(--ccs-l--fg2));
-  --ccs-accent--bg2: hsl(var(--ccs-h--accent), var(--ccs-s--bg2), var(--ccs-l--bg2));
-  --ccs-neutral--fg2: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg2));
-  --ccs-neutral--bg2: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg2));
-  --ccs-prime--fg2-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg2), var(--ccs-fade));
-  --ccs-prime--bg2-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg2), var(--ccs-fade));
-  --ccs-accent--fg2-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg2), var(--ccs-fade));
-  --ccs-accent--bg2-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg2), var(--ccs-fade));
-  --ccs-neutral--fg2-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg2), var(--ccs-fade));
-  --ccs-neutral--bg2-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg2), var(--ccs-fade));
-  --ccs-l--bg3: calc(var(--ccs-l) + var(--ccs-step) * 3 * var(--ccs-mode));
-  --ccs-l--fg3: calc(var(--ccs-l) - var(--ccs-step) * 3 * var(--ccs-mode));
-  --ccs-s--fg3: calc(var(--ccs-s) - var(--ccs-step) * 3);
-  --ccs-s--bg3: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 3);
-  --ccs-prime--fg3: hsl(var(--ccs-h--prime), var(--ccs-s--fg3), var(--ccs-l--fg3));
-  --ccs-prime--bg3: hsl(var(--ccs-h--prime), var(--ccs-s--bg3), var(--ccs-l--bg3));
-  --ccs-accent--fg3: hsl(var(--ccs-h--accent), var(--ccs-s--fg3), var(--ccs-l--fg3));
-  --ccs-accent--bg3: hsl(var(--ccs-h--accent), var(--ccs-s--bg3), var(--ccs-l--bg3));
-  --ccs-neutral--fg3: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg3));
-  --ccs-neutral--bg3: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg3));
-  --ccs-prime--fg3-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg3), var(--ccs-fade));
-  --ccs-prime--bg3-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg3), var(--ccs-fade));
-  --ccs-accent--fg3-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg3), var(--ccs-fade));
-  --ccs-accent--bg3-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg3), var(--ccs-fade));
-  --ccs-neutral--fg3-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg3), var(--ccs-fade));
-  --ccs-neutral--bg3-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg3), var(--ccs-fade));
-  --ccs-l--bg4: calc(var(--ccs-l) + var(--ccs-step) * 4 * var(--ccs-mode));
-  --ccs-l--fg4: calc(var(--ccs-l) - var(--ccs-step) * 4 * var(--ccs-mode));
-  --ccs-s--fg4: calc(var(--ccs-s) - var(--ccs-step) * 4);
-  --ccs-s--bg4: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 4);
-  --ccs-prime--fg4: hsl(var(--ccs-h--prime), var(--ccs-s--fg4), var(--ccs-l--fg4));
-  --ccs-prime--bg4: hsl(var(--ccs-h--prime), var(--ccs-s--bg4), var(--ccs-l--bg4));
-  --ccs-accent--fg4: hsl(var(--ccs-h--accent), var(--ccs-s--fg4), var(--ccs-l--fg4));
-  --ccs-accent--bg4: hsl(var(--ccs-h--accent), var(--ccs-s--bg4), var(--ccs-l--bg4));
-  --ccs-neutral--fg4: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg4));
-  --ccs-neutral--bg4: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg4));
-  --ccs-prime--fg4-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg4), var(--ccs-fade));
-  --ccs-prime--bg4-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg4), var(--ccs-fade));
-  --ccs-accent--fg4-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg4), var(--ccs-fade));
-  --ccs-accent--bg4-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg4), var(--ccs-fade));
-  --ccs-neutral--fg4-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg4), var(--ccs-fade));
-  --ccs-neutral--bg4-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg4), var(--ccs-fade));
-  --ccs-l--bg5: calc(var(--ccs-l) + var(--ccs-step) * 5 * var(--ccs-mode));
-  --ccs-l--fg5: calc(var(--ccs-l) - var(--ccs-step) * 5 * var(--ccs-mode));
-  --ccs-s--fg5: calc(var(--ccs-s) - var(--ccs-step) * 5);
-  --ccs-s--bg5: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 5);
-  --ccs-prime--fg5: hsl(var(--ccs-h--prime), var(--ccs-s--fg5), var(--ccs-l--fg5));
-  --ccs-prime--bg5: hsl(var(--ccs-h--prime), var(--ccs-s--bg5), var(--ccs-l--bg5));
-  --ccs-accent--fg5: hsl(var(--ccs-h--accent), var(--ccs-s--fg5), var(--ccs-l--fg5));
-  --ccs-accent--bg5: hsl(var(--ccs-h--accent), var(--ccs-s--bg5), var(--ccs-l--bg5));
-  --ccs-neutral--fg5: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg5));
-  --ccs-neutral--bg5: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg5));
-  --ccs-prime--fg5-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg5), var(--ccs-fade));
-  --ccs-prime--bg5-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg5), var(--ccs-fade));
-  --ccs-accent--fg5-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg5), var(--ccs-fade));
-  --ccs-accent--bg5-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg5), var(--ccs-fade));
-  --ccs-neutral--fg5-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg5), var(--ccs-fade));
-  --ccs-neutral--bg5-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg5), var(--ccs-fade));
-  --ccs-l--bg6: calc(var(--ccs-l) + var(--ccs-step) * 6 * var(--ccs-mode));
-  --ccs-l--fg6: calc(var(--ccs-l) - var(--ccs-step) * 6 * var(--ccs-mode));
-  --ccs-s--fg6: calc(var(--ccs-s) - var(--ccs-step) * 6);
-  --ccs-s--bg6: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 6);
-  --ccs-prime--fg6: hsl(var(--ccs-h--prime), var(--ccs-s--fg6), var(--ccs-l--fg6));
-  --ccs-prime--bg6: hsl(var(--ccs-h--prime), var(--ccs-s--bg6), var(--ccs-l--bg6));
-  --ccs-accent--fg6: hsl(var(--ccs-h--accent), var(--ccs-s--fg6), var(--ccs-l--fg6));
-  --ccs-accent--bg6: hsl(var(--ccs-h--accent), var(--ccs-s--bg6), var(--ccs-l--bg6));
-  --ccs-neutral--fg6: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg6));
-  --ccs-neutral--bg6: hsl(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg6));
-  --ccs-prime--fg6-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--fg6), var(--ccs-fade));
-  --ccs-prime--bg6-fade: hsla(var(--ccs-h--prime), var(--ccs-s--bg-contrast), var(--ccs-l--bg6), var(--ccs-fade));
-  --ccs-accent--fg6-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--fg6), var(--ccs-fade));
-  --ccs-accent--bg6-fade: hsla(var(--ccs-h--accent), var(--ccs-s--bg-contrast), var(--ccs-l--bg6), var(--ccs-fade));
-  --ccs-neutral--fg6-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--fg6), var(--ccs-fade));
-  --ccs-neutral--bg6-fade: hsla(var(--ccs-h--neutral), var(--ccs-s--bg-contrast), var(--ccs-l--bg6), var(--ccs-fade));
-  --stop: calc(100% / (6 * 2 + 1));
-  --prime-gradient: linear-gradient(to right, var(--ccs-prime--bg6) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-prime--bg5) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-prime--bg4) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-prime--bg3) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-prime--bg2) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-prime--bg1) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-prime) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-prime--fg1) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-prime--fg2) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-prime--fg3) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-prime--fg4) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-prime--fg5) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-prime--fg6) calc(var(--stop) * 12) calc(var(--stop) * 13));
-  --prime-gradient--fade: linear-gradient(to right, var(--ccs-prime--bg6-fade) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-prime--bg5-fade) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-prime--bg4-fade) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-prime--bg3-fade) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-prime--bg2-fade) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-prime--bg1-fade) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-prime--fade) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-prime--fg1-fade) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-prime--fg2-fade) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-prime--fg3-fade) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-prime--fg4-fade) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-prime--fg5-fade) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-prime--fg6-fade) calc(var(--stop) * 12) calc(var(--stop) * 13));
-  --accent-gradient: linear-gradient(to right, var(--ccs-accent--bg6) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-accent--bg5) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-accent--bg4) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-accent--bg3) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-accent--bg2) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-accent--bg1) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-accent) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-accent--fg1) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-accent--fg2) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-accent--fg3) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-accent--fg4) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-accent--fg5) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-accent--fg6) calc(var(--stop) * 12) calc(var(--stop) * 13));
-  --accent-gradient--fade: linear-gradient(to right, var(--ccs-accent--bg6-fade) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-accent--bg5-fade) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-accent--bg4-fade) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-accent--bg3-fade) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-accent--bg2-fade) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-accent--bg1-fade) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-accent--fade) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-accent--fg1-fade) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-accent--fg2-fade) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-accent--fg3-fade) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-accent--fg4-fade) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-accent--fg5-fade) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-accent--fg6-fade) calc(var(--stop) * 12) calc(var(--stop) * 13));
-  --neutral-gradient: linear-gradient(to right, var(--ccs-neutral--bg6) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-neutral--bg5) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-neutral--bg4) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-neutral--bg3) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-neutral--bg2) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-neutral--bg1) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-neutral) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-neutral--fg1) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-neutral--fg2) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-neutral--fg3) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-neutral--fg4) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-neutral--fg5) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-neutral--fg6) calc(var(--stop) * 12) calc(var(--stop) * 13));
-  --neutral-gradient--fade: linear-gradient(to right, var(--ccs-neutral--bg6-fade) calc(var(--stop) * 0) calc(var(--stop) * 1), var(--ccs-neutral--bg5-fade) calc(var(--stop) * 1) calc(var(--stop) * 2), var(--ccs-neutral--bg4-fade) calc(var(--stop) * 2) calc(var(--stop) * 3), var(--ccs-neutral--bg3-fade) calc(var(--stop) * 3) calc(var(--stop) * 4), var(--ccs-neutral--bg2-fade) calc(var(--stop) * 4) calc(var(--stop) * 5), var(--ccs-neutral--bg1-fade) calc(var(--stop) * 5) calc(var(--stop) * 6), var(--ccs-neutral--fade) calc(var(--stop) * 6) calc(var(--stop) * 7), var(--ccs-neutral--fg1-fade) calc(var(--stop) * 7) calc(var(--stop) * 8), var(--ccs-neutral--fg2-fade) calc(var(--stop) * 8) calc(var(--stop) * 9), var(--ccs-neutral--fg3-fade) calc(var(--stop) * 9) calc(var(--stop) * 10), var(--ccs-neutral--fg4-fade) calc(var(--stop) * 10) calc(var(--stop) * 11), var(--ccs-neutral--fg5-fade) calc(var(--stop) * 11) calc(var(--stop) * 12), var(--ccs-neutral--fg6-fade) calc(var(--stop) * 12) calc(var(--stop) * 13));
 }
 
 [data-ccs-colors] {

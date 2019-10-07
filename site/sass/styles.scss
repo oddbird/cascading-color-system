@@ -1,5 +1,8 @@
-@use 'remedy';
+// libraries
+@use '../../node_modules/cssremedy/css/remedy';
 @use 'ccs';
+
+// internal
 @use 'theme';
 @use 'menu';
 @use 'palette';

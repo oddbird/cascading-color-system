@@ -1,0 +1,35 @@
+/// # Palettes
+/// Once the initial hue, saturation, lightness, contrast,
+/// and theme are in place --
+/// we can generate dynamic palettes based on those values.
+///
+/// While themes can be set universally,
+/// palettes need to be recalculated based on mode.
+/// By default, we apply both to the `[data-ccs-colors]` attribute.
+///
+/// @group palettes
+
+/// The number of tints and shades to create
+/// on either side of the base colors.
+///
+/// @type integer
+/// @group palettes
+$steps: 4 !default;
+
+/// Optionally generate desaturated seconday `*-fade` palettes
+/// for each base palette.
+/// Number values will be used as
+/// the `hsla()` *alpha* value,
+/// adding transparency to the faded palette.
+///
+/// @type boolean | number
+/// @group palettes
+$fades: false !default;
+
+/// Generate a striped gradient for each color palette --
+/// prime, accent, and `*-fade` if required.
+/// These are useful for showing the colors generated.
+///
+/// @type boolean
+/// @group palettes
+$gradients: false !default;

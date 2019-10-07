@@ -1,0 +1,6 @@
+/// Optionally generate CSS for the colors on-load,
+/// rarther than using the provided mixins directly.
+///
+/// @type boolean
+/// @group palettes
+$build: true !default;
