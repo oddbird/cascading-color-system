@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0-beta.5 - 2019/9/30
+
+- More organized Sass files
+
 ## 0.1.0-beta.4 - 2019/9/30
 
 - BREAKING: Replace `html` selectors with `data-ccs='root'`
