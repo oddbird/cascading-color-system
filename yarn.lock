@@ -1119,6 +1119,11 @@ csso@^3.5.1:
   dependencies:
     css-tree "1.0.0-alpha.29"
 
+cssremedy@^0.1.0-beta.2:
+  version "0.1.0-beta.2"
+  resolved "https://registry.yarnpkg.com/cssremedy/-/cssremedy-0.1.0-beta.2.tgz#ad900aecee78b37a4a6354ad1b0ca831fd38ee13"
+  integrity sha512-6mpPQzoUQHY7fiAxWCQDgPz73j5ugz2LqU62BLohUsxYurYLdTHQc+ilPm4i52wU2SxzPTrcRMIdniE2zGfjOA==
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"

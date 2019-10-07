@@ -15,12 +15,13 @@
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
     "@babel/plugin-transform-modules-umd": "^7.2.0",
+    "cssremedy": "^0.1.0-beta.2",
     "sass": "^1.23.0",
     "sassdoc": "^2.7.1",
     "sassdoc-theme-herman": "^3.0.2"
   },
   "scripts": {
-    "build-sass": "sass sass/_ccs-output.scss css/ccs.css",
+    "build-sass": "sass sass/_output.scss css/ccs.css",
     "build-docs": "sassdoc sass/",
     "build-js": "yarn babel index.js --out-file dist.js",
     "build-site": "sass site/sass/styles.scss site/css/styles.css",
