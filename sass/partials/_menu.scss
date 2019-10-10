@@ -1,15 +1,19 @@
-[data-ccs='hue-select'] {
+[data-ccs-field='hue'] {
   display: var(--ccs-custom-hue, block);
 }
 
-[data-ccs='lightness-select'] {
+[data-ccs-field='hue'] {
+  display: var(--ccs-custom-hue, block);
+}
+
+[data-ccs-field='lightness'] {
   display: var(--ccs-custom-lightness, block);
 }
 
-[data-ccs='saturation-select'] {
+[data-ccs-field='saturation'] {
   display: var(--ccs-custom-saturation, block);
 }
 
-[data-ccs='contrast-select'] {
+[data-ccs-field='contrast'] {
   display: var(--ccs-custom-contrast, block);
 }

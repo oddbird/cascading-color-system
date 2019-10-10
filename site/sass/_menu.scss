@@ -31,7 +31,7 @@ button {
   }
 }
 
-[data-field] {
+[data-ccs-field] {
   display: block;
 }
 
@@ -113,19 +113,19 @@ $rainbow: ();
   }
 }
 
-[id='ccs-hue-select'] {
+[id='hue'] {
   @include range-track {
     background: linear-gradient(to right, $rainbow);
   }
 }
 
-[id='ccs-lightness-select'] {
+[id='lightness'] {
   @include range-track {
     background: linear-gradient(to right, hsl(0, 0%, 25%), silver);
   }
 }
 
-[id='ccs-saturation-select'] {
+[id='saturation'] {
   // 0.1% so that units aren't removed in minification
   @include range-track {
     background-image: linear-gradient(
@@ -136,7 +136,7 @@ $rainbow: ();
   }
 }
 
-[id='ccs-contrast-select'] {
+[id='contrast'] {
   @include range-track {
     background: linear-gradient(to right, gray, white),
       linear-gradient(to right, gray, black);

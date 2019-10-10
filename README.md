@@ -200,11 +200,6 @@ using the `[data-ccs-theme]` attribute:
 [data-ccs-theme='adjacent'] {
   /* adjacent logic */
 }
-
-[data-ccs-theme='contrast'] {
-  --ccs-contrast: 200%; /* override all other contrast settings */
-  --ccs-custom-contrast: none; /* hide [data-ccs="contrast-select"] */
-}
 ```
 
 ### Sass Configuration
@@ -273,18 +268,31 @@ We provide several hooks for the JS to use
 - `[data-ccs="menu"]`:
   if you hide the settings by default,
   we'll show them when the JS is available
-- `[data-ccs="invert"]`:
+- `[data-ccs-input="mode"]`:
   a button to toggle light/dark modes
-- `[data-ccs="unset"]`:
+- `[data-ccs-input="unset"]`:
   a button to unset all user preferences
   and clear related local storage
-- `[data-ccs="theme-select"] select`:
+- `[data-ccs-input="theme"]`:
   Allow users to select from available `theme` options
-- `[data-ccs="hue-select"] input`:
+- `[data-ccs-input="hue"]`:
   Allow users to change the primary hue
-- `[data-ccs="saturation-select"] input`:
+- `[data-ccs-input="saturation"]`:
   Allow users to adjust the baseline saturation
-- `[data-ccs="lightness-select"] input`:
+- `[data-ccs-input="lightness"]`:
   Allow users to adjust the baseline lightness
-- `[data-ccs="contrast-select"] input`:
+- `[data-ccs-input="contrast"]`:
   Allow users to adjust the contrast range
+
+Themes can also use the `[data-ccs-field]` on wrappers,
+to show and hide inputs/labels directly in the CSS
+based on a given theme.
+For example, a high-contrast theme
+might not accept `contrast` input:
+
+```scss
+[data-ccs-theme='contrast'] {
+  --ccs-contrast: 200%; /* override all other contrast settings */
+  --ccs-custom-contrast: none; /* hide [data-ccs-field="contrast"] */
+}
+```

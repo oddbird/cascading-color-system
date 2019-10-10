@@ -1,6 +1,6 @@
 {
   "name": "cascading-color-systems",
-  "version": "0.1.0-beta.6",
+  "version": "0.1.0-beta.7",
   "description": "generate dynamic color palettes with custom properties",
   "main": "dist.js",
   "module": "index.js",
@@ -10,7 +10,7 @@
   "contributors": [
     "Jonny Gerig Meyer <jonny@oddbird.net>"
   ],
-  "license": "MIT",
+  "license": "MIT Hippocratic",
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
@@ -27,7 +27,7 @@
     "build-site": "sass site/sass/styles.scss site/css/styles.css",
     "build": "yarn build-sass && yarn build-docs && yarn build-js && yarn build-site",
     "commit": "yarn build",
-    "watch": "sass --watch site/sass/* site/css/*"
+    "watch": "sass --watch site/sass/:site/css/"
   },
   "files": [
     "css/**/*.css",

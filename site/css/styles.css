@@ -444,19 +444,23 @@ category: legacy browsers
   --ccs-custom-contrast: none;
 }
 
-[data-ccs=hue-select] {
+[data-ccs-field=hue] {
   display: var(--ccs-custom-hue, block);
 }
 
-[data-ccs=lightness-select] {
+[data-ccs-field=hue] {
+  display: var(--ccs-custom-hue, block);
+}
+
+[data-ccs-field=lightness] {
   display: var(--ccs-custom-lightness, block);
 }
 
-[data-ccs=saturation-select] {
+[data-ccs-field=saturation] {
   display: var(--ccs-custom-saturation, block);
 }
 
-[data-ccs=contrast-select] {
+[data-ccs-field=contrast] {
   display: var(--ccs-custom-contrast, block);
 }
 
@@ -510,7 +514,7 @@ button:active {
   box-shadow: 2px 2px 0 var(--ccs-prime--bg4) inset;
 }
 
-[data-field] {
+[data-ccs-field] {
   display: block;
 }
 
@@ -591,49 +595,49 @@ select {
   cursor: pointer;
 }
 
-[id=ccs-hue-select]::-webkit-slider-runnable-track {
+[id=hue]::-webkit-slider-runnable-track {
   background: linear-gradient(to right, #b83014, #b84b14, #b86614, #b88114, #b89c14, #b8b814, #9cb814, #81b814, #66b814, #4bb814, #30b814, #14b814, #14b830, #14b84b, #14b866, #14b881, #14b89c, #14b8b8, #149cb8, #1481b8, #1466b8, #144bb8, #1430b8, #1414b8, #3014b8, #4b14b8, #6614b8, #8114b8, #9c14b8, #b814b8, #b8149c, #b81481, #b81466, #b8144b, #b81430, #b81414);
 }
-[id=ccs-hue-select]::-moz-range-track {
+[id=hue]::-moz-range-track {
   background: linear-gradient(to right, #b83014, #b84b14, #b86614, #b88114, #b89c14, #b8b814, #9cb814, #81b814, #66b814, #4bb814, #30b814, #14b814, #14b830, #14b84b, #14b866, #14b881, #14b89c, #14b8b8, #149cb8, #1481b8, #1466b8, #144bb8, #1430b8, #1414b8, #3014b8, #4b14b8, #6614b8, #8114b8, #9c14b8, #b814b8, #b8149c, #b81481, #b81466, #b8144b, #b81430, #b81414);
 }
-[id=ccs-hue-select]::-ms-track {
+[id=hue]::-ms-track {
   background: linear-gradient(to right, #b83014, #b84b14, #b86614, #b88114, #b89c14, #b8b814, #9cb814, #81b814, #66b814, #4bb814, #30b814, #14b814, #14b830, #14b84b, #14b866, #14b881, #14b89c, #14b8b8, #149cb8, #1481b8, #1466b8, #144bb8, #1430b8, #1414b8, #3014b8, #4b14b8, #6614b8, #8114b8, #9c14b8, #b814b8, #b8149c, #b81481, #b81466, #b8144b, #b81430, #b81414);
 }
 
-[id=ccs-lightness-select]::-webkit-slider-runnable-track {
+[id=lightness]::-webkit-slider-runnable-track {
   background: linear-gradient(to right, #404040, silver);
 }
-[id=ccs-lightness-select]::-moz-range-track {
+[id=lightness]::-moz-range-track {
   background: linear-gradient(to right, #404040, silver);
 }
-[id=ccs-lightness-select]::-ms-track {
+[id=lightness]::-ms-track {
   background: linear-gradient(to right, #404040, silver);
 }
 
-[id=ccs-saturation-select]::-webkit-slider-runnable-track {
+[id=saturation]::-webkit-slider-runnable-track {
   background-image: linear-gradient(to right, hsl(var(--ccs-h--prime, 0), 0.1%, var(--ccs-l, 50%)), hsl(var(--ccs-h--prime, 0), 100%, var(--ccs-l, 50%)));
 }
-[id=ccs-saturation-select]::-moz-range-track {
+[id=saturation]::-moz-range-track {
   background-image: linear-gradient(to right, hsl(var(--ccs-h--prime, 0), 0.1%, var(--ccs-l, 50%)), hsl(var(--ccs-h--prime, 0), 100%, var(--ccs-l, 50%)));
 }
-[id=ccs-saturation-select]::-ms-track {
+[id=saturation]::-ms-track {
   background-image: linear-gradient(to right, hsl(var(--ccs-h--prime, 0), 0.1%, var(--ccs-l, 50%)), hsl(var(--ccs-h--prime, 0), 100%, var(--ccs-l, 50%)));
 }
 
-[id=ccs-contrast-select]::-webkit-slider-runnable-track {
+[id=contrast]::-webkit-slider-runnable-track {
   background: linear-gradient(to right, gray, white), linear-gradient(to right, gray, black);
   background-size: 100% 50%, 100% 100%;
   background-position: top left, bottom left;
   background-repeat: no-repeat;
 }
-[id=ccs-contrast-select]::-moz-range-track {
+[id=contrast]::-moz-range-track {
   background: linear-gradient(to right, gray, white), linear-gradient(to right, gray, black);
   background-size: 100% 50%, 100% 100%;
   background-position: top left, bottom left;
   background-repeat: no-repeat;
 }
-[id=ccs-contrast-select]::-ms-track {
+[id=contrast]::-ms-track {
   background: linear-gradient(to right, gray, white), linear-gradient(to right, gray, black);
   background-size: 100% 50%, 100% 100%;
   background-position: top left, bottom left;

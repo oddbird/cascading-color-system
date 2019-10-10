@@ -35,12 +35,12 @@
   <menu data-ccs="menu">
     <div class="color-btns">
       <button
-        data-ccs="invert"
+        data-ccs-input="mode"
         type="button">
         invert
       </button>
       <button
-        data-ccs="unset"
+        data-ccs-input="unset"
         type="button"
         hidden>
         reset
@@ -48,9 +48,9 @@
     </div>
 
     <div class="color-fields">
-      <label data-ccs="theme-select" for="ccs-theme-select">
+      <label for="theme" data-ccs-field="theme">
         <span data-label>theme:</span>
-        <select name="ccs-theme-select" id="ccs-theme-select">
+        <select name="theme" id="theme" data-ccs-input="theme">
           <option value="default">
             default
           </option>
@@ -68,21 +68,21 @@
           </option>
         </select>
       </label>
-      <label data-ccs="hue-select" for="ccs-hue-select">
+      <label data-ccs-field="hue" for="hue">
         <span data-label>hue:</span>
-        <input id="ccs-hue-select" type="range" min="0" max="360" value="330">
+        <input id="hue" type="range" min="0" max="360" value="330" data-ccs-input="hue">
       </label>
-      <label data-ccs="saturation-select" for="ccs-saturation-select">
+      <label data-ccs-field="saturation" for="saturation">
         <span data-label>saturation:</span>
-        <input id="ccs-saturation-select" type="range" min="0" max="100" value="50">
+        <input id="saturation" type="range" min="0" max="100" value="50" data-ccs-input="saturation">
       </label>
-      <label data-ccs="lightness-select" for="ccs-lightness-select">
+      <label data-ccs-field="lightness" for="lightness">
         <span data-label>lightness:</span>
-        <input id="ccs-lightness-select" type="range" min="25" max="75" value="50">
+        <input id="lightness" type="range" min="25" max="75" value="50" data-ccs-input="lightness">
       </label>
-      <label data-ccs="contrast-select" for="ccs-contrast-select">
+      <label data-ccs-field="contrast" for="contrast">
         <span data-label>contrast:</span>
-        <input id="ccs-contrast-select" type="range" min="15" max="150" value="45">
+        <input id="contrast" type="range" min="15" max="150" value="45" data-ccs-input="contrast">
       </label>
     </div>
   </menu>
