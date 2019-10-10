@@ -7,7 +7,7 @@
   `[data-ccs-field="*"]` and nested `[data-ccs-input="*"]`
 - BREAKING: rename `[data-ccs="unset"]` to `[data-ccs-input="unset"]`
 - BREAKING: rename `[data-ccs="invert"]` to `[data-ccs-input="mode"]`
-- Use [Hipocratic License](https://firstdonoharm.dev/)
+- Use [Hippocratic License](https://firstdonoharm.dev/)
 - Add root-level `_index.scss` for simpler Sass imports
 
 ## 0.1.0-beta.6 - 2019/10/6
