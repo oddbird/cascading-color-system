@@ -1,8 +1,10 @@
+@use '../config';
+
 [data-ccs-colors] {
   // optionally set `--ccs-prime--user-*` values with JS
   --ccs-h--prime: var(--ccs-prime--user, var(--ccs-prime--theme, var(--ccs-prime--config, 330)));
   --ccs-h--accent: var(--ccs-accent--theme, var(--ccs-accent--config, var(--ccs-h--prime)));
-  --ccs-h--neutral: var(--ccs-neutral--theme, var(--ccs-h--prime));
+  --ccs-h--neutral: var(--ccs-neutral--theme, var(--ccs-neutral--config, var(--ccs-h--prime)));
 
   // offset lightness and saturation based on contrast
   --ccs-contrast--user-percent: calc(var(--ccs-contrast--user) * 1%);
@@ -15,10 +17,12 @@
   --ccs-l--bg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-mode));
 
   // initial saturation values
+  --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
   --ccs-s--user-percent: calc(var(--ccs-s--user) * 1%);
   --ccs-s: var(--ccs-s--user-percent, var(--ccs-s--theme, var(--ccs-saturation--config, 50%)));
   --ccs-s--fg-contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
   --ccs-s--bg-contrast: calc(var(--ccs-s--fg-contrast) - var(--ccs-fade-background));
+  --ccs-s--neutral: var(--ccs-s-neutral--theme, var(--ccs-s-neutral--config, var(--ccs-s--bg-contrast)));
 
   // final mode calculations
   --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
@@ -30,20 +34,47 @@
   --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-mode--invert)));
 
   @each $color in ('prime', 'accent', 'neutral') {
+    $s: if($color == 'neutral', '--neutral', null);
     --ccs-#{$color}: hsl(
       var(--ccs-h--#{$color}),
-      var(--ccs-s#{if($color == 'neutral', '--bg-contrast', '')}),
+      var(--ccs-s#{$s or ''}),
       var(--ccs-l)
     );
     --ccs-#{$color}--fg-full: hsl(
       var(--ccs-h--#{$color}),
-      var(--ccs-s--fg-contrast),
+      var(--ccs-s#{$s or '--fg-contrast'}),
       var(--ccs-l--fg-contrast)
     );
     --ccs-#{$color}--bg-full: hsl(
       var(--ccs-h--#{$color}),
-      var(--ccs-s--bg-contrast),
+      var(--ccs-s#{$s or '--bg-contrast'}),
       var(--ccs-l--bg-contrast)
     );
+
+    @if (config.$fades) {
+      --ccs-#{$color}--fade: hsla(
+        var(--ccs-h--#{$color}),
+        var(--ccs-s#{$s or ''}),
+        var(--ccs-l),
+        var(--ccs-fade)
+      );
+      --ccs-#{$color}--fg-full-fade: hsla(
+        var(--ccs-h--#{$color}),
+        var(--ccs-s#{$s or '--fg-contrast'}),
+        var(--ccs-l--fg-contrast),
+        var(--ccs-fade)
+      );
+      --ccs-#{$color}--bg-full-fade: hsla(
+        var(--ccs-h--#{$color}),
+        var(--ccs-s#{$s or '--bg-contrast'}),
+        var(--ccs-l--bg-contrast),
+        var(--ccs-fade)
+      );
+    }
+
   }
+
+  // default variable colors
+  background-color: var(--ccs-background, var(--ccs-neutral--bg-full));
+  color: var(--ccs-color, var(--ccs-neutral--fg-full));
 }

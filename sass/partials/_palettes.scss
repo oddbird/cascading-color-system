@@ -1,5 +1,6 @@
 @use '../config';
 
+
 // Colors
 // ------
 /// Generate custom-property color palettes
@@ -30,24 +31,8 @@
   $fades: config.$fades,
   $gradients: config.$gradients,
 ) {
-  $colors: ('prime', 'accent', 'neutral');
-
   // offset steps
   --ccs-step: calc(var(--ccs-contrast) / #{$steps});
-
-  // main colors
-  @if ($fades) {
-    $sla: var(--ccs-s--bg-contrast), var(--ccs-l), var(--ccs-fade);
-    --ccs-fade: #{if(type-of($fades) == 'number', $fades, 1)};
-    --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
-
-    @each $color in $colors {
-      --ccs-#{$color}--fade: hsla(var(--ccs-h--#{$color}), #{$sla});
-      --ccs-#{$color}--fg-full-fade: var(--ccs-#{$color}--fg#{$steps}-fade);
-      --ccs-#{$color}--bg-full-fade: var(--ccs-#{$color}--bg#{$steps}-fade);
-    }
-  }
-
 
   @for $i from 1 through $steps {
     $bg: 'bg#{$i}';
@@ -61,30 +46,26 @@
     --ccs-s--#{$fg}: calc(var(--ccs-s) - var(--ccs-step) * #{$i});
     --ccs-s--#{$bg}: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * #{$i});
 
-    // sl steps
-    $sl-fg: var(--ccs-s--#{$fg}), var(--ccs-l--#{$fg});
-    $sl-bg: var(--ccs-s--#{$bg}), var(--ccs-l--#{$bg});
-    $sl-fg--neutral: var(--ccs-s--bg-contrast), var(--ccs-l--#{$fg});
-    $sl-bg--neutral: var(--ccs-s--bg-contrast), var(--ccs-l--#{$bg});
-
     // color steps
-    @each $color in $colors {
-      $slf: if($color == 'neutral', $sl-fg--neutral, $sl-fg);
-      $slb: if($color == 'neutral', $sl-bg--neutral, $sl-bg);
+    @each $color in ('prime', 'accent', 'neutral') {
+      $h: var(--ccs-h--#{$color});
+      $s: if($color == 'neutral', 'neutral', null);
+      $l-fg: var(--ccs-l--#{$fg});
+      $l-bg: var(--ccs-l--#{$bg});
+      $s-fg: var(--ccs-s--#{$s or $fg});
+      $s-bg: var(--ccs-s--#{$s or $bg});
 
-      --ccs-#{$color}--#{$fg}: hsl(var(--ccs-h--#{$color}), #{$slf});
-      --ccs-#{$color}--#{$bg}: hsl(var(--ccs-h--#{$color}), #{$slb});
-    }
+      --ccs-#{$color}--#{$fg}: hsl(#{$h}, #{$s-fg}, #{$l-fg});
+      --ccs-#{$color}--#{$bg}: hsl(#{$h}, #{$s-bg}, #{$l-bg});
 
-    @if ($fades) {
-      $sla-fg: var(--ccs-s--bg-contrast), var(--ccs-l--#{$fg}), var(--ccs-fade);
-      $sla-bg: var(--ccs-s--bg-contrast), var(--ccs-l--#{$bg}), var(--ccs-fade);
+      @if ($fades) {
+        $a: var(--ccs-fade);
 
-      @each $color in $colors {
-        --ccs-#{$color}--#{$fg}-fade: hsla(var(--ccs-h--#{$color}), #{$sla-fg});
-        --ccs-#{$color}--#{$bg}-fade: hsla(var(--ccs-h--#{$color}), #{$sla-bg});
+        --ccs-#{$color}--#{$fg}-fade: hsla(#{$h}, #{$s-fg}, #{$l-fg}, #{$a});
+        --ccs-#{$color}--#{$bg}-fade: hsla(#{$h}, #{$s-bg}, #{$l-bg}, #{$a});
       }
     }
+
   }
 
   @if ($gradients) {

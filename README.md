@@ -82,11 +82,11 @@ and fallback values for both modes:
 ```scss
 // fallback values, in case variables are not supported
 [data-ccs='root'] {
-  background: $fallback-light;
+  background-color: $fallback-light;
   color: $fallback-dark;
 
   @media (prefers-color-scheme: dark) {
-    background: $fallback-dark;
+    background-color: $fallback-dark;
     color: $fallback-light;
   }
 }
@@ -196,9 +196,6 @@ using the `[data-ccs-theme]` attribute:
 
 [data-ccs-theme='triad'] {
   /* triad logic */
-}
-[data-ccs-theme='adjacent'] {
-  /* adjacent logic */
 }
 ```
 

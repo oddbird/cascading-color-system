@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-beta.8 - 2019/11/29
+
+- BREAKING: Set defaults on `background-color`
+  rather than `background` shorthand
+- BREAKING: `--ccs-custom-display` and `--ccs-field-display` variables
+  for more customized control of CCS menu field display
+- BREAKING: Set `background-color` and `color` on all `[data-ccs-colors]`,
+  with both fallback values and variables defaulting to
+  `--ccs-neutral--(fg/bg)-full`
+- BREAKING: Re-order the output from general to specific
+- NEW: `--ccs-background` and `--ccs-color` override the default
+  `[data-ccs-colors]` background and text
+- NEW: `$neutral-hue` and `--ccs-neutral--config` for setting neutral hues
+- NEW: `$neutral-saturation` and `--ccs-s-neutral--config`
+  override contrast-based saturation on neutral palette
+- MOVE: `LICENSE` => `LICENSE.md` (and fix in `package.json`)
+
 ## 0.1.0-beta.7 - 2019/10/9
 
 - BREAKING: rename `[data-ccs="*-select"]` attributes

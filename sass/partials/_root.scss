@@ -40,17 +40,22 @@
     --ccs-fade-background--config: #{config.$fade-background or null};
   }
 
+  @if (config.$neutral-hue) {
+    --ccs-neutral--config: #{config.$neutral-hue or null};
+  }
+
+  @if (config.$neutral-saturation) {
+    --ccs-s-neutral--config: #{config.$neutral-saturation or null};
+  }
+
+  @if (config.$fades) {
+    --ccs-fade: #{if(type-of(config.$fades) == 'number', config.$fades, 1)};
+  }
+
   // mode
   --ccs-mode--os: 1;
 
-  // fallback values, in case variables are not supported
-  background: config.$fallback-light;
-  color: config.$fallback-dark;
-
   @media (prefers-color-scheme: dark) {
     --ccs-mode--os: -1;
-    background: config.$fallback-dark;
-    color: config.$fallback-light;
   }
 }
-

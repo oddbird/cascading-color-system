@@ -96,6 +96,31 @@ $contrast: null !default;
 /// @group config
 $fade-background: null !default;
 
+// Neutral Hue
+// -----------
+/// By default, neutral colors are created from the prime hue.
+///
+/// - Sass: `$neutral-hue: 330;`
+/// - CSS: `--ccs-neutral--config: 330;`
+///
+/// @type percentage | null
+/// @group config
+$neutral-hue: null !default;
+
+// Neutral Saturation
+// ------------------
+/// By default, neutral saturation is set to
+/// the full-contrast background saturation.
+/// At low-contrast that can still be quite saturated,
+/// so we provide an override when needed.
+///
+/// - Sass: `$neutral-saturation: 15%;`
+/// - CSS: `--ccs-s-neutral--config: 15%;`
+///
+/// @type percentage | null
+/// @group config
+$neutral-saturation: null !default;
+
 // Fallback Dark
 // -------------
 /// A dark fallback color

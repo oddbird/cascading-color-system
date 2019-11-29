@@ -19,8 +19,8 @@ herman:
       path: CHANGELOG.md
     - name: 'Contributing'
       path: CONTRIBUTING.md
-    - name: 'License'
-      path: LICENSE
+    - name: 'Hipocratic MIT License'
+      path: LICENSE.md
   extraLinks:
     - name: 'Demo'
       url: 'https://cascading-colors.netlify.com/'

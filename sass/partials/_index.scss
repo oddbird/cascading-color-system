@@ -1,7 +1,14 @@
+// members only
 @forward 'palettes';
-@forward 'build';
+
+// setup
 @forward 'root';
-@forward 'colors';
 @forward 'modes';
+@forward 'colors';
 @forward 'themes';
+
+// build
+@forward 'build';
+
+// meta
 @forward 'menu';
