@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-beta.9 - 2019/11/29
+
+- NEW: `--ccs-mode--zero` and `--ccs-mode--invert-zero`
+  provide mode values of `0` (dark) or `1` (light),
+  rather than `-1` (dark) and `1` (light)
+- NEW: `if-mode($light, $dark)` function returns a CSS `calc()` toggle
+  between two values, depending on the current (light/dark) mode
+
 ## 0.1.0-beta.8 - 2019/11/29
 
 - BREAKING: Set defaults on `background-color`

@@ -7,6 +7,20 @@
   --callout: var(--ccs-neutral--bg#{ccs.$steps - 2}-fade);
 }
 
+[data-ccs-theme='oddbird'] {
+  --ccs-prime--config: 195;
+  --ccs-accent--config: 330;
+  --ccs-prime--theme: #{ccs.if-mode(
+    $light: var(--ccs-prime--config),
+    $dark: var(--ccs-accent--config)
+  )};
+  --ccs-accent--theme: #{ccs.if-mode(
+    $light: var(--ccs-accent--config),
+    $dark: var(--ccs-prime--config)
+  )};
+  --ccs-custom-hue: none;
+}
+
 
 // links
 // -----

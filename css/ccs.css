@@ -60,7 +60,9 @@
   --ccs-s--neutral: var(--ccs-s-neutral--theme, var(--ccs-s-neutral--config, var(--ccs-s--bg-contrast)));
   --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
   --ccs-mode: var(--ccs-mode--cascade, 1);
+  --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
   --ccs-mode--invert: calc(-1 * var(--ccs-mode));
+  --ccs-mode--invert-zero: calc((var(--ccs-mode--invert) + 1) * 0.5);
   --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
   --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-mode--invert)));
   --ccs-prime: hsl(

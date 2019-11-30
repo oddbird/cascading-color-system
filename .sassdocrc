@@ -12,6 +12,7 @@ groups:
     config: Global Settings
   'Sass (optional)':
     palettes: Color Palettes
+    tools: Additional Tools
 
 herman:
   extraDocs:

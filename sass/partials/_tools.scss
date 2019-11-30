@@ -1,0 +1,36 @@
+// If-Mode
+// -------
+/// Toggles between two number values
+/// (or CSS `var()` functions that return numbers),
+/// depending on the current light/dark mode.
+///
+/// @param {number | var()} $light -
+///   The value to use for light mode
+/// @param {number | var()} $dark -
+///   The value to use for dark mode
+/// @return {calc()} -
+///   A CSS `calc()` function that will toggle the proper values
+///   based on the value of `--ccs-mode--zero` and `--ccs-mode--invert-zero`
+/// @example scss -
+///   [data-ccs-theme='oddbird'] {
+///     --ccs-prime--config: 195;
+///     --ccs-accent--config: 330;
+///     --ccs-prime--theme: #{ccs.if-mode(
+///       $light: var(--ccs-prime--config),
+///       $dark: var(--ccs-accent--config)
+///     )};
+///     --ccs-accent--theme: #{ccs.if-mode(
+///       $light: var(--ccs-accent--config),
+///       $dark: var(--ccs-prime--config)
+///     )};
+///     --ccs-custom-hue: none;
+///   }
+/// @group tools
+@function if-mode(
+  $light,
+  $dark
+) {
+  @return calc(
+    var(--ccs-mode--zero) * #{$light} + var(--ccs-mode--invert-zero) * #{$dark}
+  );
+}

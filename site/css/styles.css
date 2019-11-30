@@ -282,7 +282,9 @@ category: legacy browsers
   --ccs-s--neutral: var(--ccs-s-neutral--theme, var(--ccs-s-neutral--config, var(--ccs-s--bg-contrast)));
   --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
   --ccs-mode: var(--ccs-mode--cascade, 1);
+  --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
   --ccs-mode--invert: calc(-1 * var(--ccs-mode));
+  --ccs-mode--invert-zero: calc((var(--ccs-mode--invert) + 1) * 0.5);
   --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
   --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-mode--invert)));
   --ccs-prime: hsl(
@@ -535,6 +537,18 @@ category: legacy browsers
 [data-ccs-colors] {
   --ccs-neutral--theme: var(--ccs-h--accent);
   --callout: var(--ccs-neutral--bg4-fade);
+}
+
+[data-ccs-theme=oddbird] {
+  --ccs-prime--config: 195;
+  --ccs-accent--config: 330;
+  --ccs-prime--theme: calc(
+    var(--ccs-mode--zero) * var(--ccs-prime--config) + var(--ccs-mode--invert-zero) * var(--ccs-accent--config)
+  );
+  --ccs-accent--theme: calc(
+    var(--ccs-mode--zero) * var(--ccs-accent--config) + var(--ccs-mode--invert-zero) * var(--ccs-prime--config)
+  );
+  --ccs-custom-hue: none;
 }
 
 a {
