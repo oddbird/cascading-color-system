@@ -25,7 +25,7 @@
   --ccs-s--neutral: var(--ccs-s-neutral--theme, var(--ccs-s-neutral--config, var(--ccs-s--bg-contrast)));
 
   // final mode calculations
-  --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
+  --ccs-mode--cascade: var(--ccs-mode--html, var(--ccs-mode--user, var(--ccs-mode--os, 1)));
   --ccs-mode: var(--ccs-mode--cascade, 1);
   --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
   --ccs-mode--invert: calc(-1 * var(--ccs-mode));

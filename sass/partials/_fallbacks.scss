@@ -1,0 +1,33 @@
+@use '../config';
+
+// fallback values, in case variables are not supported
+// along with explicit mode settings
+[data-ccs-colors] {
+  background-color: config.$fallback-light;
+  color: config.$fallback-dark;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: config.$fallback-dark;
+    color: config.$fallback-light;
+  }
+}
+
+[data-ccs-colors='invert'] {
+  background-color: config.$fallback-dark;
+  color: config.$fallback-light;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: config.$fallback-light;
+    color: config.$fallback-dark;
+  }
+}
+
+[data-ccs-colors='light'] {
+  background-color: config.$fallback-light;
+  color: config.$fallback-dark;
+}
+
+[data-ccs-colors='dark'] {
+  background-color: config.$fallback-dark;
+  color: config.$fallback-light;
+}

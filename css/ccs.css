@@ -19,7 +19,6 @@
 }
 
 [data-ccs-colors=invert] {
-  --ccs-mode: calc(-1 * var(--ccs-mode--cascade, 1));
   background-color: #0d0c0d;
   color: #f3f2f2;
 }
@@ -31,13 +30,11 @@
 }
 
 [data-ccs-colors=light] {
-  --ccs-mode--html: 1;
   background-color: #f3f2f2;
   color: #0d0c0d;
 }
 
 [data-ccs-colors=dark] {
-  --ccs-mode--html: -1;
   background-color: #0d0c0d;
   color: #f3f2f2;
 }
@@ -58,7 +55,7 @@
   --ccs-s--fg-contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
   --ccs-s--bg-contrast: calc(var(--ccs-s--fg-contrast) - var(--ccs-fade-background));
   --ccs-s--neutral: var(--ccs-s-neutral--theme, var(--ccs-s-neutral--config, var(--ccs-s--bg-contrast)));
-  --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
+  --ccs-mode--cascade: var(--ccs-mode--html, var(--ccs-mode--user, var(--ccs-mode--os, 1)));
   --ccs-mode: var(--ccs-mode--cascade, 1);
   --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
   --ccs-mode--invert: calc(-1 * var(--ccs-mode));
@@ -112,6 +109,18 @@
   );
   background-color: var(--ccs-background, var(--ccs-neutral--bg-full));
   color: var(--ccs-color, var(--ccs-neutral--fg-full));
+}
+
+[data-ccs-colors=invert] {
+  --ccs-mode: calc(-1 * var(--ccs-mode--cascade, 1));
+}
+
+[data-ccs-colors=light] {
+  --ccs-mode--html: 1;
+}
+
+[data-ccs-colors=dark] {
+  --ccs-mode--html: -1;
 }
 
 [data-ccs-theme=complement] {
