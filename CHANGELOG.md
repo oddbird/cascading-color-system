@@ -11,7 +11,7 @@
 
 ## 0.1.0-beta.9 - 2019/11/29
 
-- NEW: `--ccs-mode--zero` and `--ccs-invert-zero`
+- NEW: `--ccs-mode--zero` and `--ccs-invert--zero`
   provide mode values of `0` (dark) or `1` (light),
   rather than `-1` (dark) and `1` (light)
 - NEW: `if-mode($light, $dark)` function returns a CSS `calc()` toggle

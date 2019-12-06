@@ -538,10 +538,10 @@ category: legacy browsers
   --ccs-prime--config: 195;
   --ccs-accent--config: 330;
   --ccs-prime--theme: calc(
-    var(--ccs-mode--zero) * var(--ccs-prime--config) + var(--ccs-invert-zero) * var(--ccs-accent--config)
+    var(--ccs-mode--zero) * var(--ccs-prime--config) + var(--ccs-invert--zero) * var(--ccs-accent--config)
   );
   --ccs-accent--theme: calc(
-    var(--ccs-mode--zero) * var(--ccs-accent--config) + var(--ccs-invert-zero) * var(--ccs-prime--config)
+    var(--ccs-mode--zero) * var(--ccs-accent--config) + var(--ccs-invert--zero) * var(--ccs-prime--config)
   );
   --ccs-custom-hue: none;
 }
