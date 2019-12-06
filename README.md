@@ -148,7 +148,7 @@ to generate a larger palette:
 - `--ccs-mode`:
   the calculated light (`1`) or dark (`-1`) mode
   (user, theme, html, or system preference)
-- `--ccs-mode--invert` the opposite of CCS-mode
+- `--ccs-invert` the opposite of CCS-mode
 
 You can pass explicit light/dark mode overrides in html
 by including a value with the attribute:

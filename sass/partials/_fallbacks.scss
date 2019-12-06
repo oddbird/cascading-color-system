@@ -1,32 +1,28 @@
 @use '../config';
 
-// fallback values, in case variables are not supported
-// along with explicit mode settings
-[data-ccs-colors] {
-  background-color: config.$fallback-light;
-  color: config.$fallback-dark;
+/// # Fallback Colors & Modes
+/// fallback values, in case variables are not supported.
+/// Since variables have better support than `prefers-color-scheme`,
+/// there is no need for a media-query in the fallback modes.
+/// @group fallbacks
 
-  @media (prefers-color-scheme: dark) {
-    background-color: config.$fallback-dark;
-    color: config.$fallback-light;
-  }
-}
-
-[data-ccs-colors='invert'] {
-  background-color: config.$fallback-dark;
-  color: config.$fallback-light;
-
-  @media (prefers-color-scheme: dark) {
-    background-color: config.$fallback-light;
-    color: config.$fallback-dark;
-  }
-}
-
+/// The default is a "light" background theme,
+/// which can also be called explicitly.
+/// @name light modes
+/// @group fallbacks
+[data-ccs-colors],
 [data-ccs-colors='light'] {
   background-color: config.$fallback-light;
   color: config.$fallback-dark;
 }
 
+/// "Dark" background and "invert" modes
+/// reverse the default colors.
+/// Since dynamic inversion would increase specificity,
+/// the fallback for "invert" has to be static.
+/// @name dark modes
+/// @group fallbacks
+[data-ccs-colors='invert'],
 [data-ccs-colors='dark'] {
   background-color: config.$fallback-dark;
   color: config.$fallback-light;

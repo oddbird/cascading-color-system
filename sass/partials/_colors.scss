@@ -13,7 +13,7 @@
   // initial lightness values
   --ccs-l--user-percent: calc(var(--ccs-l--user) * 1%);
   --ccs-l: var(--ccs-l--user-percent, var(--ccs-l--theme, var(--ccs-lightness--config, 50%)));
-  --ccs-l--fg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-mode--invert));
+  --ccs-l--fg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-invert));
   --ccs-l--bg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-mode));
 
   // initial saturation values
@@ -24,16 +24,9 @@
   --ccs-s--bg-contrast: calc(var(--ccs-s--fg-contrast) - var(--ccs-fade-background));
   --ccs-s--neutral: var(--ccs-s-neutral--theme, var(--ccs-s-neutral--config, var(--ccs-s--bg-contrast)));
 
-  // final mode calculations
-  --ccs-mode--cascade: var(--ccs-mode--html, var(--ccs-mode--user, var(--ccs-mode--os, 1)));
-  --ccs-mode: var(--ccs-mode--cascade, 1);
-  --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
-  --ccs-mode--invert: calc(-1 * var(--ccs-mode));
-  --ccs-mode--invert-zero: calc((var(--ccs-mode--invert) + 1) * 0.5);
-
   // full contrast colors, foreground and background
   --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
-  --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-mode--invert)));
+  --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-invert)));
 
   @each $color in ('prime', 'accent', 'neutral') {
     $s: if($color == 'neutral', '--neutral', null);

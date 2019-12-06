@@ -1,8 +1,17 @@
 # Changelog
 
+## 0.1.0-beta.10 - 2019/12/5
+
+- BUGFIX: Source & cascade order was causing HTML modes to fail
+- BREAKING: Rename `--ccs-mode--invert` to `--ccs-invert`,
+  and `--ccs-mode--invert-zero` to `--ccs-invert--zero`
+- BREAKING: Remove `prefers-color-scheme` media-query from fallback colors,
+  since more browsers support variables than color-scheme queries
+- DOCS: Added documentation of fallback and mode settings
+
 ## 0.1.0-beta.9 - 2019/11/29
 
-- NEW: `--ccs-mode--zero` and `--ccs-mode--invert-zero`
+- NEW: `--ccs-mode--zero` and `--ccs-invert-zero`
   provide mode values of `0` (dark) or `1` (light),
   rather than `-1` (dark) and `1` (light)
 - NEW: `if-mode($light, $dark)` function returns a CSS `calc()` toggle
