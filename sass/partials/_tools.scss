@@ -10,7 +10,7 @@
 ///   The value to use for dark mode
 /// @return {calc()} -
 ///   A CSS `calc()` function that will toggle the proper values
-///   based on the value of `--ccs-mode--zero` and `--ccs-mode--invert-zero`
+///   based on the value of `--ccs-mode--zero` and `--ccs-invert--zero`
 /// @example scss -
 ///   [data-ccs-theme='oddbird'] {
 ///     --ccs-prime--config: 195;
@@ -31,6 +31,6 @@
   $dark
 ) {
   @return calc(
-    var(--ccs-mode--zero) * #{$light} + var(--ccs-mode--invert-zero) * #{$dark}
+    var(--ccs-mode--zero) * #{$light} + var(--ccs-invert--zero) * #{$dark}
   );
 }

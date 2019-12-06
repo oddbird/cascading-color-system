@@ -221,45 +221,16 @@ category: legacy browsers
   --ccs-fade-background--config: 10%;
   --ccs-s-neutral--config: 5%;
   --ccs-fade: 0.9;
-  --ccs-mode--os: 1;
-}
-@media (prefers-color-scheme: dark) {
-  [data-ccs=root] {
-    --ccs-mode--os: -1;
-  }
 }
 
-[data-ccs-colors] {
-  background-color: #f3f2f2;
-  color: #0d0c0d;
-}
-@media (prefers-color-scheme: dark) {
-  [data-ccs-colors] {
-    background-color: #0d0c0d;
-    color: #f3f2f2;
-  }
-}
-
-[data-ccs-colors=invert] {
-  --ccs-mode: calc(-1 * var(--ccs-mode--cascade, 1));
-  background-color: #0d0c0d;
-  color: #f3f2f2;
-}
-@media (prefers-color-scheme: dark) {
-  [data-ccs-colors=invert] {
-    background-color: #f3f2f2;
-    color: #0d0c0d;
-  }
-}
-
+[data-ccs-colors],
 [data-ccs-colors=light] {
-  --ccs-mode--html: 1;
   background-color: #f3f2f2;
   color: #0d0c0d;
 }
 
+[data-ccs-colors=invert],
 [data-ccs-colors=dark] {
-  --ccs-mode--html: -1;
   background-color: #0d0c0d;
   color: #f3f2f2;
 }
@@ -272,7 +243,7 @@ category: legacy browsers
   --ccs-contrast: var(--ccs-contrast--user-percent, var(--ccs-contrast--theme, var(--ccs-contrast-config, 45%)));
   --ccs-l--user-percent: calc(var(--ccs-l--user) * 1%);
   --ccs-l: var(--ccs-l--user-percent, var(--ccs-l--theme, var(--ccs-lightness--config, 50%)));
-  --ccs-l--fg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-mode--invert));
+  --ccs-l--fg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-invert));
   --ccs-l--bg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-mode));
   --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
   --ccs-s--user-percent: calc(var(--ccs-s--user) * 1%);
@@ -280,13 +251,8 @@ category: legacy browsers
   --ccs-s--fg-contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
   --ccs-s--bg-contrast: calc(var(--ccs-s--fg-contrast) - var(--ccs-fade-background));
   --ccs-s--neutral: var(--ccs-s-neutral--theme, var(--ccs-s-neutral--config, var(--ccs-s--bg-contrast)));
-  --ccs-mode--cascade: var(--ccs-mode--user, var(--ccs-mode--html, var(--ccs-mode--os, 1)));
-  --ccs-mode: var(--ccs-mode--cascade, 1);
-  --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
-  --ccs-mode--invert: calc(-1 * var(--ccs-mode));
-  --ccs-mode--invert-zero: calc((var(--ccs-mode--invert) + 1) * 0.5);
   --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
-  --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-mode--invert)));
+  --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-invert)));
   --ccs-prime: hsl(
     var(--ccs-h--prime),
     var(--ccs-s),
@@ -388,6 +354,35 @@ category: legacy browsers
   );
   background-color: var(--ccs-background, var(--ccs-neutral--bg-full));
   color: var(--ccs-color, var(--ccs-neutral--fg-full));
+}
+
+[data-ccs=root] {
+  --ccs-mode--os: 1;
+}
+@media (prefers-color-scheme: dark) {
+  [data-ccs=root] {
+    --ccs-mode--os: -1;
+  }
+}
+
+[data-ccs-colors] {
+  --ccs-mode--cascade: var(--ccs-mode--html, var(--ccs-mode--user, var(--ccs-mode--os, 1)));
+  --ccs-mode: var(--ccs-mode--cascade, 1);
+  --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
+  --ccs-invert: calc(-1 * var(--ccs-mode));
+  --ccs-invert--zero: calc((var(--ccs-invert) + 1) * 0.5);
+}
+
+[data-ccs-colors=light] {
+  --ccs-mode--html: 1;
+}
+
+[data-ccs-colors=dark] {
+  --ccs-mode--html: -1;
+}
+
+[data-ccs-colors=invert] {
+  --ccs-mode: calc(-1 * var(--ccs-mode--cascade, 1));
 }
 
 [data-ccs-theme=complement] {
@@ -543,10 +538,10 @@ category: legacy browsers
   --ccs-prime--config: 195;
   --ccs-accent--config: 330;
   --ccs-prime--theme: calc(
-    var(--ccs-mode--zero) * var(--ccs-prime--config) + var(--ccs-mode--invert-zero) * var(--ccs-accent--config)
+    var(--ccs-mode--zero) * var(--ccs-prime--config) + var(--ccs-invert--zero) * var(--ccs-accent--config)
   );
   --ccs-accent--theme: calc(
-    var(--ccs-mode--zero) * var(--ccs-accent--config) + var(--ccs-mode--invert-zero) * var(--ccs-prime--config)
+    var(--ccs-mode--zero) * var(--ccs-accent--config) + var(--ccs-invert--zero) * var(--ccs-prime--config)
   );
   --ccs-custom-hue: none;
 }
@@ -737,6 +732,21 @@ select {
   background-size: 100% 50%, 100% 100%;
   background-repeat: no-repeat;
   height: 3em;
+}
+
+.modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.25em;
+  list-style: none;
+  padding: 0;
+}
+.modes li {
+  align-items: center;
+  border: thin solid var(--ccs-neutral);
+  display: grid;
+  justify-items: center;
+  padding: 1em 0.25em;
 }
 
 html {

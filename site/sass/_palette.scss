@@ -36,3 +36,23 @@
   background-repeat: no-repeat;
   height: 3em;
 }
+
+
+// modes
+// -----
+
+.modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.25em;
+  list-style: none;
+  padding: 0;
+
+  li {
+    align-items: center;
+    border: thin solid var(--ccs-neutral);
+    display: grid;
+    justify-items: center;
+    padding: 1em 0.25em;
+  }
+}

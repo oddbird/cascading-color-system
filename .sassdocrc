@@ -10,6 +10,8 @@ groups:
   Getting Started:
     import: Import CSS or Sass
     config: Global Settings
+    fallbacks: Fallback Colors & Modes
+    modes: Dynamic Modes
   'Sass (optional)':
     palettes: Color Palettes
     tools: Additional Tools

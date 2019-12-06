@@ -4,8 +4,9 @@
 
 // setup
 @forward 'root';
-@forward 'modes';
+@forward 'fallbacks';
 @forward 'colors';
+@forward 'modes';
 @forward 'themes';
 
 // build

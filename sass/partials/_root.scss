@@ -6,12 +6,6 @@
 /// with custom properties on the `html` element.
 /// You can do that manually,
 /// or by setting the Sass configuration variables.
-///
-/// We also check the user's color-scheme preference,
-/// to set `--ccs-mode--os`,
-/// and apply the light/dark fallback values
-/// for browsers without variable support.
-///
 /// @name CSS Configuration
 /// @group config
 [data-ccs='root'] {
@@ -50,12 +44,5 @@
 
   @if (config.$fades) {
     --ccs-fade: #{if(type-of(config.$fades) == 'number', config.$fades, 1)};
-  }
-
-  // mode
-  --ccs-mode--os: 1;
-
-  @media (prefers-color-scheme: dark) {
-    --ccs-mode--os: -1;
   }
 }

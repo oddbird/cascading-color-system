@@ -1,36 +1,65 @@
-@use '../config';
+/// # Dynamic Modes
+/// Dynamic modes allow us to manage
+/// light and dark color schemes
+/// by toggling a single custom property.
+/// Modes inputs "cascade" such that
+/// HTML modes (set here) take precedence,
+/// followed by the user mode (which can be set in Javascript),
+/// and finally the operating-system or browser
+/// color-scheme preferences.
+/// @group modes
 
-// fallback values, in case variables are not supported
-// along with explicit mode settings
+
+/// On the CCS root,
+/// we check the user's color-scheme preference,
+/// to set `--ccs-mode--os`,
+/// which provides a dynamic default value.
+/// @name OS modes
+/// @group modes
+[data-ccs='root'] {
+  --ccs-mode--os: 1;
+
+  @media (prefers-color-scheme: dark) {
+    --ccs-mode--os: -1;
+  }
+}
+
+/// Each instance of the color system
+/// will re-calculate the "cascade" of mode origins
+/// to determine the final `--ccs-mode`
+/// (`1` for a "light" background and `-1` for a "dark" background),
+/// along with a `--ccs-invert` which reverses the numbers.
+/// Both have `*--zero` versions that change the numbering
+/// (`0` for a "dark" background)
+/// for use in on/off toggles.
+/// @name cascading modes
+/// @group modes
 [data-ccs-colors] {
-  background-color: config.$fallback-light;
-  color: config.$fallback-dark;
-
-  @media (prefers-color-scheme: dark) {
-    background-color: config.$fallback-dark;
-    color: config.$fallback-light;
-  }
+  --ccs-mode--cascade: var(--ccs-mode--html, var(--ccs-mode--user, var(--ccs-mode--os, 1)));
+  --ccs-mode: var(--ccs-mode--cascade, 1);
+  --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
+  --ccs-invert: calc(-1 * var(--ccs-mode));
+  --ccs-invert--zero: calc((var(--ccs-invert) + 1) * 0.5);
 }
 
-[data-ccs-colors='invert'] {
-  --ccs-mode: calc(-1 * var(--ccs-mode--cascade, 1));
-  background-color: config.$fallback-dark;
-  color: config.$fallback-light;
-
-  @media (prefers-color-scheme: dark) {
-    background-color: config.$fallback-light;
-    color: config.$fallback-dark;
-  }
-}
-
+/// Set "light" mode explicitly in HTML.
+/// @name light mode
+/// @group modes
 [data-ccs-colors='light'] {
   --ccs-mode--html: 1;
-  background-color: config.$fallback-light;
-  color: config.$fallback-dark;
 }
 
+/// Set "dark" mode explicitly in HTML.
+/// @name dark mode
+/// @group modes
 [data-ccs-colors='dark'] {
   --ccs-mode--html: -1;
-  background-color: config.$fallback-dark;
-  color: config.$fallback-light;
+}
+
+/// Dynamic inversion will flip light/dark mode
+/// in a nested context (one level deep).
+/// @name invert
+/// @group modes
+[data-ccs-colors='invert'] {
+  --ccs-mode: calc(-1 * var(--ccs-mode--cascade, 1));
 }
