@@ -1,15 +1,60 @@
+/// # Themes
+/// We provide several built-in themes for common use-cases.
+/// Create your own themes using the `data-ccs-theme` attribute
+/// @example scss -
+///   [data-ccs-theme='oddbird'] {
+///     --ccs-prime--theme: 195;
+///     --ccs-accent--theme: 330;
+///     --ccs-special--theme: 24;
+///     --ccs-custom-hue: none;
+///   }
+/// @group themes
+
+// Complement
+// ----------
+/// Defines both `--ccs-theme--1` and `--ccs-theme--2`
+/// as the complement of the `prime` hue.
+/// Assign these to your generated colors as desired.
+/// @example css
+///   [data-ccs-theme] {
+///     --ccs-accent1--theme: var(--ccs-theme--1);
+///     --ccs-accent2--theme: var(--ccs-theme--2);
+///   }
+/// @group themes
 [data-ccs-theme='complement'] {
-  --ccs-accent--theme: calc(var(--ccs-h--prime) + 180);
+  --ccs-theme--1: calc(var(--ccs-h--prime) + 180);
+  --ccs-theme--2: var(--ccs-theme--1);
 }
 
+// Triad
+// -----
+/// Defines `--ccs-theme--1` and `--ccs-theme--2`
+/// as triadic offsets from the `prime` hue:
+/// adding or subtracting `120` degrees.
+/// Assign these to your generated colors as desired.
+/// @group themes
 [data-ccs-theme='triad'] {
-  --ccs-accent--theme: calc(var(--ccs-h--prime) + (120 * var(--ccs-mode)));
+  --ccs-theme--1: calc(var(--ccs-h--prime) + 120);
+  --ccs-theme--2: calc(var(--ccs-h--prime) - 120);
 }
 
+// Adjacent
+// --------
+/// Defines `--ccs-theme--1` and `--ccs-theme--2`
+/// as adjacent offsets from the `prime` hue:
+/// adding or subtracting `60` degrees.
+/// Assign these to your generated colors as desired.
+/// @group themes
 [data-ccs-theme='adjacent'] {
-  --ccs-accent--theme: calc(var(--ccs-h--prime) + (60 * var(--ccs-mode)));
+  --ccs-theme--1: calc(var(--ccs-h--prime) + 60);
+  --ccs-theme--2: calc(var(--ccs-h--prime) - 60);
 }
 
+// Contrast
+// --------
+/// Overrides all other contrast settings
+/// with a contrast of `200%`.
+/// @group themes
 [data-ccs-theme="contrast"] {
   --ccs-contrast: 200%;
   --ccs-custom-contrast: none;

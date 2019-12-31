@@ -1,4 +1,10 @@
 @use '../../_index.scss' with (
+  $hues: (
+    'prime',
+    'accent',
+    'special',
+    'neutral',
+  ),
   $fade-background: 10%,
   $steps: 6,
   $fades: 0.9,

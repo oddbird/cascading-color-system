@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-beta.11 - UNRELEASED
+- BREAKING: Replaced individual `$*-hue` settings with a combined `$hues` map
+  of (`string`) color name keys with (`number` | `null`) hue values.
+  This allows the tool to generate any number of colors.
+  The default `('prime', 'accent', 'neutral')` shorthand
+  creates identical default settings to previous releases.
+  Acceptable shorthands:
+  - a single `number` | `null` value will be assigned a key: `prime`
+  - a `string` | `list` (of strings) will generate keys with `null` values
+- BREAKING: Added a `$colors` list argument (first) in both the
+  `colors()` and `gradient()` mixins --
+  set to the list of `$hues` map-keys by default
+- BREAKING: Since `accent` colors are no longer hard-coded,
+  the built-in themes have replaced `--ccs-accent--theme` settings
+  with more generic `--ccs-theme--1` and `--ccs-theme--2` --
+  which can be assigned to other color names as needed.
+
 ## 0.1.0-beta.10 - 2019/12/5
 
 - BUGFIX: Source & cascade order was causing HTML modes to fail

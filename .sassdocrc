@@ -12,6 +12,7 @@ groups:
     config: Global Settings
     fallbacks: Fallback Colors & Modes
     modes: Dynamic Modes
+    themes: Creating Themes
   'Sass (optional)':
     palettes: Color Palettes
     tools: Additional Tools
