@@ -1,6 +1,7 @@
 # Changelog
 
-## 0.1.0-beta.11 - UNRELEASED
+## 0.1.0-beta.11 - 2019/12/31
+
 - BREAKING: Replaced individual `$*-hue` settings with a combined `$hues` map
   of (`string`) color name keys with (`number` | `null`) hue values.
   This allows the tool to generate any number of colors.

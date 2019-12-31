@@ -1,6 +1,6 @@
 {
   "name": "cascading-color-systems",
-  "version": "0.1.0-beta.10",
+  "version": "0.1.0-beta.11",
   "description": "generate dynamic color palettes with custom properties",
   "main": "dist.js",
   "module": "index.js",

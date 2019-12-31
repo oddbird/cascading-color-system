@@ -124,7 +124,7 @@ $neutral-saturation: null !default;
 /// for browsers that don't support
 /// CSS custom properties.
 /// The default value is based on
-/// `$prime-hue`, `$saturation`, `$lightness`,
+/// `map-get($hues, 'prime')`, `$saturation`, `$lightness`,
 /// and maximum `$contrast`.
 ///
 /// @type color
@@ -141,7 +141,7 @@ $fallback-dark: hsl(
 /// for browsers that don't support
 /// CSS custom properties.
 /// The default value is based on
-/// `$prime-hue`, `$saturation`, `$lightness`,
+/// `map-get($hues, 'prime')`, `$saturation`, `$lightness`,
 /// and maximum `$contrast`.
 ///
 /// @type color
