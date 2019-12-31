@@ -7,6 +7,17 @@
   --callout: var(--ccs-neutral--bg#{ccs.$steps - 2}-fade);
 }
 
+[data-ccs-theme] {
+  --ccs-accent--theme: #{ccs.if-mode(
+    $light: var(--ccs-theme--1),
+    $dark: var(--ccs-theme--2))
+  };
+  --ccs-special--theme: #{ccs.if-mode(
+    $light: var(--ccs-theme--2),
+    $dark: var(--ccs-theme--1))
+  };
+}
+
 [data-ccs-theme='oddbird'] {
   --ccs-prime--config: 195;
   --ccs-accent--config: 330;
@@ -18,6 +29,7 @@
     $light: var(--ccs-accent--config),
     $dark: var(--ccs-prime--config)
   )};
+  --ccs-special--theme: 24;
   --ccs-custom-hue: none;
 }
 

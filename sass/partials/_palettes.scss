@@ -1,5 +1,5 @@
 @use '../config';
-
+@use 'sass:string';
 
 // Colors
 // ------
@@ -8,6 +8,8 @@
 /// dynamically based on the inherited hue, saturation, lightness,
 /// mode (light/dark), and accent theme.
 ///
+/// @param {list | string} $colors [map-keys($hues)] -
+///   The color names to generate
 /// @param {integer} $steps [$steps or 4] -
 ///   The number (each) of tints and shades to generate
 /// @param {boolean | number} $fades [$fades] -
@@ -27,6 +29,7 @@
 ///   and accent theme.
 /// @group palettes
 @mixin colors(
+  $colors: map-keys(config.$hues),
   $steps: config.$steps or 4,
   $fades: config.$fades,
   $gradients: config.$gradients,
@@ -47,9 +50,9 @@
     --ccs-s--#{$bg}: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * #{$i});
 
     // color steps
-    @each $color in ('prime', 'accent', 'neutral') {
+    @each $color in $colors {
       $h: var(--ccs-h--#{$color});
-      $s: if($color == 'neutral', 'neutral', null);
+      $s: if(string.index($color, 'neutral'), 'neutral', null);
       $l-fg: var(--ccs-l--#{$fg});
       $l-bg: var(--ccs-l--#{$bg});
       $s-fg: var(--ccs-s--#{$s or $fg});
@@ -69,7 +72,7 @@
   }
 
   @if ($gradients) {
-    @include gradient($steps, $fades);
+    @include gradient($colors, $steps, $fades);
   }
 }
 
@@ -78,6 +81,8 @@
 /// Generate striped CSS gradients for each palette.
 /// These are useful for visualizing the available generated colors.
 ///
+/// @param {list | string} $colors [map-keys($hues)] -
+///   The color names to generate
 /// @param {integer} $steps [$steps or 4] -
 ///   The number (each) of tints and shades to generate
 /// @param {boolean | number} $fades [$fades] -
@@ -88,10 +93,10 @@
 ///   adding transparency to the faded palette.
 /// @group palettes
 @mixin gradient(
+  $colors: map-keys(config.$hues),
   $steps: config.$steps or 4,
   $fades: config.$fades,
 ) {
-  $colors: ('prime', 'accent', 'neutral');
   $gradients: ();
 
   @for $i from (0 - $steps) through $steps {

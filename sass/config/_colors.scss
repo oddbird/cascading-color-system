@@ -15,32 +15,45 @@
 ///
 /// @group config
 
-// Prime Hue
-// ---------
-/// The color-wheel hue that will act as our default
-/// for generating all color palettes.
-/// Hue values should be set without `deg` units.
+// Hues
+// ----
+/// The colors to generate, and optional default hues for each color.
+/// To set both color-names and hues, provide an explicit map.
+/// - If you provide a songle hue value,
+///   we'll assign it to the required `prime` key.
+/// - If you provide a list of color names, we
+///   we'll assign them all default `null` hue values.
 ///
-/// - Sass: `$prime-hue: 330;`
-/// - CSS: `--ccs-prime--config: 330;`
-///
-/// @type number | null
+/// Two color names are given special treatment:
+/// - `prime` is required, a defaults to `330` if undefined
+/// - `neutral` colors (including `neutral` anywhere in a color-name)
+///   will use the `$neutral-saturation` or most-desaturated value
+/// @type map | list | string | number | null
 /// @group config
-$prime-hue: null !default;
+$hues: (
+  'prime',
+  'accent',
+  'neutral',
+) !default;
 
-// Accent Hue
-// ----------
-/// The color-wheel hue that will act as our default
-/// for generating accent colors.
-/// Leave unset, or use Sass `null` value to generate all palettes from the prime hue.
-/// Hue values should be set without `deg` units.
-///
-/// - Sass: `$accent-hue: 120;`
-/// - CSS: `--ccs-accent--config: 120;`
-///
-/// @type number | null
-/// @group config
-$accent-hue: null !default;
+// Convert $hues to a map, or error on invalid hues
+@if (type-of($hues) != 'map') {
+  @if (type-of($hues) == 'list') or (type-of($hues) == 'string') {
+    $hues-list: $hues;
+    $hues: ();
+
+    @each $color in $hues-list {
+      $hues: map-merge($hues, ($color: null));
+    }
+  } @else if (type-of($hues) == 'number') or (not $hues) {
+    $hues: ('prime': $hues);
+  }
+}
+
+// Require a prime hue
+@if not (map-has-key($hues, 'prime')) {
+  @error 'Please provide a `prime` hue';
+}
 
 // Lightness
 // ---------
@@ -96,17 +109,6 @@ $contrast: null !default;
 /// @group config
 $fade-background: null !default;
 
-// Neutral Hue
-// -----------
-/// By default, neutral colors are created from the prime hue.
-///
-/// - Sass: `$neutral-hue: 330;`
-/// - CSS: `--ccs-neutral--config: 330;`
-///
-/// @type percentage | null
-/// @group config
-$neutral-hue: null !default;
-
 // Neutral Saturation
 // ------------------
 /// By default, neutral saturation is set to
@@ -127,13 +129,13 @@ $neutral-saturation: null !default;
 /// for browsers that don't support
 /// CSS custom properties.
 /// The default value is based on
-/// `$prime-hue`, `$saturation`, `$lightness`,
+/// `map-get($hues, 'prime')`, `$saturation`, `$lightness`,
 /// and maximum `$contrast`.
 ///
 /// @type color
 /// @group config
 $fallback-dark: hsl(
-  $prime-hue or 330,
+  map-get($hues, 'prime') or 330,
   ($saturation or 50%) - ($contrast or 45%),
   ($lightness or 50%) - ($contrast or 45%)
 ) !default;
@@ -144,13 +146,13 @@ $fallback-dark: hsl(
 /// for browsers that don't support
 /// CSS custom properties.
 /// The default value is based on
-/// `$prime-hue`, `$saturation`, `$lightness`,
+/// `map-get($hues, 'prime')`, `$saturation`, `$lightness`,
 /// and maximum `$contrast`.
 ///
 /// @type color
 /// @group config
 $fallback-light: hsl(
-  $prime-hue or 330,
+  map-get($hues, 'prime') or 330,
   ($saturation or 50%) - ($contrast or 45%),
   ($lightness or 50%) + ($contrast or 45%)
 ) !default;

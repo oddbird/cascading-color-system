@@ -11,6 +11,17 @@
 /// @return {calc()} -
 ///   A CSS `calc()` function that will toggle the proper values
 ///   based on the value of `--ccs-mode--zero` and `--ccs-invert--zero`
+/// @example scss - assign generates theme values that toggle
+///   [data-ccs-theme] {
+///     --ccs-accent--theme: #{ccs.if-mode(
+///       $light: var(--ccs-theme--1),
+///       $dark: var(--ccs-theme--2)
+///     )};
+///     --ccs-special--theme: #{ccs.if-mode(
+///       $light: var(--ccs-theme--2),
+///       $dark: var(--ccs-theme--1)
+///     )};
+///   }
 /// @example scss -
 ///   [data-ccs-theme='oddbird'] {
 ///     --ccs-prime--config: 195;

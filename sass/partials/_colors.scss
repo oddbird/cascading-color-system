@@ -1,11 +1,7 @@
 @use '../config';
+@use 'sass:string';
 
 [data-ccs-colors] {
-  // optionally set `--ccs-prime--user-*` values with JS
-  --ccs-h--prime: var(--ccs-prime--user, var(--ccs-prime--theme, var(--ccs-prime--config, 330)));
-  --ccs-h--accent: var(--ccs-accent--theme, var(--ccs-accent--config, var(--ccs-h--prime)));
-  --ccs-h--neutral: var(--ccs-neutral--theme, var(--ccs-neutral--config, var(--ccs-h--prime)));
-
   // offset lightness and saturation based on contrast
   --ccs-contrast--user-percent: calc(var(--ccs-contrast--user) * 1%);
   --ccs-contrast: var(--ccs-contrast--user-percent, var(--ccs-contrast--theme, var(--ccs-contrast-config, 45%)));
@@ -28,8 +24,12 @@
   --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
   --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-invert)));
 
-  @each $color in ('prime', 'accent', 'neutral') {
-    $s: if($color == 'neutral', '--neutral', null);
+  @each $color, $hue in config.$hues {
+    $default: if($color == 'prime', $hue or 330, var(--ccs-h--prime));
+    $s: if(string.index($color, 'neutral'), '--neutral', null);
+
+    --ccs-h--#{$color}: var(--ccs-#{$color}--user, var(--ccs-#{$color}--theme, var(--ccs-#{$color}--config, #{$default})));
+
     --ccs-#{$color}: hsl(
       var(--ccs-h--#{$color}),
       var(--ccs-s#{$s or ''}),
@@ -70,6 +70,6 @@
   }
 
   // default variable colors
-  background-color: var(--ccs-background, var(--ccs-neutral--bg-full));
-  color: var(--ccs-color, var(--ccs-neutral--fg-full));
+  background-color: var(--ccs-background, var(--ccs--bg-full));
+  color: var(--ccs-color, var(--ccs--fg-full));
 }

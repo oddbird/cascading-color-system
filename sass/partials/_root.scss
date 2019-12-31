@@ -9,13 +9,10 @@
 /// @name CSS Configuration
 /// @group config
 [data-ccs='root'] {
-  // config
-  @if (config.$prime-hue) {
-    --ccs-prime--config: #{config.$prime-hue or 330};
-  }
-
-  @if (config.$accent-hue) {
-    --ccs-accent--config: #{config.$accent-hue or null};
+  @each $name, $hue in config.$hues {
+    @if ($hue) {
+      --ccs-#{$name}--config: #{$hue};
+    }
   }
 
   @if (config.$lightness) {
@@ -32,10 +29,6 @@
 
   @if (config.$fade-background) {
     --ccs-fade-background--config: #{config.$fade-background or null};
-  }
-
-  @if (config.$neutral-hue) {
-    --ccs-neutral--config: #{config.$neutral-hue or null};
   }
 
   @if (config.$neutral-saturation) {

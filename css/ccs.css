@@ -11,9 +11,6 @@
 }
 
 [data-ccs-colors] {
-  --ccs-h--prime: var(--ccs-prime--user, var(--ccs-prime--theme, var(--ccs-prime--config, 330)));
-  --ccs-h--accent: var(--ccs-accent--theme, var(--ccs-accent--config, var(--ccs-h--prime)));
-  --ccs-h--neutral: var(--ccs-neutral--theme, var(--ccs-neutral--config, var(--ccs-h--prime)));
   --ccs-contrast--user-percent: calc(var(--ccs-contrast--user) * 1%);
   --ccs-contrast: var(--ccs-contrast--user-percent, var(--ccs-contrast--theme, var(--ccs-contrast-config, 45%)));
   --ccs-l--user-percent: calc(var(--ccs-l--user) * 1%);
@@ -28,6 +25,7 @@
   --ccs-s--neutral: var(--ccs-s-neutral--theme, var(--ccs-s-neutral--config, var(--ccs-s--bg-contrast)));
   --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
   --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-invert)));
+  --ccs-h--prime: var(--ccs-prime--user, var(--ccs-prime--theme, var(--ccs-prime--config, 330)));
   --ccs-prime: hsl(
     var(--ccs-h--prime),
     var(--ccs-s),
@@ -43,6 +41,7 @@
     var(--ccs-s--bg-contrast),
     var(--ccs-l--bg-contrast)
   );
+  --ccs-h--accent: var(--ccs-accent--user, var(--ccs-accent--theme, var(--ccs-accent--config, var(--ccs-h--prime))));
   --ccs-accent: hsl(
     var(--ccs-h--accent),
     var(--ccs-s),
@@ -58,6 +57,7 @@
     var(--ccs-s--bg-contrast),
     var(--ccs-l--bg-contrast)
   );
+  --ccs-h--neutral: var(--ccs-neutral--user, var(--ccs-neutral--theme, var(--ccs-neutral--config, var(--ccs-h--prime))));
   --ccs-neutral: hsl(
     var(--ccs-h--neutral),
     var(--ccs-s--neutral),
@@ -73,8 +73,8 @@
     var(--ccs-s--neutral),
     var(--ccs-l--bg-contrast)
   );
-  background-color: var(--ccs-background, var(--ccs-neutral--bg-full));
-  color: var(--ccs-color, var(--ccs-neutral--fg-full));
+  background-color: var(--ccs-background, var(--ccs--bg-full));
+  color: var(--ccs-color, var(--ccs--fg-full));
 }
 
 [data-ccs=root] {
@@ -107,15 +107,18 @@
 }
 
 [data-ccs-theme=complement] {
-  --ccs-accent--theme: calc(var(--ccs-h--prime) + 180);
+  --ccs-theme--1: calc(var(--ccs-h--prime) + 180);
+  --ccs-theme--2: var(--ccs-theme--1);
 }
 
 [data-ccs-theme=triad] {
-  --ccs-accent--theme: calc(var(--ccs-h--prime) + (120 * var(--ccs-mode)));
+  --ccs-theme--1: calc(var(--ccs-h--prime) + 120);
+  --ccs-theme--2: calc(var(--ccs-h--prime) - 120);
 }
 
 [data-ccs-theme=adjacent] {
-  --ccs-accent--theme: calc(var(--ccs-h--prime) + (60 * var(--ccs-mode)));
+  --ccs-theme--1: calc(var(--ccs-h--prime) + 60);
+  --ccs-theme--2: calc(var(--ccs-h--prime) - 60);
 }
 
 [data-ccs-theme=contrast] {
