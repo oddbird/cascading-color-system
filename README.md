@@ -63,32 +63,15 @@ Import using the new module import syntax:
 Both imports generate
 core configuration options
 as CSS custom properties
-(set by Sass when applicable):
+(set by Sass when applicable) eg:
 
 ```scss
 [data-ccs='root'] {
-  --ccs-prime--config: #{$prime-hue or 330};
-  --ccs-accent--config: #{$accent-hue or null};
-  --ccs-lightness--config: #{$lightness or null};
-  --ccs-saturation--config: #{$saturation or null};
-  --ccs-contrast--config: #{$contrast or null};
-  --ccs-fade-background--config: #{$fade-background};
-}
-```
-
-This also configures a light/dark-mode toggle,
-and fallback values for both modes:
-
-```scss
-// fallback values, in case variables are not supported
-[data-ccs='root'] {
-  background-color: $fallback-light;
-  color: $fallback-dark;
-
-  @media (prefers-color-scheme: dark) {
-    background-color: $fallback-dark;
-    color: $fallback-light;
-  }
+  --ccs-prime--config: 330;
+  --ccs-lightness--config: 50%;
+  --ccs-saturation--config: 50%;
+  --ccs-contrast--config: 50%;
+  --ccs-fade-background--config: 0.9;
 }
 ```
 
@@ -107,35 +90,61 @@ so we've created a
 which can be applied anywhere
 new colors are needed.
 
-This attribute provides your base colors as custom properties:
+We configure the default `color` and `background-color` settings:
 
-- `--ccs-prime`, `--ccs-accent`:
-  Prime and accent hues, with base lightness and saturation
-- `--ccs-neutral`:
-  The neutral hue gets base lightness
-  and full-contrast saturation
-- `--ccs-<prime | accent | neutral >--fg-full` :
-  All three hues get a full-contrast foreground
-- `--ccs-<prime | accent | neutral >--bg-full` :
-  All three hues get a full-contrast background
+```scss
+[data-ccs-colors] {
+  background-color: var(--ccs-background, var(--ccs--bg-full));
+  color: var(--ccs-color, var(--ccs--fg-full));
+}
+```
+
+Along with fallback values for light/dark modes,
+in case CSS custom properties are not supported:
+
+```scss
+[data-ccs-colors],
+[data-ccs-colors='light'] {
+  background-color: $fallback-light;
+  color: $fallback-dark;
+}
+
+[data-ccs-colors='invert'],
+[data-ccs-colors='dark'] {
+  background-color: $fallback-dark;
+  color: $fallback-light;
+}
+```
+
+You can override the default colors and backgrounds
+by defining `--ccs-color` and `--ccs-background`:
+
+```scss
+[data-ccs-colors] {
+  --ccs-background: var(--ccs-neutral--bg-full);
+  --ccs-color: var(--ccs-neutral--fg-full);
+}
+```
+
+This attribute generates all your colors as custom properties:
+
+- `--ccs-prime`, `--ccs-*`:
+  Colors generated from the given `$hues`, `$saturation`, and `$lightness` --
+  along with any `neutral` colors,
+  which will use their own customizable (low) `$saturation`
+- `--ccs-*--fg-full` :
+  All color hues get a full-contrast foreground
+- `--ccs-*--bg-full` :
+  All color hues get a full-contrast background
 - `--ccs--bg-full` white or black, depending on light/dark mode
 - `--ccs--fg-full` white or black, depending on light/dark mode
 
 We also provide the color attributes needed
 to generate a larger palette:
 
-- `--ccs-h--prime`:
-  the calculated primary hue,
-  based on user-settings, theme-settings, and global configuration
-- `--ccs-h--accent`:
-  the calculated accent hue,
-  based on theme-settings, and global configuration
-  (there is currently no direct user input for accent hue)
-- `--ccs-h--neutral`:
-  the calculated neutral hue,
-  based on theme-settings and global configuration;
-  generally either `--ccs-h--prime` (the default)
-  or `--ccs-h--accent`
+- `--ccs-h--*`:
+  the calculated hue for each color,
+  afterresolving user-settings, theme-settings, and global configuration
 - `--ccs-contrast`:
   the calculated contrast range
   based on theme, user, and global settings
@@ -202,14 +211,14 @@ using the `[data-ccs-theme]` attribute:
 ### Sass Configuration
 
 In most cases,
-you'll want to define the `$prime-hue`,
+you'll want to define the `prime` hue,
 and possibly a few other options --
 and then trigger a build from the module itself.
 Here's the code from one of my sites:
 
 ```scss
 @use "../../node_modules/cascading-color-systems/" as ccs with (
-  $prime-hue: 0,
+  $hues: 120, // shorthand for setting the prime hue only
   $saturation: 70%,
   $contrast: 48%,
   $steps: 6,

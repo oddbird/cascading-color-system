@@ -1,4 +1,5 @@
 @use '../config';
+@use 'sass:string';
 
 // Colors
 // ------
@@ -51,7 +52,7 @@
     // color steps
     @each $color in $colors {
       $h: var(--ccs-h--#{$color});
-      $s: if($color == 'neutral', 'neutral', null);
+      $s: if(string.index($color, 'neutral'), 'neutral', null);
       $l-fg: var(--ccs-l--#{$fg});
       $l-bg: var(--ccs-l--#{$bg});
       $s-fg: var(--ccs-s--#{$s or $fg});

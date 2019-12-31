@@ -1,4 +1,5 @@
 @use '../config';
+@use 'sass:string';
 
 [data-ccs-colors] {
   // offset lightness and saturation based on contrast
@@ -25,7 +26,7 @@
 
   @each $color, $hue in config.$hues {
     $default: if($color == 'prime', $hue or 330, var(--ccs-h--prime));
-    $s: if($color == 'neutral', '--neutral', null);
+    $s: if(string.index($color, 'neutral'), '--neutral', null);
 
     --ccs-h--#{$color}: var(--ccs-#{$color}--user, var(--ccs-#{$color}--theme, var(--ccs-#{$color}--config, #{$default})));
 
@@ -69,6 +70,6 @@
   }
 
   // default variable colors
-  background-color: var(--ccs-background, var(--ccs-neutral--bg-full));
-  color: var(--ccs-color, var(--ccs-neutral--fg-full));
+  background-color: var(--ccs-background, var(--ccs--bg-full));
+  color: var(--ccs-color, var(--ccs--fg-full));
 }

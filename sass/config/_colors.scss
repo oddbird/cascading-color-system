@@ -23,6 +23,11 @@
 ///   we'll assign it to the required `prime` key.
 /// - If you provide a list of color names, we
 ///   we'll assign them all default `null` hue values.
+///
+/// Two color names are given special treatment:
+/// - `prime` is required, a defaults to `330` if undefined
+/// - `neutral` colors (including `neutral` anywhere in a color-name)
+///   will use the `$neutral-saturation` or most-desaturated value
 /// @type map | list | string | number | null
 /// @group config
 $hues: (

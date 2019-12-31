@@ -2,6 +2,9 @@
 
 ## 0.1.0-beta.11 - 2019/12/31
 
+This release adds support for arbitrary color names,
+allowing you to define more complex and customized cascading themes.
+
 - BREAKING: Replaced individual `$*-hue` settings with a combined `$hues` map
   of (`string`) color name keys with (`number` | `null`) hue values.
   This allows the tool to generate any number of colors.
@@ -17,6 +20,9 @@
   the built-in themes have replaced `--ccs-accent--theme` settings
   with more generic `--ccs-theme--1` and `--ccs-theme--2` --
   which can be assigned to other color names as needed.
+- NEW: Any color with `neutral` in the name
+  will use the neutral saturation,
+  rather than the default saturation
 
 ## 0.1.0-beta.10 - 2019/12/5
 

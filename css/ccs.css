@@ -73,8 +73,8 @@
     var(--ccs-s--neutral),
     var(--ccs-l--bg-contrast)
   );
-  background-color: var(--ccs-background, var(--ccs-neutral--bg-full));
-  color: var(--ccs-color, var(--ccs-neutral--fg-full));
+  background-color: var(--ccs-background, var(--ccs--bg-full));
+  color: var(--ccs-color, var(--ccs--fg-full));
 }
 
 [data-ccs=root] {

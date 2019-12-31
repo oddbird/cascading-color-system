@@ -386,8 +386,8 @@ category: legacy browsers
     var(--ccs-l--bg-contrast),
     var(--ccs-fade)
   );
-  background-color: var(--ccs-background, var(--ccs-neutral--bg-full));
-  color: var(--ccs-color, var(--ccs-neutral--fg-full));
+  background-color: var(--ccs-background, var(--ccs--bg-full));
+  color: var(--ccs-color, var(--ccs--fg-full));
 }
 
 [data-ccs=root] {
