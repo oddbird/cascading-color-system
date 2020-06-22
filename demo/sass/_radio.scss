@@ -27,7 +27,7 @@
   position: absolute;
 
   &:checked ~ * {
-    --checked: var(--ccs-accent--fg1);
+    --checked: var(--ccs-prime--fg1);
   }
 }
 
