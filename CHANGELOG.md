@@ -1,5 +1,10 @@
 # Changelog
 
+## UNRELEASED
+
+- INTERNAL: Upgrade dev dependencies
+- DOCS: Added documentation to repo
+
 ## 0.1.0-beta.11 - 2019/12/31
 
 This release adds support for arbitrary color names,
