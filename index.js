@@ -2,12 +2,15 @@ export default function () {
   // elements
   const root = document.querySelector('[data-ccs="root"]');
   const themeMenu = document.querySelector('[data-ccs="menu"]');
-  const modeToggle = document.querySelector('[data-ccs-input="mode"]');
+  const invertBtn = document.querySelector('[data-ccs-input="mode"]');
+  const modeLight = document.querySelector('[data-ccs-input="light-mode"]');
+  const modeDark = document.querySelector('[data-ccs-input="dark-mode"]');
+  const modeAuto = document.querySelector('[data-ccs-input="auto-mode"]');
   const unsetBtn = document.querySelector('[data-ccs-input="unset"]');
 
   // elements
   const selectElements = {
-    theme: document.querySelector('[data-ccs-input="theme"]'),
+    theme: document.querySelector('[data-ccs-input~="theme"]'),
     hue: document.querySelector('[data-ccs-input="hue"]'),
     sat: document.querySelector('[data-ccs-input="saturation"]'),
     light: document.querySelector('[data-ccs-input="lightness"]'),
@@ -107,7 +110,7 @@ export default function () {
   // init & events
   document.onload = initMenu();
   document.onload = initMode();
-  modeToggle.addEventListener('click', () => changeMode());
+  invertBtn.addEventListener('click', () => changeMode());
   unsetBtn.addEventListener('click', () => clearColors());
 
   Object.keys(selectElements).forEach(type => {

@@ -1,0 +1,41 @@
+.radio-group {
+  --radius: 0.25em;
+  display: flex;
+  margin: 1em 0;
+}
+
+.radio-option {
+  border-radius: var(--first, 0) var(--last, 0) var(--last, 0) var(--first, 0);
+  display: flex;
+  flex: auto;
+
+  &:first-child {
+    --first: var(--radius);
+  }
+
+  & + & {
+    margin-left: 0.125em;
+  }
+
+  &:last-child {
+    --last: var(--radius);
+  }
+}
+
+[type='radio'] {
+  opacity: 0;
+  position: absolute;
+
+  &:checked ~ * {
+    --checked: var(--ccs-accent--fg1);
+  }
+}
+
+.radio-btn {
+  border: 0.25em solid var(--checked, transparent);
+  border-radius: var(--first, 0) var(--last, 0) var(--last, 0) var(--first, 0);
+  cursor: pointer;
+  flex: auto;
+  padding: 0.5em 1em;
+  text-align: center;
+}

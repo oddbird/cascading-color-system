@@ -24,10 +24,10 @@
     "build-sass": "sass sass/_output.scss css/ccs.css",
     "build-docs": "sassdoc sass/",
     "build-js": "yarn babel index.js --out-file dist.js",
-    "build-site": "sass site/sass/styles.scss site/css/styles.css",
-    "build": "yarn build-sass && yarn build-docs && yarn build-js && yarn build-site",
+    "build-demo": "sass demo/sass/styles.scss demo/css/styles.css",
+    "build": "yarn build-sass && yarn build-docs && yarn build-js && yarn build-demo",
     "commit": "yarn build",
-    "watch": "sass --watch site/sass/:site/css/"
+    "watch": "sass --watch demo/sass/:demo/css/"
   },
   "files": [
     "css/**/*.css",
