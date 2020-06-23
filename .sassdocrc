@@ -27,7 +27,7 @@ herman:
       path: LICENSE.md
   extraLinks:
     - name: 'Demo'
-      url: 'https://cascading-colors.netlify.com/'
+      url: 'https://cascading-colors.netlify.app/'
     - name: 'GitHub Source'
       url: 'https://github.com/oddbird/cascading-color-system'
     - name: 'OddBird'
