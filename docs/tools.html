@@ -427,9 +427,7 @@ based on the value of <code>--ccs-mode--zero</code> and <code>--ccs-invert--zero
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;./&#39; as ccs;
-
-[data-ccs-theme] {
+      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-theme] {
   --ccs-accent--theme: #{ccs.if-mode(
     $light: var(--ccs-theme--1),
     $dark: var(--ccs-theme--2)
@@ -701,9 +699,7 @@ based on the value of <code>--ccs-mode--zero</code> and <code>--ccs-invert--zero
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;./&#39; as ccs;
-
-[data-ccs-theme=&#39;oddbird&#39;] {
+      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-theme=&#39;oddbird&#39;] {
   --ccs-prime--config: 195;
   --ccs-accent--config: 330;
   --ccs-prime--theme: #{ccs.if-mode(

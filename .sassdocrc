@@ -34,3 +34,5 @@ herman:
       url: 'http://oddbird.net/'
   sass:
     implementation: sass
+    use:
+      - 'sass/ccs'
