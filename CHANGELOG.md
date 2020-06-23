@@ -3,6 +3,8 @@
 ## UNRELEASED
 
 - INTERNAL: Upgrade dev dependencies
+- INTERNAL: Split `modes` and `palette` into their own `tools` module
+  that can be imported as plain Sass without any CSS output
 - DOCS: Added documentation to repo
 
 ## 0.1.0-beta.11 - 2019/12/31
