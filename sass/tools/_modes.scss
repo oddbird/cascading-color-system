@@ -1,3 +1,6 @@
+/// # If-Mode
+/// @group tools-modes
+
 // If-Mode
 // -------
 /// Toggles between two number values
@@ -11,13 +14,13 @@
 /// @return {calc()} -
 ///   A CSS `calc()` function that will toggle the proper values
 ///   based on the value of `--ccs-mode--zero` and `--ccs-invert--zero`
-/// @example scss - assign generates theme values that toggle
+/// @example scss -
 ///   [data-ccs-theme] {
-///     --ccs-accent--theme: #{ccs.if-mode(
+///     --ccs-accent--theme: #{tools.if-mode(
 ///       $light: var(--ccs-theme--1),
 ///       $dark: var(--ccs-theme--2)
 ///     )};
-///     --ccs-special--theme: #{ccs.if-mode(
+///     --ccs-special--theme: #{tools.if-mode(
 ///       $light: var(--ccs-theme--2),
 ///       $dark: var(--ccs-theme--1)
 ///     )};
@@ -26,21 +29,18 @@
 ///   [data-ccs-theme='oddbird'] {
 ///     --ccs-prime--config: 195;
 ///     --ccs-accent--config: 330;
-///     --ccs-prime--theme: #{ccs.if-mode(
+///     --ccs-prime--theme: #{tools.if-mode(
 ///       $light: var(--ccs-prime--config),
 ///       $dark: var(--ccs-accent--config)
 ///     )};
-///     --ccs-accent--theme: #{ccs.if-mode(
+///     --ccs-accent--theme: #{tools.if-mode(
 ///       $light: var(--ccs-accent--config),
 ///       $dark: var(--ccs-prime--config)
 ///     )};
 ///     --ccs-custom-hue: none;
 ///   }
-/// @group tools
-@function if-mode(
-  $light,
-  $dark
-) {
+/// @group tools-modes
+@function if-mode($light, $dark) {
   @return calc(
     var(--ccs-mode--zero) * #{$light} + var(--ccs-invert--zero) * #{$dark}
   );

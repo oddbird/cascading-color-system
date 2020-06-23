@@ -2,23 +2,27 @@
   "name": "cascading-color-systems",
   "version": "0.1.0-beta.11",
   "description": "generate dynamic color palettes with custom properties",
+  "title": "Cascading Color Systems",
   "main": "dist.js",
   "module": "index.js",
-  "homepage": "https://cascading-colors.netlify.com",
-  "repository": "mirisuzanne/cascading-color-system",
+  "homepage": "https://cascading-colors.netlify.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oddbird/cascading-color-system.git"
+  },
   "author": "Miriam Suzanne <miriam@oddbird.net>",
   "contributors": [
     "Jonny Gerig Meyer <jonny@oddbird.net>"
   ],
   "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/plugin-transform-modules-umd": "^7.2.0",
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-transform-modules-umd": "^7.10.1",
     "cssremedy": "^0.1.0-beta.2",
-    "sass": "^1.23.0",
-    "sassdoc": "^2.7.1",
-    "sassdoc-theme-herman": "^3.0.2"
+    "sass": "^1.26.9",
+    "sassdoc": "^2.7.2",
+    "sassdoc-theme-herman": "^3.2.0"
   },
   "scripts": {
     "build-sass": "sass sass/_output.scss css/ccs.css",
@@ -34,6 +38,7 @@
     "sass/**/*.scss",
     "_index.scss",
     "index.js",
-    "dist.js"
+    "dist.js",
+    "docs/"
   ]
 }
