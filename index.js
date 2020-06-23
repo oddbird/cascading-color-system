@@ -86,8 +86,9 @@ export default function () {
       }
     setValue('mode', schemeMap[scheme], true)
     }
-    else { setValue('mode', getMode() * -1, true) };
   };
+
+  const toggleMode = () => setValue('mode', getMode() * -1, true)
 
   // initialize everything
   const initMenu = () => {
@@ -118,10 +119,10 @@ export default function () {
   document.onload = initMenu();
   document.onload = initMode();
   /* attach eventlistners */
-  invertBtn.addEventListener('click', () => changeMode());
+  invertBtn.addEventListener('click', () => toggleMode());
   modeLight.addEventListener('click', () => changeMode('light'))
   modeDark.addEventListener('click', () => changeMode('dark'))
-  modeAuto.addEventListener('click', () => autoReset())
+  modeAuto.addEventListener('click', () => changeMode('auto'))
   // reset //
   unsetBtn.addEventListener('click', () => autoReset());
 
