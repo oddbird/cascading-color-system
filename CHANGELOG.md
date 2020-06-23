@@ -1,6 +1,6 @@
 # Changelog
 
-## UNRELEASED
+## 0.1.0-beta.12 - 2020/6/23
 
 - INTERNAL: Upgrade dev dependencies
 - INTERNAL: Split `modes` and `palette` into their own `tools` module
