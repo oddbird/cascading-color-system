@@ -1,13 +1,23 @@
 @use '../config';
 
-// CSS Configuration
-// -----------------
-/// Global configuration options should be defined
-/// with custom properties on the `html` element.
+/// # CSS Global Settings
+/// Global configuration options will be defined
+/// with custom properties on the `html` element
+/// or `[data-ccs='root']` selector.
 /// You can do that manually,
-/// or by setting the Sass configuration variables.
+/// or by setting the [Sass configuration](config.html) variables.
+///
+/// - `--ccs-#{$name}--config` (for each desired hue)
+/// - `--ccs-lightness--config`
+/// - `--ccs-saturation--config`
+/// - `--ccs-contrast--config`
+/// - `--ccs-fade-background--config`
+/// - `--ccs-s-neutral--config` (neutral saturation)
+/// - `--ccs-fade`
+///
 /// @name CSS Configuration
-/// @group config
+/// @group config-css
+
 [data-ccs='root'] {
   @each $name, $hue in config.$hues {
     @if ($hue) {

@@ -7,15 +7,15 @@ display:
     - public
 
 groups:
-  Getting Started:
-    import: Import CSS or Sass
-    config: Global Settings
+  CSS Usage:
+    config-css: Global CSS Settings
     fallbacks: Fallback Colors & Modes
     modes: Dynamic Modes
     themes: Creating Themes
-  'Sass (optional)':
-    palettes: Color Palettes
-    tools: Additional Tools
+  'Sass Tools':
+    config: Global Sass Settings
+    palettes: Generating Palettes
+    tools-modes: If-Mode
 
 herman:
   extraDocs:
@@ -34,5 +34,7 @@ herman:
       url: 'http://oddbird.net/'
   sass:
     implementation: sass
+    includepaths:
+      - 'sass/'
     use:
-      - 'sass/ccs'
+      - 'tools'

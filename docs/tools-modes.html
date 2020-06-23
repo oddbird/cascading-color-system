@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <title>Dynamic Modes | Cascading Color Systems Documentation</title>
+  <title>If-Mode | Cascading Color Systems Documentation</title>
 
   <link href="assets/img/favicon.ico" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
@@ -102,7 +102,7 @@
   
   
     <li class="nav-item">
-      <a href="modes.html" data-nav="is-active">Dynamic Modes</a>
+      <a href="modes.html" data-nav="is-not-active">Dynamic Modes</a>
     </li>
   
   
@@ -127,7 +127,7 @@
   
   
     <li class="nav-item">
-      <a href="tools-modes.html" data-nav="is-not-active">If-Mode</a>
+      <a href="tools-modes.html" data-nav="is-active">If-Mode</a>
     </li>
   </ul>
             </li>
@@ -193,11 +193,11 @@
   <nav class="breadcrumb">
     
     <a href="index.html" >Cascading Color Systems</a> »
-    <strong>Dynamic Modes</strong>
+    <strong>If-Mode</strong>
   </nav>
 
 
-        <div data-page="modes">
+        <div data-page="tools-modes">
           
   
     
@@ -222,15 +222,7 @@
 
   
     <div data-item-section="prose" class="text-block">
-      <h1 id="dynamic-modes">Dynamic Modes</h1>
-<p>Dynamic modes allow us to manage
-light and dark color schemes
-by toggling a single custom property.
-Modes inputs “cascade” such that
-HTML modes (set here) take precedence,
-followed by the user mode (which can be set in Javascript),
-and finally the operating-system or browser
-color-scheme<span class="widont">&nbsp;</span>preferences.</p>
+      <h1 id="if-mode">If-Mode</h1>
 
       
   
@@ -295,7 +287,7 @@ color-scheme<span class="widont">&nbsp;</span>preferences.</p>
 
 
 
-<section class="item" id="css--OS%20modes">
+<section class="item" id="function--if-mode">
   
     
   
@@ -309,11 +301,11 @@ color-scheme<span class="widont">&nbsp;</span>preferences.</p>
   <div data-item-section="header">
     <h2 class="item-title">
       
-        <span class="item-type"></span>
+        <span class="item-type">@function</span>
       
 
       
-        <a href="#css--OS%20modes" class="item-name">OS modes</a>
+        <a href="#function--if-mode" class="item-name">if-mode()</a>
       
 
       
@@ -327,32 +319,6 @@ color-scheme<span class="widont">&nbsp;</span>preferences.</p>
 
     
     
-    
-  
-    <div class="code-block">
-      
-        <div class="code-header">
-          <span class="code-language">
-            scss
-          </span>
-
-          
-        </div>
-      
-
-      
-      
-      <pre class="hljs-pre"><code class="lang-scss">[data-ccs=&#39;root&#39;] {
-  --ccs-mode--os: 1;
-
-  @media (prefers-color-scheme: dark) {
-    --ccs-mode--os: -1;
-  }
-}</code></pre>
-    </div>
-  
-
-    
   
   
   
@@ -360,10 +326,9 @@ color-scheme<span class="widont">&nbsp;</span>preferences.</p>
 
   
     <div class="text-block">
-      <p>On the CCS root,
-we check the user’s color-scheme preference,
-to set <code>--ccs-mode--os</code>,
-which provides a dynamic default<span class="widont">&nbsp;</span>value.</p>
+      <p>Toggles between two number values
+(or CSS <code>var()</code> functions that return numbers),
+depending on the current light/dark<span class="widont">&nbsp;</span>mode.</p>
 
       
   
@@ -389,80 +354,141 @@ which provides a dynamic default<span class="widont">&nbsp;</span>value.</p>
   
 
   
-
-
-  
-  
-
-
-  
-  
-  
-  
     
+  <div data-item-section="parameter">
     
-  
-
-  
-
-  
-  
-
-
-  
-  
-
-  
-  
-
-</section>
-
-  
-    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
     
 
-
-
-
-
-
-
-
-
-
-<section class="item" id="css--cascading%20modes">
-  
     
-  
-  
-
-  
-  
-  
-  
-
-  <div data-item-section="header">
-    <h2 class="item-title">
       
-        <span class="item-type"></span>
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
       
+      
+        <span class="item-name">$light:</span>
+      
+      
+      <span class="value-type">(number |<span class="widont">&nbsp;</span>var())</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>The value to use for light<span class="widont">&nbsp;</span>mode</p>
+
+      </div>
+    
+  </div>
+
 
       
-        <a href="#css--cascading%20modes" class="item-name">cascading modes</a>
-      
+        
+  
+  
 
+  
+  <div class="param-list">
+    <h4 class="param-title">
       
-
       
-    </h2>
+        <span class="item-name">$dark:</span>
+      
+      
+      <span class="value-type">(number |<span class="widont">&nbsp;</span>var())</span>
+      
+    </h4>
 
     
+      
+      <div class="param-details text-block">
+        <p>The value to use for dark<span class="widont">&nbsp;</span>mode</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(calc())</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>A CSS <code>calc()</code> function that will toggle the proper values
+based on the value of <code>--ccs-mode--zero</code> and <code>--ccs-invert--zero</code></p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
   
 
 
+  
+  
     
-    
-    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Examples</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
   
     <div class="code-block">
       
@@ -477,131 +503,72 @@ which provides a dynamic default<span class="widont">&nbsp;</span>value.</p>
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-colors] {
-  --ccs-mode--cascade: var(--ccs-mode--html, var(--ccs-mode--user, var(--ccs-mode--os, 1)));
-  --ccs-mode: var(--ccs-mode--cascade, 1);
-  --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
-  --ccs-invert: calc(-1 * var(--ccs-mode));
-  --ccs-invert--zero: calc((var(--ccs-invert) + 1) * 0.5);
+      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-theme] {
+  --ccs-accent--theme: #{tools.if-mode(
+    $light: var(--ccs-theme--1),
+    $dark: var(--ccs-theme--2)
+  )};
+  --ccs-special--theme: #{tools.if-mode(
+    $light: var(--ccs-theme--2),
+    $dark: var(--ccs-theme--1)
+  )};
 }</code></pre>
     </div>
   
 
-    
   
-  
-  
-  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
 
-  
-    <div class="text-block">
-      <p>Each instance of the color system
-will re-calculate the “cascade” of mode origins
-to determine the final <code>--ccs-mode</code>
-(<code>1</code> for a “light” background and <code>-1</code> for a “dark” background),
-along with a <code>--ccs-invert</code> which reverses the numbers.
-Both have <code>*--zero</code> versions that change the numbering
-(<code>0</code> for a “dark” background)
-for use in on/off<span class="widont">&nbsp;</span>toggles.</p>
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
 
       
-  
-
       
-  
-
-      
-  
-
+      <pre class="hljs-pre"><code class="lang-css">[data-ccs-theme] {
+  --ccs-accent--theme: calc(
+    var(--ccs-mode--zero) * var(--ccs-theme--1) + var(--ccs-invert--zero) * var(--ccs-theme--2)
+  );
+  --ccs-special--theme: calc(
+    var(--ccs-mode--zero) * var(--ccs-theme--2) + var(--ccs-invert--zero) * var(--ccs-theme--1)
+  );
+}</code></pre>
     </div>
   
 
+    </div>
+
+    
   </div>
 
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-
-  
-  
-
-
-  
-  
-  
-  
-    
-    
-  
-
-  
-
-  
-  
-
-
-  
-  
-
-  
-  
-
-</section>
-
-  
-    
-    
-
-
-
-
-
-
-
-
-
-
-<section class="item" id="css--light%20mode">
-  
-    
-  
-  
-
-  
-  
-  
-  
-
-  <div data-item-section="header">
-    <h2 class="item-title">
       
-        <span class="item-type"></span>
-      
-
-      
-        <a href="#css--light%20mode" class="item-name">light mode</a>
-      
-
-      
-
-      
-    </h2>
-
-    
+        
+  
   
 
+  
+  
+  
 
-    
-    
-    
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
   
     <div class="code-block">
       
@@ -616,306 +583,61 @@ for use in on/off<span class="widont">&nbsp;</span>toggles.</p>
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-colors=&#39;light&#39;] {
-  --ccs-mode--html: 1;
+      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-theme=&#39;oddbird&#39;] {
+  --ccs-prime--config: 195;
+  --ccs-accent--config: 330;
+  --ccs-prime--theme: #{tools.if-mode(
+    $light: var(--ccs-prime--config),
+    $dark: var(--ccs-accent--config)
+  )};
+  --ccs-accent--theme: #{tools.if-mode(
+    $light: var(--ccs-accent--config),
+    $dark: var(--ccs-prime--config)
+  )};
+  --ccs-custom-hue: none;
 }</code></pre>
     </div>
   
 
-    
-  
-  
-  
-  
-
-  
-    <div class="text-block">
-      <p>Set “light” mode explicitly in<span class="widont">&nbsp;</span>HTML.</p>
-
-      
-  
-
-      
-  
-
-      
-  
-
-    </div>
-  
-
-  </div>
-
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-
-  
-  
-
-
-  
-  
-  
-  
-    
-    
-  
-
-  
-
-  
-  
-
-
-  
-  
-
-  
-  
-
-</section>
-
-  
-    
-    
-
-
-
-
-
-
-
-
-
-
-<section class="item" id="css--dark%20mode">
-  
-    
-  
-  
-
-  
-  
-  
-  
-
-  <div data-item-section="header">
-    <h2 class="item-title">
-      
-        <span class="item-type"></span>
-      
-
-      
-        <a href="#css--dark%20mode" class="item-name">dark mode</a>
-      
-
-      
-
-      
-    </h2>
-
-    
-  
-
-
-    
-    
-    
   
     <div class="code-block">
       
         <div class="code-header">
           <span class="code-language">
-            scss
+            css
           </span>
 
+          
+            <span class='code-description'>
+              compiled
+            </span>
           
         </div>
       
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-colors=&#39;dark&#39;] {
-  --ccs-mode--html: -1;
+      <pre class="hljs-pre"><code class="lang-css">[data-ccs-theme=oddbird] {
+  --ccs-prime--config: 195;
+  --ccs-accent--config: 330;
+  --ccs-prime--theme: calc(
+    var(--ccs-mode--zero) * var(--ccs-prime--config) + var(--ccs-invert--zero) * var(--ccs-accent--config)
+  );
+  --ccs-accent--theme: calc(
+    var(--ccs-mode--zero) * var(--ccs-accent--config) + var(--ccs-invert--zero) * var(--ccs-prime--config)
+  );
+  --ccs-custom-hue: none;
 }</code></pre>
     </div>
   
 
-    
-  
-  
-  
-  
-
-  
-    <div class="text-block">
-      <p>Set “dark” mode explicitly in<span class="widont">&nbsp;</span>HTML.</p>
-
-      
-  
-
-      
-  
-
-      
-  
-
     </div>
-  
 
+    
   </div>
 
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-
-  
-  
-
-
-  
-  
-  
-  
-    
-    
-  
-
-  
-
-  
-  
-
-
-  
-  
-
-  
-  
-
-</section>
-
-  
-    
-    
-
-
-
-
-
-
-
-
-
-
-<section class="item" id="css--invert">
-  
-    
-  
-  
-
-  
-  
-  
-  
-
-  <div data-item-section="header">
-    <h2 class="item-title">
       
-        <span class="item-type"></span>
-      
-
-      
-        <a href="#css--invert" class="item-name">invert</a>
-      
-
-      
-
-      
-    </h2>
-
-    
-  
-
-
-    
-    
-    
-  
-    <div class="code-block">
-      
-        <div class="code-header">
-          <span class="code-language">
-            scss
-          </span>
-
-          
-        </div>
-      
-
-      
-      
-      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-colors=&#39;invert&#39;] {
-  --ccs-mode: calc(-1 * var(--ccs-mode--cascade, 1));
-}</code></pre>
     </div>
-  
-
-    
-  
-  
-  
-  
-
-  
-    <div class="text-block">
-      <p>Dynamic inversion will flip light/dark mode
-in a nested context (one level<span class="widont">&nbsp;</span>deep).</p>
-
-      
-  
-
-      
-  
-
-      
-  
-
-    </div>
-  
-
-  </div>
-
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-
-  
   
 
 

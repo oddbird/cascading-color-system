@@ -87,17 +87,12 @@
     <div class="nav-subsection">
       <ul>
             <li class="nav-subsection">
-              <h3 class="nav-title">Getting Started</h3>
+              <h3 class="nav-title">CSS Usage</h3>
               <ul>
                 
   
     <li class="nav-item">
-      <a href="import.html" data-nav="is-not-active">Import CSS or<span class="widont">&nbsp;</span>Sass</a>
-    </li>
-  
-  
-    <li class="nav-item">
-      <a href="config.html" data-nav="is-not-active">Global Settings</a>
+      <a href="config-css.html" data-nav="is-not-active">Global CSS<span class="widont">&nbsp;</span>Settings</a>
     </li>
   
   
@@ -117,20 +112,30 @@
   </ul>
             </li>
             <li class="nav-subsection">
-              <h3 class="nav-title">Sass (optional)</h3>
+              <h3 class="nav-title">Sass Tools</h3>
               <ul>
                 
   
     <li class="nav-item">
-      <a href="palettes.html" data-nav="is-not-active">Color Palettes</a>
+      <a href="config.html" data-nav="is-not-active">Global Sass<span class="widont">&nbsp;</span>Settings</a>
     </li>
   
   
     <li class="nav-item">
-      <a href="tools.html" data-nav="is-not-active">Additional Tools</a>
+      <a href="palettes.html" data-nav="is-not-active">Generating Palettes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="tools-modes.html" data-nav="is-not-active">If-Mode</a>
     </li>
   </ul>
-            </li></ul>
+            </li>
+  
+    <li class="nav-item">
+      <a href="tools.html" data-nav="is-not-active">tools</a>
+    </li>
+  </ul>
     </div>
 
     
@@ -278,235 +283,16 @@ Create your own themes using the <code>data-ccs-theme</code> attribute</p>
       
         <div class="code-header">
           <span class="code-language">
-            scss
-          </span>
-
-          
-        </div>
-      
-
-      
-      
-      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-theme=&#39;oddbird&#39;] {
-  --ccs-prime--theme: 195;
-  --ccs-accent--theme: 330;
-  --ccs-special--theme: 24;
-  --ccs-custom-hue: none;
-}</code></pre>
-    </div>
-  
-
-  
-    <div class="code-block">
-      
-        <div class="code-header">
-          <span class="code-language">
             css
           </span>
 
           
-            <span class='code-description'>
-              compiled
-            </span>
-          
         </div>
       
 
       
       
-      <pre class="hljs-pre"><code class="lang-css">[data-ccs-colors],
-[data-ccs-colors=light] {
-  background-color: #f3f2f2;
-  color: #0d0c0d;
-}
-
-[data-ccs-colors=invert],
-[data-ccs-colors=dark] {
-  background-color: #0d0c0d;
-  color: #f3f2f2;
-}
-
-[data-ccs-colors] {
-  --ccs-contrast--user-percent: calc(var(--ccs-contrast--user) * 1%);
-  --ccs-contrast: var(--ccs-contrast--user-percent, var(--ccs-contrast--theme, var(--ccs-contrast-config, 45%)));
-  --ccs-l--user-percent: calc(var(--ccs-l--user) * 1%);
-  --ccs-l: var(--ccs-l--user-percent, var(--ccs-l--theme, var(--ccs-lightness--config, 50%)));
-  --ccs-l--fg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-invert));
-  --ccs-l--bg-contrast: calc(var(--ccs-l) + var(--ccs-contrast) * var(--ccs-mode));
-  --ccs-fade-background: var(--ccs-fade-background--theme, var(--ccs-fade-background--config, 0%));
-  --ccs-s--user-percent: calc(var(--ccs-s--user) * 1%);
-  --ccs-s: var(--ccs-s--user-percent, var(--ccs-s--theme, var(--ccs-saturation--config, 50%)));
-  --ccs-s--fg-contrast: calc(var(--ccs-s) - var(--ccs-contrast) * 0.75);
-  --ccs-s--bg-contrast: calc(var(--ccs-s--fg-contrast) - var(--ccs-fade-background));
-  --ccs-s--neutral: var(--ccs-s-neutral--theme, var(--ccs-s-neutral--config, var(--ccs-s--bg-contrast)));
-  --ccs--bg-full: hsl(0, 0%, calc(100% * var(--ccs-mode)));
-  --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-invert)));
-  --ccs-h--prime: var(--ccs-prime--user, var(--ccs-prime--theme, var(--ccs-prime--config, 330)));
-  --ccs-prime: hsl(
-    var(--ccs-h--prime),
-    var(--ccs-s),
-    var(--ccs-l)
-  );
-  --ccs-prime--fg-full: hsl(
-    var(--ccs-h--prime),
-    var(--ccs-s--fg-contrast),
-    var(--ccs-l--fg-contrast)
-  );
-  --ccs-prime--bg-full: hsl(
-    var(--ccs-h--prime),
-    var(--ccs-s--bg-contrast),
-    var(--ccs-l--bg-contrast)
-  );
-  --ccs-h--accent: var(--ccs-accent--user, var(--ccs-accent--theme, var(--ccs-accent--config, var(--ccs-h--prime))));
-  --ccs-accent: hsl(
-    var(--ccs-h--accent),
-    var(--ccs-s),
-    var(--ccs-l)
-  );
-  --ccs-accent--fg-full: hsl(
-    var(--ccs-h--accent),
-    var(--ccs-s--fg-contrast),
-    var(--ccs-l--fg-contrast)
-  );
-  --ccs-accent--bg-full: hsl(
-    var(--ccs-h--accent),
-    var(--ccs-s--bg-contrast),
-    var(--ccs-l--bg-contrast)
-  );
-  --ccs-h--neutral: var(--ccs-neutral--user, var(--ccs-neutral--theme, var(--ccs-neutral--config, var(--ccs-h--prime))));
-  --ccs-neutral: hsl(
-    var(--ccs-h--neutral),
-    var(--ccs-s--neutral),
-    var(--ccs-l)
-  );
-  --ccs-neutral--fg-full: hsl(
-    var(--ccs-h--neutral),
-    var(--ccs-s--neutral),
-    var(--ccs-l--fg-contrast)
-  );
-  --ccs-neutral--bg-full: hsl(
-    var(--ccs-h--neutral),
-    var(--ccs-s--neutral),
-    var(--ccs-l--bg-contrast)
-  );
-  background-color: var(--ccs-background, var(--ccs--bg-full));
-  color: var(--ccs-color, var(--ccs--fg-full));
-}
-
-[data-ccs=root] {
-  --ccs-mode--os: 1;
-}
-@media (prefers-color-scheme: dark) {
-  [data-ccs=root] {
-    --ccs-mode--os: -1;
-  }
-}
-
-[data-ccs-colors] {
-  --ccs-mode--cascade: var(--ccs-mode--html, var(--ccs-mode--user, var(--ccs-mode--os, 1)));
-  --ccs-mode: var(--ccs-mode--cascade, 1);
-  --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
-  --ccs-invert: calc(-1 * var(--ccs-mode));
-  --ccs-invert--zero: calc((var(--ccs-invert) + 1) * 0.5);
-}
-
-[data-ccs-colors=light] {
-  --ccs-mode--html: 1;
-}
-
-[data-ccs-colors=dark] {
-  --ccs-mode--html: -1;
-}
-
-[data-ccs-colors=invert] {
-  --ccs-mode: calc(-1 * var(--ccs-mode--cascade, 1));
-}
-
-[data-ccs-theme=complement] {
-  --ccs-theme--1: calc(var(--ccs-h--prime) + 180);
-  --ccs-theme--2: var(--ccs-theme--1);
-}
-
-[data-ccs-theme=triad] {
-  --ccs-theme--1: calc(var(--ccs-h--prime) + 120);
-  --ccs-theme--2: calc(var(--ccs-h--prime) - 120);
-}
-
-[data-ccs-theme=adjacent] {
-  --ccs-theme--1: calc(var(--ccs-h--prime) + 60);
-  --ccs-theme--2: calc(var(--ccs-h--prime) - 60);
-}
-
-[data-ccs-theme=contrast] {
-  --ccs-contrast: 200%;
-  --ccs-custom-contrast: none;
-}
-
-[data-ccs-colors] {
-  --ccs-step: calc(var(--ccs-contrast) / 4);
-  --ccs-l--bg1: calc(var(--ccs-l) + var(--ccs-step) * 1 * var(--ccs-mode));
-  --ccs-l--fg1: calc(var(--ccs-l) - var(--ccs-step) * 1 * var(--ccs-mode));
-  --ccs-s--fg1: calc(var(--ccs-s) - var(--ccs-step) * 1);
-  --ccs-s--bg1: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 1);
-  --ccs-prime--fg1: hsl(var(--ccs-h--prime), var(--ccs-s--fg1), var(--ccs-l--fg1));
-  --ccs-prime--bg1: hsl(var(--ccs-h--prime), var(--ccs-s--bg1), var(--ccs-l--bg1));
-  --ccs-accent--fg1: hsl(var(--ccs-h--accent), var(--ccs-s--fg1), var(--ccs-l--fg1));
-  --ccs-accent--bg1: hsl(var(--ccs-h--accent), var(--ccs-s--bg1), var(--ccs-l--bg1));
-  --ccs-neutral--fg1: hsl(var(--ccs-h--neutral), var(--ccs-s--neutral), var(--ccs-l--fg1));
-  --ccs-neutral--bg1: hsl(var(--ccs-h--neutral), var(--ccs-s--neutral), var(--ccs-l--bg1));
-  --ccs-l--bg2: calc(var(--ccs-l) + var(--ccs-step) * 2 * var(--ccs-mode));
-  --ccs-l--fg2: calc(var(--ccs-l) - var(--ccs-step) * 2 * var(--ccs-mode));
-  --ccs-s--fg2: calc(var(--ccs-s) - var(--ccs-step) * 2);
-  --ccs-s--bg2: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 2);
-  --ccs-prime--fg2: hsl(var(--ccs-h--prime), var(--ccs-s--fg2), var(--ccs-l--fg2));
-  --ccs-prime--bg2: hsl(var(--ccs-h--prime), var(--ccs-s--bg2), var(--ccs-l--bg2));
-  --ccs-accent--fg2: hsl(var(--ccs-h--accent), var(--ccs-s--fg2), var(--ccs-l--fg2));
-  --ccs-accent--bg2: hsl(var(--ccs-h--accent), var(--ccs-s--bg2), var(--ccs-l--bg2));
-  --ccs-neutral--fg2: hsl(var(--ccs-h--neutral), var(--ccs-s--neutral), var(--ccs-l--fg2));
-  --ccs-neutral--bg2: hsl(var(--ccs-h--neutral), var(--ccs-s--neutral), var(--ccs-l--bg2));
-  --ccs-l--bg3: calc(var(--ccs-l) + var(--ccs-step) * 3 * var(--ccs-mode));
-  --ccs-l--fg3: calc(var(--ccs-l) - var(--ccs-step) * 3 * var(--ccs-mode));
-  --ccs-s--fg3: calc(var(--ccs-s) - var(--ccs-step) * 3);
-  --ccs-s--bg3: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 3);
-  --ccs-prime--fg3: hsl(var(--ccs-h--prime), var(--ccs-s--fg3), var(--ccs-l--fg3));
-  --ccs-prime--bg3: hsl(var(--ccs-h--prime), var(--ccs-s--bg3), var(--ccs-l--bg3));
-  --ccs-accent--fg3: hsl(var(--ccs-h--accent), var(--ccs-s--fg3), var(--ccs-l--fg3));
-  --ccs-accent--bg3: hsl(var(--ccs-h--accent), var(--ccs-s--bg3), var(--ccs-l--bg3));
-  --ccs-neutral--fg3: hsl(var(--ccs-h--neutral), var(--ccs-s--neutral), var(--ccs-l--fg3));
-  --ccs-neutral--bg3: hsl(var(--ccs-h--neutral), var(--ccs-s--neutral), var(--ccs-l--bg3));
-  --ccs-l--bg4: calc(var(--ccs-l) + var(--ccs-step) * 4 * var(--ccs-mode));
-  --ccs-l--fg4: calc(var(--ccs-l) - var(--ccs-step) * 4 * var(--ccs-mode));
-  --ccs-s--fg4: calc(var(--ccs-s) - var(--ccs-step) * 4);
-  --ccs-s--bg4: calc(var(--ccs-s) - var(--ccs-fade-background) - var(--ccs-step) * 4);
-  --ccs-prime--fg4: hsl(var(--ccs-h--prime), var(--ccs-s--fg4), var(--ccs-l--fg4));
-  --ccs-prime--bg4: hsl(var(--ccs-h--prime), var(--ccs-s--bg4), var(--ccs-l--bg4));
-  --ccs-accent--fg4: hsl(var(--ccs-h--accent), var(--ccs-s--fg4), var(--ccs-l--fg4));
-  --ccs-accent--bg4: hsl(var(--ccs-h--accent), var(--ccs-s--bg4), var(--ccs-l--bg4));
-  --ccs-neutral--fg4: hsl(var(--ccs-h--neutral), var(--ccs-s--neutral), var(--ccs-l--fg4));
-  --ccs-neutral--bg4: hsl(var(--ccs-h--neutral), var(--ccs-s--neutral), var(--ccs-l--bg4));
-}
-
-[data-ccs-field] {
-  display: var(--ccs-custom-display, var(--ccs-field-display, block));
-}
-
-[data-ccs-field=hue] {
-  --ccs-custom-display: var(--ccs-custom-hue, block);
-}
-
-[data-ccs-field=lightness] {
-  --ccs-custom-display: var(--ccs-custom-lightness, block);
-}
-
-[data-ccs-field=saturation] {
-  --ccs-custom-display: var(--ccs-custom-saturation, block);
-}
-
-[data-ccs-field=contrast] {
-  --ccs-custom-display: var(--ccs-custom-contrast, block);
-}
-
-[data-ccs-theme=oddbird] {
+      <pre class="hljs-pre"><code class="lang-css">[data-ccs-theme=&#39;oddbird&#39;] {
   --ccs-prime--theme: 195;
   --ccs-accent--theme: 330;
   --ccs-special--theme: 24;

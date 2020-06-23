@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <title>Import CSS or Sass | Cascading Color Systems Documentation</title>
+  <title>Global CSS Settings | Cascading Color Systems Documentation</title>
 
   <link href="assets/img/favicon.ico" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
@@ -87,17 +87,12 @@
     <div class="nav-subsection">
       <ul>
             <li class="nav-subsection">
-              <h3 class="nav-title">Getting Started</h3>
+              <h3 class="nav-title">CSS Usage</h3>
               <ul>
                 
   
     <li class="nav-item">
-      <a href="import.html" data-nav="is-active">Import CSS or<span class="widont">&nbsp;</span>Sass</a>
-    </li>
-  
-  
-    <li class="nav-item">
-      <a href="config.html" data-nav="is-not-active">Global Settings</a>
+      <a href="config-css.html" data-nav="is-active">Global CSS<span class="widont">&nbsp;</span>Settings</a>
     </li>
   
   
@@ -117,20 +112,30 @@
   </ul>
             </li>
             <li class="nav-subsection">
-              <h3 class="nav-title">Sass (optional)</h3>
+              <h3 class="nav-title">Sass Tools</h3>
               <ul>
                 
   
     <li class="nav-item">
-      <a href="palettes.html" data-nav="is-not-active">Color Palettes</a>
+      <a href="config.html" data-nav="is-not-active">Global Sass<span class="widont">&nbsp;</span>Settings</a>
     </li>
   
   
     <li class="nav-item">
-      <a href="tools.html" data-nav="is-not-active">Additional Tools</a>
+      <a href="palettes.html" data-nav="is-not-active">Generating Palettes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="tools-modes.html" data-nav="is-not-active">If-Mode</a>
     </li>
   </ul>
-            </li></ul>
+            </li>
+  
+    <li class="nav-item">
+      <a href="tools.html" data-nav="is-not-active">tools</a>
+    </li>
+  </ul>
     </div>
 
     
@@ -188,11 +193,11 @@
   <nav class="breadcrumb">
     
     <a href="index.html" >Cascading Color Systems</a> »
-    <strong>Import CSS or Sass</strong>
+    <strong>Global CSS Settings</strong>
   </nav>
 
 
-        <div data-page="import">
+        <div data-page="config-css">
           
   
     
@@ -217,176 +222,21 @@
 
   
     <div data-item-section="prose" class="text-block">
-      <h1 id="import-css-or-sass">Import CSS or<span class="widont">&nbsp;</span>Sass</h1>
-
-      
-  
-
-      
-  
-
-      
-  
-
-    </div>
-  
-
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-
-  
-  
-
-
-  
-  
-  
-  
-    
-    
-  
-
-  
-
-  
-  
-
-
-  
-  
-
-  
-  
-
-</section>
-
-  
-    
-    
-
-
-
-
-
-
-
-
-
-
-<section class="item" >
-  
-    
-  
-  
-  
-  
-
-  
-    <div data-item-section="prose" class="text-block">
-      <h2 id="css">CSS</h2>
-<p>If you are happy with the default settings,
-you can import the generated CSS directly.
-The default import includes 4 themes,
-with 4 tints and 4 shades for each<span class="widont">&nbsp;</span>color:</p>
-<pre><code>&lt;path-to-package&gt;/css/ccs.css
-</code></pre>
-
-      
-  
-
-      
-  
-
-      
-  
-
-    </div>
-  
-
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-
-  
-  
-
-
-  
-  
-  
-  
-    
-    
-  
-
-  
-
-  
-  
-
-
-  
-  
-
-  
-  
-
-</section>
-
-  
-    
-    
-
-
-
-
-
-
-
-
-
-
-<section class="item" >
-  
-    
-  
-  
-  
-  
-
-  
-    <div data-item-section="prose" class="text-block">
-      <h2 id="sass">Sass</h2>
-<p>If you are using Sass
-(Dart-Sass v1.23+ required)
-Import the <code>_index.scss</code> file with your custom configuration.
-Sass imports index files by default,
-so you can drop the file name from your import if you<span class="widont">&nbsp;</span>like:</p>
-<pre><code class="lang-scss"> @use '&lt;path-to-package&gt;/';
-</code></pre>
-<p>You can also configure the namespace and default<span class="widont">&nbsp;</span>settngs:</p>
-<pre><code class="lang-scss"> @use '&lt;path-to-package&gt;/' as 'colors' with (
-   $build: true,
-   $steps: 6,
- );
-</code></pre>
+      <h1 id="css-global-settings">CSS Global Settings</h1>
+<p>Global configuration options will be defined
+with custom properties on the <code>html</code> element
+or <code>[data-ccs='root']</code> selector.
+You can do that manually,
+or by setting the <a href="config.html">Sass configuration</a><span class="widont">&nbsp;</span>variables.</p>
+<ul>
+<li><code>--ccs-#{$name}--config</code> (for each desired<span class="widont">&nbsp;</span>hue)</li>
+<li><code>--ccs-lightness--config</code></li>
+<li><code>--ccs-saturation--config</code></li>
+<li><code>--ccs-contrast--config</code></li>
+<li><code>--ccs-fade-background--config</code></li>
+<li><code>--ccs-s-neutral--config</code> (neutral saturation)</li>
+<li><code>--ccs-fade</code></li>
+</ul>
 
       
   

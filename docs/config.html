@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <title>Global Settings | Cascading Color Systems Documentation</title>
+  <title>Global Sass Settings | Cascading Color Systems Documentation</title>
 
   <link href="assets/img/favicon.ico" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
@@ -87,17 +87,12 @@
     <div class="nav-subsection">
       <ul>
             <li class="nav-subsection">
-              <h3 class="nav-title">Getting Started</h3>
+              <h3 class="nav-title">CSS Usage</h3>
               <ul>
                 
   
     <li class="nav-item">
-      <a href="import.html" data-nav="is-not-active">Import CSS or<span class="widont">&nbsp;</span>Sass</a>
-    </li>
-  
-  
-    <li class="nav-item">
-      <a href="config.html" data-nav="is-active">Global Settings</a>
+      <a href="config-css.html" data-nav="is-not-active">Global CSS<span class="widont">&nbsp;</span>Settings</a>
     </li>
   
   
@@ -117,20 +112,30 @@
   </ul>
             </li>
             <li class="nav-subsection">
-              <h3 class="nav-title">Sass (optional)</h3>
+              <h3 class="nav-title">Sass Tools</h3>
               <ul>
                 
   
     <li class="nav-item">
-      <a href="palettes.html" data-nav="is-not-active">Color Palettes</a>
+      <a href="config.html" data-nav="is-active">Global Sass<span class="widont">&nbsp;</span>Settings</a>
     </li>
   
   
     <li class="nav-item">
-      <a href="tools.html" data-nav="is-not-active">Additional Tools</a>
+      <a href="palettes.html" data-nav="is-not-active">Generating Palettes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="tools-modes.html" data-nav="is-not-active">If-Mode</a>
     </li>
   </ul>
-            </li></ul>
+            </li>
+  
+    <li class="nav-item">
+      <a href="tools.html" data-nav="is-not-active">tools</a>
+    </li>
+  </ul>
     </div>
 
     
@@ -188,7 +193,7 @@
   <nav class="breadcrumb">
     
     <a href="index.html" >Cascading Color Systems</a> »
-    <strong>Global Settings</strong>
+    <strong>Global Sass Settings</strong>
   </nav>
 
 
@@ -217,8 +222,8 @@
 
   
     <div data-item-section="prose" class="text-block">
-      <h1 id="configuration">Configuration</h1>
-<p>These settings can be defined directly in CSS,
+      <h1 id="global-sass-settings">Global Sass Settings</h1>
+<p>These settings can be defined <a href="config-css.html">directly in CSS</a>,
 or generated from Sass configuration –
 and they provide the baseline defaults for all
 dynamic calculations.
@@ -242,6 +247,135 @@ without running into specificity<span class="widont">&nbsp;</span>conflicts.</p>
 
     </div>
   
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--build">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--build" class="item-name">$build</a>
+      
+
+      
+        <span class="value-type">(boolean)</span>
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$build: true !default;</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Optionally generate CSS for the colors on-load,
+rarther than using the provided mixins<span class="widont">&nbsp;</span>directly.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
 
   
 
@@ -1320,165 +1454,6 @@ CSS custom properties.
 The default value is based on
 <code>map-get($hues, 'prime')</code>, <code>$saturation</code>, <code>$lightness</code>,
 and maximum <code>$contrast</code>.</p>
-
-      
-  
-
-      
-  
-
-      
-  
-
-    </div>
-  
-
-  </div>
-
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-
-  
-  
-
-
-  
-  
-  
-  
-    
-    
-  
-
-  
-
-  
-  
-
-
-  
-  
-
-  
-  
-
-</section>
-
-  
-    
-    
-
-
-
-
-
-
-
-
-
-
-<section class="item" id="css--CSS%20Configuration">
-  
-    
-  
-  
-
-  
-  
-  
-  
-
-  <div data-item-section="header">
-    <h2 class="item-title">
-      
-        <span class="item-type"></span>
-      
-
-      
-        <a href="#css--CSS%20Configuration" class="item-name">CSS Configuration</a>
-      
-
-      
-
-      
-    </h2>
-
-    
-  
-
-
-    
-    
-    
-  
-    <div class="code-block">
-      
-        <div class="code-header">
-          <span class="code-language">
-            scss
-          </span>
-
-          
-        </div>
-      
-
-      
-      
-      <pre class="hljs-pre"><code class="lang-scss">[data-ccs=&#39;root&#39;] {
-  @each $name, $hue in config.$hues {
-    @if ($hue) {
-      --ccs-#{$name}--config: #{$hue};
-    }
-  }
-
-  @if (config.$lightness) {
-    --ccs-lightness--config: #{config.$lightness or null};
-  }
-
-  @if (config.$saturation) {
-    --ccs-saturation--config: #{config.$saturation or null};
-  }
-
-  @if (config.$contrast) {
-    --ccs-contrast--config: #{config.$contrast or null};
-  }
-
-  @if (config.$fade-background) {
-    --ccs-fade-background--config: #{config.$fade-background or null};
-  }
-
-  @if (config.$neutral-saturation) {
-    --ccs-s-neutral--config: #{config.$neutral-saturation or null};
-  }
-
-  @if (config.$fades) {
-    --ccs-fade: #{if(type-of(config.$fades) == &#39;number&#39;, config.$fades, 1)};
-  }
-}</code></pre>
-    </div>
-  
-
-    
-  
-  
-  
-  
-
-  
-    <div class="text-block">
-      <p>Global configuration options should be defined
-with custom properties on the <code>html</code> element.
-You can do that manually,
-or by setting the Sass configuration<span class="widont">&nbsp;</span>variables.</p>
 
       
   

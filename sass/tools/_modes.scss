@@ -1,3 +1,6 @@
+/// # If-Mode
+/// @group tools-modes
+
 // If-Mode
 // -------
 /// Toggles between two number values
@@ -36,7 +39,7 @@
 ///     )};
 ///     --ccs-custom-hue: none;
 ///   }
-/// @group tools
+/// @group tools-modes
 @function if-mode($light, $dark) {
   @return calc(
     var(--ccs-mode--zero) * #{$light} + var(--ccs-invert--zero) * #{$dark}
