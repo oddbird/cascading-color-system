@@ -41,8 +41,8 @@ export default function () {
     contrast: 'ccsContrast',
   };
 
-  // clear all settings
-  const clearColors = () => {
+  // clear all settings from storage, html and hide reset
+  const autoReset = () => {
     setValue('theme', selectElements.theme.getAttribute('data-default'), false);
     Object.keys(store).forEach(type => localStorage.removeItem(store[type]));
     Object.keys(props).forEach(prop => root.style.removeProperty(props[prop]));
@@ -78,8 +78,15 @@ export default function () {
     );
   };
 
-  const changeMode = () => {
-    setValue('mode', getMode() * -1, true);
+  const changeMode = (scheme) => {
+    if (scheme) {
+      const schemeMap = {
+        light: 1,
+        dark: -1,
+      }
+    setValue('mode', schemeMap[scheme], true)
+    }
+    else { setValue('mode', getMode() * -1, true) };
   };
 
   // initialize everything
@@ -107,17 +114,22 @@ export default function () {
     }
   };
 
-  // init & events
+  /* init defaults */
   document.onload = initMenu();
   document.onload = initMode();
+  /* attach eventlistners */
   invertBtn.addEventListener('click', () => changeMode());
-  unsetBtn.addEventListener('click', () => clearColors());
+  modeLight.addEventListener('click', () => changeMode('light'))
+  modeDark.addEventListener('click', () => changeMode('dark'))
+  modeAuto.addEventListener('click', () => autoReset())
+  // reset //
+  unsetBtn.addEventListener('click', () => autoReset());
 
   Object.keys(selectElements).forEach(type => {
     if (selectElements[type]) {
       document.onload = initValue(type);
-      selectElements[type].addEventListener('input', () =>
-        setValue(type, selectElements[type].value),
+      selectElements[type].addEventListener('change', (e) =>
+        setValue(type, e.target.value),
       );
     }
   });
