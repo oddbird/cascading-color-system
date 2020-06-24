@@ -8,7 +8,7 @@ export default function () {
   const modeAuto = document.querySelector('[data-ccs-input="auto-mode"]');
   const unsetBtn = document.querySelector('[data-ccs-input="unset"]');
 
-  // elements
+  // selecting elements
   const selectElements = {
     theme: document.querySelector('[data-ccs-input~="theme"]'),
     hue: document.querySelector('[data-ccs-input="hue"]'),
@@ -17,52 +17,20 @@ export default function () {
     contrast: document.querySelector('[data-ccs-input="contrast"]'),
   };
 
-  const resetSelect = () => 
-    Object.keys(selectElements).forEach(type => {
-    const el = selectElements[type];
-    selectElements[type].value = el.getAttribute('data-default');
-  });
+  const resetSelect = () =>
+    Object.keys(selectElements).forEach((type) => {
+      const el = selectElements[type];
+      selectElements[type].value = el.getAttribute('data-default');
+    });
 
   const setSelection = (type, selection) => {
-    setValue(type, selection)
-  } 
-
-  // attributes
-  const attrs = {
-    theme: 'data-ccs-theme',
+    setValue(type, selection);
+    if (type === 'theme') {
+      resetSelect();
+      clearStore();
+    }
+    setValue(type, selection);
   };
-
-  // properties
-  const props = {
-    hue: '--ccs-prime--user',
-    sat: '--ccs-s--user',
-    light: '--ccs-l--user',
-    contrast: '--ccs-contrast--user',
-    mode: '--ccs-mode--user',
-  };
-  const clearProps = () => 
-  Object.keys(props).forEach(prop => root.style.removeProperty(props[prop]));
-
-  // local storage
-  const store = {
-    theme: 'ccsTheme',
-    mode: 'ccsMode',
-    hue: 'ccsHue',
-    sat: 'ccsSat',
-    light: 'ccsLight',
-    contrast: 'ccsContrast',
-  };
-  const clearStore = () => Object.keys(store).forEach(type => localStorage.removeItem(store[type]));
-
-  // clear all settings on reset
-  const unset = () => {
-    setValue('theme', selectElements.theme.getAttribute('data-default'), false);
-    clearStore();
-    clearProps();
-    resetSelect();
-    unsetBtn.setAttribute('hidden', '');
-  };
-
   // set a value
   const setValue = (type, to, toStore = true) => {
     if (to) {
@@ -78,41 +46,75 @@ export default function () {
       }
     }
   };
-
-  // toggle mode
-  const getMode = () => {
-    return Number(
-      getComputedStyle(root)
-        .getPropertyValue('--ccs-mode')
-        .trim(),
-    );
+  // attributes
+  const attrs = {
+    theme: 'data-ccs-theme',
   };
-  
+  // properties
+  const props = {
+    hue: '--ccs-prime--user',
+    sat: '--ccs-s--user',
+    light: '--ccs-l--user',
+    contrast: '--ccs-contrast--user',
+    mode: '--ccs-mode--user',
+  };
+  // local storage
+  const store = {
+    theme: 'ccsTheme',
+    mode: 'ccsMode',
+    hue: 'ccsHue',
+    sat: 'ccsSat',
+    light: 'ccsLight',
+    contrast: 'ccsContrast',
+  };
+
+  const clearProps = () =>
+    Object.keys(props).forEach((prop) =>
+      root.style.removeProperty(props[prop])
+    );
+
+  const clearStore = () =>
+    Object.keys(store).forEach((type) => localStorage.removeItem(store[type]));
+
+  // clear all settings on reset
+  const unset = () => {
+    setValue('theme', selectElements.theme.getAttribute('data-default'), false);
+    clearStore();
+    clearProps();
+    resetSelect();
+    unsetBtn.setAttribute('hidden', '');
+  };
+
+  // modes
+  const getMode = () => {
+    return Number(getComputedStyle(root).getPropertyValue('--ccs-mode').trim());
+  };
   const changeMode = (scheme) => {
     const schemeMap = {
-        light: 1,
-        dark: -1,
-        auto: 0
-    }
-    const setting = schemeMap[scheme]
+      light: 1,
+      dark: -1,
+      auto: 0,
+    };
+    const setting = schemeMap[scheme];
     if (setting) {
-      setValue('mode', setting)
-    }
-    else {
+      setValue('mode', setting);
+    } else {
       // if auto, remove mode props from root and store
       localStorage.removeItem('ccsMode');
       root.style.removeProperty(props.mode);
     }
   };
-  const toggleMode = () => setValue('mode', getMode() * -1)
+  const toggleMode = () => setValue('mode', getMode() * -1);
+
   // initialize everything
   const initMenu = () => {
     themeMenu.removeAttribute('hidden');
   };
-
-  const initValue = type => {
-    selectElements[type].setAttribute('data-default', selectElements[type].value);
-
+  const initValue = (type) => {
+    selectElements[type].setAttribute(
+      'data-default',
+      selectElements[type].value
+    );
     const to = localStorage.getItem(store[type]);
     if (to) {
       setValue(type, to, false);
@@ -120,10 +122,8 @@ export default function () {
       unsetBtn.removeAttribute('hidden');
     }
   };
-
   const initMode = () => {
     let to = localStorage.getItem(store.mode);
-
     if (to) {
       setValue('mode', to);
       unsetBtn.removeAttribute('hidden');
@@ -133,15 +133,14 @@ export default function () {
   /* init defaults */
   document.onload = initMenu();
   document.onload = initMode();
+
   /* attach eventlistners */
   invertBtn.addEventListener('click', () => toggleMode());
-  modeLight.addEventListener('click', () => changeMode('light'))
-  modeDark.addEventListener('click', () => changeMode('dark'))
-  modeAuto.addEventListener('click', () => changeMode('auto'))
-  // reset //
+  modeLight.addEventListener('click', () => changeMode('light'));
+  modeDark.addEventListener('click', () => changeMode('dark'));
+  modeAuto.addEventListener('click', () => changeMode('auto'));
   unsetBtn.addEventListener('click', () => unset());
-
-  Object.keys(selectElements).forEach(type => {
+  Object.keys(selectElements).forEach((type) => {
     if (selectElements[type]) {
       document.onload = initValue(type);
       selectElements[type].addEventListener('change', (e) =>
@@ -149,4 +148,4 @@ export default function () {
       );
     }
   });
-};
+}
