@@ -1,8 +1,8 @@
 @use '../config';
-@use 'palettes';
+@use '../tools';
 
 @if (config.$build) {
   [data-ccs-colors] {
-    @include palettes.colors;
+    @include tools.colors;
   }
 }
