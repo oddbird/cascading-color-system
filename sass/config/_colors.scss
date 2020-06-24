@@ -1,20 +1,3 @@
-/// # Configuration
-/// These settings can be defined directly in CSS,
-/// or generated from Sass configuration --
-/// and they provide the baseline defaults for all
-/// dynamic calculations.
-/// Each Sass variable has a corresponding custom property
-/// that can be used instead.
-///
-/// By default, all Sass configurations are set to `null`
-/// so that they have no output --
-/// and "factory-default" fallback values are provided
-/// in CSS calls to `var(--name, <fallback>)`.
-/// That ensures that you can set defaults anywhere,
-/// without running into specificity conflicts.
-///
-/// @group config
-
 // Hues
 // ----
 /// The colors to generate, and optional default hues for each color.

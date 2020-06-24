@@ -7,15 +7,15 @@ display:
     - public
 
 groups:
-  Getting Started:
-    import: Import CSS or Sass
-    config: Global Settings
+  CSS Usage:
+    config-css: Global CSS Settings
     fallbacks: Fallback Colors & Modes
     modes: Dynamic Modes
     themes: Creating Themes
-  'Sass (optional)':
-    palettes: Color Palettes
-    tools: Additional Tools
+  'Sass Tools':
+    config: Global Sass Settings
+    palettes: Generating Palettes
+    tools-modes: If-Mode
 
 herman:
   extraDocs:
@@ -23,12 +23,18 @@ herman:
       path: CHANGELOG.md
     - name: 'Contributing'
       path: CONTRIBUTING.md
-    - name: 'Hipocratic MIT License'
+    - name: 'License'
       path: LICENSE.md
   extraLinks:
     - name: 'Demo'
-      url: 'https://cascading-colors.netlify.com/'
+      url: 'https://cascading-colors.netlify.app/'
     - name: 'GitHub Source'
-      url: 'https://github.com/mirisuzanne/cascading-color-system'
+      url: 'https://github.com/oddbird/cascading-color-system'
     - name: 'OddBird'
       url: 'http://oddbird.net/'
+  sass:
+    implementation: sass
+    includepaths:
+      - 'sass/'
+    use:
+      - 'tools'

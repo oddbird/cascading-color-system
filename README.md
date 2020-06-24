@@ -1,6 +1,6 @@
 # Cascading Color Systems
 
-[Demo Site](https://cascading-colors.netlify.com/)
+[Demo Site](https://cascading-colors.netlify.app/)
 
 Generate dynamic and themable color palettes using CSS custom properties,
 and allow (persistent) user-adjustments with a bit of light-weight JS.
@@ -26,7 +26,7 @@ The default configuration can be used as plain CSS:
 
 ```css
 /* css */
-@import '<path-to>/cascading-color-systems/css/ccs.css';
+@import "<path-to>/cascading-color-systems/css/ccs.css";
 ```
 
 ```html
@@ -53,7 +53,7 @@ Import using the new module import syntax:
 );
 ```
 
-[gh]: https://github.com/mirisuzanne/cascading-color-system/
+[gh]: https://github.com/oddbird/cascading-color-system/
 [sass]: https://www.npmjs.com/package/sass
 
 ## Getting started
@@ -66,7 +66,7 @@ as CSS custom properties
 (set by Sass when applicable) eg:
 
 ```scss
-[data-ccs='root'] {
+[data-ccs="root"] {
   --ccs-prime--config: 330;
   --ccs-lightness--config: 50%;
   --ccs-saturation--config: 50%;
@@ -104,13 +104,13 @@ in case CSS custom properties are not supported:
 
 ```scss
 [data-ccs-colors],
-[data-ccs-colors='light'] {
+[data-ccs-colors="light"] {
   background-color: $fallback-light;
   color: $fallback-dark;
 }
 
-[data-ccs-colors='invert'],
-[data-ccs-colors='dark'] {
+[data-ccs-colors="invert"],
+[data-ccs-colors="dark"] {
   background-color: $fallback-dark;
   color: $fallback-light;
 }
@@ -198,12 +198,12 @@ and you can add your own
 using the `[data-ccs-theme]` attribute:
 
 ```scss
-[data-ccs-theme='complement'] {
+[data-ccs-theme="complement"] {
   /* set the accent color 180 degrees off the primary color */
   --ccs-accent--theme: calc(var(--ccs-h--prime) + 180);
 }
 
-[data-ccs-theme='triad'] {
+[data-ccs-theme="triad"] {
   /* triad logic */
 }
 ```
@@ -262,7 +262,7 @@ Or import and use `index.js`,
 if you have a modern build system with ES Module support:
 
 ```js
-import ccs from 'cascading-color-systems';
+import ccs from "cascading-color-systems";
 
 ccs();
 ```
@@ -297,7 +297,7 @@ For example, a high-contrast theme
 might not accept `contrast` input:
 
 ```scss
-[data-ccs-theme='contrast'] {
+[data-ccs-theme="contrast"] {
   --ccs-contrast: 200%; /* override all other contrast settings */
   --ccs-custom-contrast: none; /* hide [data-ccs-field="contrast"] */
 }

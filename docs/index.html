@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-herman="root">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Cascading Color Systems Documentation</title>
+
+  <link href="assets/img/favicon.ico" rel="shortcut icon">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/webpack/app_styles.min.css" />
+
+  
+
+  
+</head>
+<body data-herman="body">
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+  <symbol id="icon-logo" viewBox="0 0 16 16">
+    <path d="M.2 8L0 7.8v-.2C.8 6.9 1.9 5.9 2.7 5l.4.3c-.5.8-1.1 1.6-1.8 2.3 1 1.2 1 1.3 1.7 2.4l-.4.3c-.4-.4-.5-.6-1-1C1 8.6 1.1 8.7.2 8zM13 10c.6-1.1.7-1.1 1.7-2.4-.6-.6-1.3-1.5-1.7-2.3l.3-.3c.8.8 1.8 1.8 2.7 2.6v.2l-.8.7c-.3.3-1.2 1.1-1.8 1.7L13 10z"/><path d="M2.6 13.1H3c.9 0 1.1-.2 1.1-1.4V4.2c0-1.1-.2-1.4-1.1-1.4h-.4v-.6h4.5v.7h-.3c-.9 0-1.1.2-1.1 1.4v3.2h4.6V4.2c0-1.1-.2-1.4-1.1-1.4h-.3v-.6h4.5v.7H13c-.9 0-1.1.2-1.1 1.4v7.5c0 1.1.2 1.4 1.1 1.4h.4v.7H8.9v-.7h.3c.9 0 1.1-.2 1.1-1.4V8.2H5.7v3.5c0 1.1.2 1.4 1.1 1.4h.3v.7H2.6v-.7z"/>
+  </symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 28">
+    <path d="M24 21v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1V5c0-.547.453-1 1-1h22c.547 0 1 .453 1 1z"/>
+  </symbol>
+</svg>
+
+  <div data-region="app">
+    <header data-region="banner">
+      
+  <button data-nav-toggle data-toggle="button" aria-controls="nav" aria-pressed="false" type="button" data-toggle-synced="false">
+    
+  <svg data-icon="menu" data-icon-size="nav-icon" ><title>menu</title><use xlink:href="#icon-menu" />
+  </svg>
+
+  </button>
+
+
+      <div class="project-title">
+        <a href="index.html" rel="home" class="project-name">Cascading Color Systems</a>
+        
+          <span class="project-version">0.1.0-beta.12</span>
+        
+      </div>
+    </header>
+
+    <div data-region="container">
+      
+  <nav data-region="nav" data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
+    <form action="search.html">
+      <input type="text" name="q" placeholder="Search…" required minlength="3">
+    </form>
+
+    <div class="nav-subsection">
+      <h3 class="nav-home">
+        
+        <a href="index.html" data-nav="is-active">Cascading Color<span class="widont">&nbsp;</span>Systems</a>
+      </h3>
+
+      
+      
+        <ul>
+          
+            
+            <li class="nav-item">
+              <a href="CHANGELOG.html" data-nav="is-not-active">Changelog</a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a href="CONTRIBUTING.html" data-nav="is-not-active">Contributing</a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a href="LICENSE.html" data-nav="is-not-active">License</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+
+    
+    <div class="nav-subsection">
+      <ul>
+            <li class="nav-subsection">
+              <h3 class="nav-title">CSS Usage</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="config-css.html" data-nav="is-not-active">Global CSS<span class="widont">&nbsp;</span>Settings</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="fallbacks.html" data-nav="is-not-active">Fallback Colors &amp;<span class="widont">&nbsp;</span>Modes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="modes.html" data-nav="is-not-active">Dynamic Modes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="themes.html" data-nav="is-not-active">Creating Themes</a>
+    </li>
+  </ul>
+            </li>
+            <li class="nav-subsection">
+              <h3 class="nav-title">Sass Tools</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="config.html" data-nav="is-not-active">Global Sass<span class="widont">&nbsp;</span>Settings</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="palettes.html" data-nav="is-not-active">Generating Palettes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="tools-modes.html" data-nav="is-not-active">If-Mode</a>
+    </li>
+  </ul>
+            </li></ul>
+    </div>
+
+    
+    
+      <div class="nav-subsection">
+        <h3 class="nav-title">
+          External Links
+        </h3>
+
+        <ul>
+          
+            <li class="nav-item">
+              <a href="https://cascading-colors.netlify.app/" data-nav="is-not-active">Demo</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="https://github.com/oddbird/cascading-color-system" data-nav="is-not-active">GitHub Source</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="http://oddbird.net/" data-nav="is-not-active">OddBird</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <aside class="footer-credit">
+        <a href="http://oddbird.net/herman/" class="footer-icon">
+          
+  <svg data-icon="logo" data-icon-size="footer-logo" ><use xlink:href="#icon-logo" />
+  </svg>
+
+        </a>
+        <span>
+          Documented with
+          <a href="http://oddbird.net/herman/" class="footer-link">
+            Herman
+          </a>
+        </span>
+        <span>
+          by
+          <a href="http://oddbird.net/" class="footer-link">
+            OddBird
+          </a>
+        </span>
+      </aside>
+    
+  </nav>
+
+
+      <main data-region="main">
+        
+
+        <div data-page="index">
+          
+  
+  
+    <ul class="project-links">
+      
+        <li class="project-link-item">
+          <a href="https://cascading-colors.netlify.app/" class="project-link">View Project</a>
+        </li>
+      
+      
+        <li class="project-link-item">
+          <a href="https://github.com/oddbird/cascading-color-system.git" class="project-link">View Source</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="text-block">
+      <h1 id="cascading-color-systems">Cascading Color Systems</h1>
+<p><a href="https://cascading-colors.netlify.app/">Demo Site</a></p>
+<p>Generate dynamic and themable color palettes using CSS custom properties,
+and allow (persistent) user-adjustments with a bit of light-weight<span class="widont">&nbsp;</span>JS.</p>
+<p>We provide both the Sass,
+and a pre-built CSS file.
+Both allow adjustments to default settings –
+but only the Sass files can change how many colors are<span class="widont">&nbsp;</span>generated.</p>
+<h2 id="installation-requirements">Installation &amp; Requirements</h2>
+<p>Download the files from <a href="https://github.com/oddbird/cascading-color-system/">GitHub</a>,
+or install using npm or<span class="widont">&nbsp;</span>yarn:</p>
+<pre><code class="lang-bash">npm install cascading-color-systems --save-dev
+yarn add cascading-color-systems --dev
+</code></pre>
+<h3 id="css-minimal-configuration-">CSS (minimal configuration)</h3>
+<p>The default configuration can be used as plain<span class="widont">&nbsp;</span>CSS:</p>
+<pre><code class="lang-css">/* css */
+@import &quot;&lt;path-to&gt;/cascading-color-systems/css/ccs.css&quot;;
+</code></pre>
+<pre><code class="lang-html">&lt;!-- html --&gt;
+&lt;link src=&quot;&lt;path-to&gt;/cascading-color-systems/css/ccs.css&quot; rel=&quot;stylesheet&quot; /&gt;
+</code></pre>
+<p>You can copy that file anywhere you want,
+and it works without<span class="widont">&nbsp;</span>dependencies.</p>
+<h3 id="sass-full-configuration-">Sass (full configuration)</h3>
+<p>If you want to use the Sass features,
+you will need <a href="https://www.npmjs.com/package/sass">Dart-Sass</a> <code>v1.23+</code>
+(which may still be in Beta).
+This was partially an experiment
+in the latest Sass feature:<span class="widont">&nbsp;</span>Modules.</p>
+<p>Import using the new module import<span class="widont">&nbsp;</span>syntax:</p>
+<pre><code class="lang-scss">@use '&lt;path-to&gt;/cascading-color-systems/' as ccs with (
+  /* configuration options */
+);
+</code></pre>
+<h2 id="getting-started">Getting started</h2>
+<h3 id="ccs-root">CCS Root</h3>
+<p>Both imports generate
+core configuration options
+as CSS custom properties
+(set by Sass when applicable)<span class="widont">&nbsp;</span>eg:</p>
+<pre><code class="lang-scss">[data-ccs=&quot;root&quot;] {
+  --ccs-prime--config: 330;
+  --ccs-lightness--config: 50%;
+  --ccs-saturation--config: 50%;
+  --ccs-contrast--config: 50%;
+  --ccs-fade-background--config: 0.9;
+}
+</code></pre>
+<p>Add the <code>data-ccs='root'</code> attribute to your <code>html</code> element
+in order to make your Cascading Colors configuration
+available to an entire page.
+This attribute will also be used by JavaScript
+to apply dynamic user settings<span class="widont">&nbsp;</span>globally.</p>
+<h3 id="ccs-color-attributes">CCS Color Attributes</h3>
+<p>Custom properties only re-calculate
+where they are defined –
+so we’ve created a
+<code>[data-ccs-colors]</code> attribute,
+which can be applied anywhere
+new colors are<span class="widont">&nbsp;</span>needed.</p>
+<p>We configure the default <code>color</code> and <code>background-color</code> settings:</p>
+<pre><code class="lang-scss">[data-ccs-colors] {
+  background-color: var(--ccs-background, var(--ccs--bg-full));
+  color: var(--ccs-color, var(--ccs--fg-full));
+}
+</code></pre>
+<p>Along with fallback values for light/dark modes,
+in case CSS custom properties are not<span class="widont">&nbsp;</span>supported:</p>
+<pre><code class="lang-scss">[data-ccs-colors],
+[data-ccs-colors=&quot;light&quot;] {
+  background-color: $fallback-light;
+  color: $fallback-dark;
+}
+
+[data-ccs-colors=&quot;invert&quot;],
+[data-ccs-colors=&quot;dark&quot;] {
+  background-color: $fallback-dark;
+  color: $fallback-light;
+}
+</code></pre>
+<p>You can override the default colors and backgrounds
+by defining <code>--ccs-color</code> and <code>--ccs-background</code>:</p>
+<pre><code class="lang-scss">[data-ccs-colors] {
+  --ccs-background: var(--ccs-neutral--bg-full);
+  --ccs-color: var(--ccs-neutral--fg-full);
+}
+</code></pre>
+<p>This attribute generates all your colors as custom<span class="widont">&nbsp;</span>properties:</p>
+<ul>
+<li><code>--ccs-prime</code>, <code>--ccs-*</code>:
+Colors generated from the given <code>$hues</code>, <code>$saturation</code>, and <code>$lightness</code> –
+along with any <code>neutral</code> colors,
+which will use their own customizable (low) <code>$saturation</code></li>
+<li><code>--ccs-*--fg-full</code> :
+All color hues get a full-contrast<span class="widont">&nbsp;</span>foreground</li>
+<li><code>--ccs-*--bg-full</code> :
+All color hues get a full-contrast<span class="widont">&nbsp;</span>background</li>
+<li><code>--ccs--bg-full</code> white or black, depending on light/dark<span class="widont">&nbsp;</span>mode</li>
+<li><code>--ccs--fg-full</code> white or black, depending on light/dark<span class="widont">&nbsp;</span>mode</li>
+</ul>
+<p>We also provide the color attributes needed
+to generate a larger<span class="widont">&nbsp;</span>palette:</p>
+<ul>
+<li><code>--ccs-h--*</code>:
+the calculated hue for each color,
+afterresolving user-settings, theme-settings, and global<span class="widont">&nbsp;</span>configuration</li>
+<li><code>--ccs-contrast</code>:
+the calculated contrast range
+based on theme, user, and global<span class="widont">&nbsp;</span>settings</li>
+<li><code>--ccs-l</code>, <code>--ccs-l--&lt;fg | bg&gt;-contrast</code>:
+the calculated base lightness (user, theme, global)
+and full-contrast fg/bg<span class="widont">&nbsp;</span>values</li>
+<li><code>--ccs-s</code>, <code>--ccs-s--&lt;fg | bg&gt;-contrast</code>:
+the calculated base saturation (user, theme, global)
+and full-contrast fg/bg<span class="widont">&nbsp;</span>values</li>
+<li><code>--ccs-mode</code>:
+the calculated light (<code>1</code>) or dark (<code>-1</code>) mode
+(user, theme, html, or system<span class="widont">&nbsp;</span>preference)</li>
+<li><code>--ccs-invert</code> the opposite of<span class="widont">&nbsp;</span>CCS-mode</li>
+</ul>
+<p>You can pass explicit light/dark mode overrides in html
+by including a value with the<span class="widont">&nbsp;</span>attribute:</p>
+<pre><code class="lang-html">&lt;section data-ccs-colors=&quot;light&quot;&gt;
+  &lt;!-- light background, dark foreground --&gt;
+
+  &lt;div data-ccs-colors=&quot;invert&quot;&gt;
+    &lt;!-- invert the colors (can't be nested multiple times) --&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section data-ccs-colors=&quot;dark&quot;&gt;
+  &lt;!-- dark background, light foreground --&gt;
+&lt;/section&gt;
+</code></pre>
+<h3 id="ccs-color-palettes">CCS Color Palettes</h3>
+<p>More complex color palettes have to be generated in Sass,
+based on the number of <code>$steps</code> desired
+to get from the base colors to their full-contrast<span class="widont">&nbsp;</span>versions.</p>
+<p>If you import the static CSS file,
+we generate a palette based on the default settings,
+with 4 steps in either direction.
+Each step is named <code>--ccs-&lt;hue&gt;--&lt;direction&gt;&lt;step&gt;</code>,
+eg <code>--ccs-prime--fg1</code>, or <code>--ccs-accent--bg3</code>.</p>
+<h3 id="creating-themes">Creating Themes</h3>
+<p>Themes can be used to pre-set any color values
+(especially the accent hue),
+and even show/hide user customization controls.
+We provide several built-in themes,
+and you can add your own
+using the <code>[data-ccs-theme]</code> attribute:</p>
+<pre><code class="lang-scss">[data-ccs-theme=&quot;complement&quot;] {
+  /* set the accent color 180 degrees off the primary color */
+  --ccs-accent--theme: calc(var(--ccs-h--prime) + 180);
+}
+
+[data-ccs-theme=&quot;triad&quot;] {
+  /* triad logic */
+}
+</code></pre>
+<h3 id="sass-configuration">Sass Configuration</h3>
+<p>In most cases,
+you’ll want to define the <code>prime</code> hue,
+and possibly a few other options –
+and then trigger a build from the module itself.
+Here’s the code from one of my<span class="widont">&nbsp;</span>sites:</p>
+<pre><code class="lang-scss">@use &quot;../../node_modules/cascading-color-systems/&quot; as ccs with (
+  $hues: 120, // shorthand for setting the prime hue only
+  $saturation: 70%,
+  $contrast: 48%,
+  $steps: 6,
+  $fade-background: 15%,
+  $fades: 0.75,
+  $build: true,
+);
+</code></pre>
+<p>The <code>$build: true</code> configuration
+will generate CSS output based on your settings.
+I recommend that for most use-cases,
+but you can leave that out
+and apply individual<span class="widont">&nbsp;</span>mixins:</p>
+<pre><code class="lang-scss">[data-ccs-colors] {
+  @include colors;
+}
+</code></pre>
+<h3 id="user-settings-javascript">User Settings &amp;<span class="widont">&nbsp;</span>JavaScript</h3>
+<p>The provided JS
+can be hooked up to a form
+to accept user-input,
+generate custom properties based on their input,
+store their preferences in <code>localStorage</code>,
+or revert back to the configured site<span class="widont">&nbsp;</span>defaults.</p>
+<p>Use the <code>dist.js</code> UMD module directly in a<span class="widont">&nbsp;</span>browser:</p>
+<pre><code class="lang-html">&lt;script type=&quot;text/javascript&quot; src=&quot;dist.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  ccs.default();
+&lt;/script&gt;
+</code></pre>
+<p>Or import and use <code>index.js</code>,
+if you have a modern build system with ES Module<span class="widont">&nbsp;</span>support:</p>
+<pre><code class="lang-js">import ccs from &quot;cascading-color-systems&quot;;
+
+ccs();
+</code></pre>
+<p>We provide several hooks for the JS to<span class="widont">&nbsp;</span>use</p>
+<ul>
+<li><code>[data-ccs=&quot;root&quot;]</code>:
+where user settings should be<span class="widont">&nbsp;</span>applied</li>
+<li><code>[data-ccs=&quot;menu&quot;]</code>:
+if you hide the settings by default,
+we’ll show them when the JS is<span class="widont">&nbsp;</span>available</li>
+<li><code>[data-ccs-input=&quot;mode&quot;]</code>:
+a button to toggle light/dark<span class="widont">&nbsp;</span>modes</li>
+<li><code>[data-ccs-input=&quot;unset&quot;]</code>:
+a button to unset all user preferences
+and clear related local<span class="widont">&nbsp;</span>storage</li>
+<li><code>[data-ccs-input=&quot;theme&quot;]</code>:
+Allow users to select from available <code>theme</code> options</li>
+<li><code>[data-ccs-input=&quot;hue&quot;]</code>:
+Allow users to change the primary<span class="widont">&nbsp;</span>hue</li>
+<li><code>[data-ccs-input=&quot;saturation&quot;]</code>:
+Allow users to adjust the baseline<span class="widont">&nbsp;</span>saturation</li>
+<li><code>[data-ccs-input=&quot;lightness&quot;]</code>:
+Allow users to adjust the baseline<span class="widont">&nbsp;</span>lightness</li>
+<li><code>[data-ccs-input=&quot;contrast&quot;]</code>:
+Allow users to adjust the contrast<span class="widont">&nbsp;</span>range</li>
+</ul>
+<p>Themes can also use the <code>[data-ccs-field]</code> on wrappers,
+to show and hide inputs/labels directly in the CSS
+based on a given theme.
+For example, a high-contrast theme
+might not accept <code>contrast</code> input:</p>
+<pre><code class="lang-scss">[data-ccs-theme=&quot;contrast&quot;] {
+  --ccs-contrast: 200%; /* override all other contrast settings */
+  --ccs-custom-contrast: none; /* hide [data-ccs-field=&quot;contrast&quot;] */
+}
+</code></pre>
+
+    </div>
+  
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="assets/webpack/runtime.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/common.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/app.min.js"></script>
+  
+</body>
+</html>

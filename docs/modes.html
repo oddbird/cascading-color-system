@@ -1,0 +1,951 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-herman="root">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Dynamic Modes | Cascading Color Systems Documentation</title>
+
+  <link href="assets/img/favicon.ico" rel="shortcut icon">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/webpack/app_styles.min.css" />
+
+  
+
+  
+</head>
+<body data-herman="body">
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+  <symbol id="icon-logo" viewBox="0 0 16 16">
+    <path d="M.2 8L0 7.8v-.2C.8 6.9 1.9 5.9 2.7 5l.4.3c-.5.8-1.1 1.6-1.8 2.3 1 1.2 1 1.3 1.7 2.4l-.4.3c-.4-.4-.5-.6-1-1C1 8.6 1.1 8.7.2 8zM13 10c.6-1.1.7-1.1 1.7-2.4-.6-.6-1.3-1.5-1.7-2.3l.3-.3c.8.8 1.8 1.8 2.7 2.6v.2l-.8.7c-.3.3-1.2 1.1-1.8 1.7L13 10z"/><path d="M2.6 13.1H3c.9 0 1.1-.2 1.1-1.4V4.2c0-1.1-.2-1.4-1.1-1.4h-.4v-.6h4.5v.7h-.3c-.9 0-1.1.2-1.1 1.4v3.2h4.6V4.2c0-1.1-.2-1.4-1.1-1.4h-.3v-.6h4.5v.7H13c-.9 0-1.1.2-1.1 1.4v7.5c0 1.1.2 1.4 1.1 1.4h.4v.7H8.9v-.7h.3c.9 0 1.1-.2 1.1-1.4V8.2H5.7v3.5c0 1.1.2 1.4 1.1 1.4h.3v.7H2.6v-.7z"/>
+  </symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 28">
+    <path d="M24 21v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1V5c0-.547.453-1 1-1h22c.547 0 1 .453 1 1z"/>
+  </symbol>
+</svg>
+
+  <div data-region="app">
+    <header data-region="banner">
+      
+  <button data-nav-toggle data-toggle="button" aria-controls="nav" aria-pressed="false" type="button" data-toggle-synced="false">
+    
+  <svg data-icon="menu" data-icon-size="nav-icon" ><title>menu</title><use xlink:href="#icon-menu" />
+  </svg>
+
+  </button>
+
+
+      <div class="project-title">
+        <a href="index.html" rel="home" class="project-name">Cascading Color Systems</a>
+        
+          <span class="project-version">0.1.0-beta.12</span>
+        
+      </div>
+    </header>
+
+    <div data-region="container">
+      
+  <nav data-region="nav" data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
+    <form action="search.html">
+      <input type="text" name="q" placeholder="Search…" required minlength="3">
+    </form>
+
+    <div class="nav-subsection">
+      <h3 class="nav-home">
+        
+        <a href="index.html" data-nav="is-not-active">Cascading Color<span class="widont">&nbsp;</span>Systems</a>
+      </h3>
+
+      
+      
+        <ul>
+          
+            
+            <li class="nav-item">
+              <a href="CHANGELOG.html" data-nav="is-not-active">Changelog</a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a href="CONTRIBUTING.html" data-nav="is-not-active">Contributing</a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a href="LICENSE.html" data-nav="is-not-active">License</a>
+            </li>
+          
+        </ul>
+      
+    </div>
+
+    
+    <div class="nav-subsection">
+      <ul>
+            <li class="nav-subsection">
+              <h3 class="nav-title">CSS Usage</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="config-css.html" data-nav="is-not-active">Global CSS<span class="widont">&nbsp;</span>Settings</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="fallbacks.html" data-nav="is-not-active">Fallback Colors &amp;<span class="widont">&nbsp;</span>Modes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="modes.html" data-nav="is-active">Dynamic Modes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="themes.html" data-nav="is-not-active">Creating Themes</a>
+    </li>
+  </ul>
+            </li>
+            <li class="nav-subsection">
+              <h3 class="nav-title">Sass Tools</h3>
+              <ul>
+                
+  
+    <li class="nav-item">
+      <a href="config.html" data-nav="is-not-active">Global Sass<span class="widont">&nbsp;</span>Settings</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="palettes.html" data-nav="is-not-active">Generating Palettes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="tools-modes.html" data-nav="is-not-active">If-Mode</a>
+    </li>
+  </ul>
+            </li></ul>
+    </div>
+
+    
+    
+      <div class="nav-subsection">
+        <h3 class="nav-title">
+          External Links
+        </h3>
+
+        <ul>
+          
+            <li class="nav-item">
+              <a href="https://cascading-colors.netlify.app/" data-nav="is-not-active">Demo</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="https://github.com/oddbird/cascading-color-system" data-nav="is-not-active">GitHub Source</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="http://oddbird.net/" data-nav="is-not-active">OddBird</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <aside class="footer-credit">
+        <a href="http://oddbird.net/herman/" class="footer-icon">
+          
+  <svg data-icon="logo" data-icon-size="footer-logo" ><use xlink:href="#icon-logo" />
+  </svg>
+
+        </a>
+        <span>
+          Documented with
+          <a href="http://oddbird.net/herman/" class="footer-link">
+            Herman
+          </a>
+        </span>
+        <span>
+          by
+          <a href="http://oddbird.net/" class="footer-link">
+            OddBird
+          </a>
+        </span>
+      </aside>
+    
+  </nav>
+
+
+      <main data-region="main">
+        
+  <nav class="breadcrumb">
+    
+    <a href="index.html" >Cascading Color Systems</a> »
+    <strong>Dynamic Modes</strong>
+  </nav>
+
+
+        <div data-page="modes">
+          
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" >
+  
+    
+  
+  
+  
+  
+
+  
+    <div data-item-section="prose" class="text-block">
+      <h1 id="dynamic-modes">Dynamic Modes</h1>
+<p>Dynamic modes allow us to manage
+light and dark color schemes
+by toggling a single custom property.
+Modes inputs “cascade” such that
+HTML modes (set here) take precedence,
+followed by the user mode (which can be set in Javascript),
+and finally the operating-system or browser
+color-scheme<span class="widont">&nbsp;</span>preferences.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="css--OS%20modes">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#css--OS%20modes" class="item-name">OS modes</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">[data-ccs=&#39;root&#39;] {
+  --ccs-mode--os: 1;
+
+  @media (prefers-color-scheme: dark) {
+    --ccs-mode--os: -1;
+  }
+}</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>On the CCS root,
+we check the user’s color-scheme preference,
+to set <code>--ccs-mode--os</code>,
+which provides a dynamic default<span class="widont">&nbsp;</span>value.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="css--cascading%20modes">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#css--cascading%20modes" class="item-name">cascading modes</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-colors] {
+  --ccs-mode--cascade: var(--ccs-mode--html, var(--ccs-mode--user, var(--ccs-mode--os, 1)));
+  --ccs-mode: var(--ccs-mode--cascade, 1);
+  --ccs-mode--zero: calc((var(--ccs-mode) + 1) * 0.5);
+  --ccs-invert: calc(-1 * var(--ccs-mode));
+  --ccs-invert--zero: calc((var(--ccs-invert) + 1) * 0.5);
+}</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Each instance of the color system
+will re-calculate the “cascade” of mode origins
+to determine the final <code>--ccs-mode</code>
+(<code>1</code> for a “light” background and <code>-1</code> for a “dark” background),
+along with a <code>--ccs-invert</code> which reverses the numbers.
+Both have <code>*--zero</code> versions that change the numbering
+(<code>0</code> for a “dark” background)
+for use in on/off<span class="widont">&nbsp;</span>toggles.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="css--light%20mode">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#css--light%20mode" class="item-name">light mode</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-colors=&#39;light&#39;] {
+  --ccs-mode--html: 1;
+}</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Set “light” mode explicitly in<span class="widont">&nbsp;</span>HTML.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="css--dark%20mode">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#css--dark%20mode" class="item-name">dark mode</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-colors=&#39;dark&#39;] {
+  --ccs-mode--html: -1;
+}</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Set “dark” mode explicitly in<span class="widont">&nbsp;</span>HTML.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="css--invert">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#css--invert" class="item-name">invert</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">[data-ccs-colors=&#39;invert&#39;] {
+  --ccs-mode: calc(-1 * var(--ccs-mode--cascade, 1));
+}</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Dynamic inversion will flip light/dark mode
+in a nested context (one level<span class="widont">&nbsp;</span>deep).</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="assets/webpack/runtime.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/common.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/app.min.js"></script>
+  
+</body>
+</html>
