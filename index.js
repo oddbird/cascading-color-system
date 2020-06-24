@@ -22,7 +22,7 @@ export default function () {
     const el = selectElements[type];
     selectElements[type].value = el.getAttribute('data-default');
   });
-  
+
   const setSelection = (type, selection) => {
     setValue(type, selection)
   } 
@@ -87,14 +87,24 @@ export default function () {
         .trim(),
     );
   };
+  
   const changeMode = (scheme) => {
-      const schemeMap = {
+    const schemeMap = {
         light: 1,
         dark: -1,
-      }
-    setValue('mode', schemeMap[scheme], true)
+        auto: 0
+    }
+    const setting = schemeMap[scheme]
+    if (setting) {
+      setValue('mode', setting)
+    }
+    else {
+      // if auto, remove mode props from root and store
+      localStorage.removeItem('ccsMode');
+      root.style.removeProperty(props.mode);
+    }
   };
-  const toggleMode = () => setValue('mode', getMode() * -1, true)
+  const toggleMode = () => setValue('mode', getMode() * -1)
   // initialize everything
   const initMenu = () => {
     themeMenu.removeAttribute('hidden');
