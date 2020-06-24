@@ -2,6 +2,7 @@ export default function () {
   // elements
   const root = document.querySelector('[data-ccs="root"]');
   const themeMenu = document.querySelector('[data-ccs="menu"]');
+  const unsetTheme = document.querySelector('[data-ccs-field~="unset-theme"]')
   const invertBtn = document.querySelector('[data-ccs-input="mode"]');
   const modeLight = document.querySelector('[data-ccs-input="light-mode"]');
   const modeDark = document.querySelector('[data-ccs-input="dark-mode"]');
@@ -25,7 +26,7 @@ export default function () {
 
   const setSelection = (type, selection) => {
     setValue(type, selection);
-    if (type === 'theme') {
+    if (type === 'theme' && unsetTheme) {
       resetSelect();
       clearStore();
     }
