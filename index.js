@@ -17,6 +17,16 @@ export default function () {
     contrast: document.querySelector('[data-ccs-input="contrast"]'),
   };
 
+  const resetSelect = () => 
+    Object.keys(selectElements).forEach(type => {
+    const el = selectElements[type];
+    selectElements[type].value = el.getAttribute('data-default');
+  });
+  
+  const setSelection = (type, selection) => {
+    setValue(type, selection)
+  } 
+
   // attributes
   const attrs = {
     theme: 'data-ccs-theme',
@@ -30,6 +40,8 @@ export default function () {
     contrast: '--ccs-contrast--user',
     mode: '--ccs-mode--user',
   };
+  const clearProps = () => 
+  Object.keys(props).forEach(prop => root.style.removeProperty(props[prop]));
 
   // local storage
   const store = {
@@ -40,16 +52,14 @@ export default function () {
     light: 'ccsLight',
     contrast: 'ccsContrast',
   };
+  const clearStore = () => Object.keys(store).forEach(type => localStorage.removeItem(store[type]));
 
-  // clear all settings from storage, html and hide reset
-  const autoReset = () => {
+  // clear all settings on reset
+  const unset = () => {
     setValue('theme', selectElements.theme.getAttribute('data-default'), false);
-    Object.keys(store).forEach(type => localStorage.removeItem(store[type]));
-    Object.keys(props).forEach(prop => root.style.removeProperty(props[prop]));
-    Object.keys(selectElements).forEach(type => {
-      const el = selectElements[type];
-      selectElements[type].value = el.getAttribute('data-default');
-    });
+    clearStore();
+    clearProps();
+    resetSelect();
     unsetBtn.setAttribute('hidden', '');
   };
 
@@ -77,19 +87,14 @@ export default function () {
         .trim(),
     );
   };
-
   const changeMode = (scheme) => {
-    if (scheme) {
       const schemeMap = {
         light: 1,
         dark: -1,
       }
     setValue('mode', schemeMap[scheme], true)
-    }
   };
-
   const toggleMode = () => setValue('mode', getMode() * -1, true)
-
   // initialize everything
   const initMenu = () => {
     themeMenu.removeAttribute('hidden');
@@ -124,13 +129,13 @@ export default function () {
   modeDark.addEventListener('click', () => changeMode('dark'))
   modeAuto.addEventListener('click', () => changeMode('auto'))
   // reset //
-  unsetBtn.addEventListener('click', () => autoReset());
+  unsetBtn.addEventListener('click', () => unset());
 
   Object.keys(selectElements).forEach(type => {
     if (selectElements[type]) {
       document.onload = initValue(type);
       selectElements[type].addEventListener('change', (e) =>
-        setValue(type, e.target.value),
+        setSelection(type, e.target.value)
       );
     }
   });
