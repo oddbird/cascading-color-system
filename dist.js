@@ -10,7 +10,7 @@
     factory(mod.exports);
     global.ccs = mod.exports;
   }
-})(typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : this, function (_exports) {
+})(this, function (_exports) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -46,7 +46,8 @@
       setValue(type, selection);
 
       if (type === 'theme' && unsetTheme) {
-        resetSelect();
+        clearThemeValues(); // resetSelect();
+
         clearStore();
       }
 
@@ -89,6 +90,11 @@
       sat: 'ccsSat',
       light: 'ccsLight',
       contrast: 'ccsContrast'
+    };
+    const themeValues = Object.values(store).filter(k => k !== 'ccsMode');
+
+    const clearThemeValues = () => {
+      themeValues.forEach(item => localStorage.removeItem(item));
     };
 
     const clearProps = () => Object.keys(props).forEach(prop => root.style.removeProperty(props[prop]));

@@ -27,7 +27,8 @@ export default function () {
   const setSelection = (type, selection) => {
     setValue(type, selection);
     if (type === 'theme' && unsetTheme) {
-      resetSelect();
+      clearThemeValues();
+      // resetSelect();
       clearStore();
     }
     setValue(type, selection);
@@ -68,6 +69,10 @@ export default function () {
     light: 'ccsLight',
     contrast: 'ccsContrast',
   };
+  const themeValues = Object.values(store).filter(k => k !== 'ccsMode')
+  const clearThemeValues = () => {
+    themeValues.forEach(item => localStorage.removeItem(item))
+  }
 
   const clearProps = () =>
     Object.keys(props).forEach((prop) =>
