@@ -1,4 +1,4 @@
-# Cascading Color Systems
+# Cascading Colors
 
 [Demo Site](https://cascading-colors.netlify.app/)
 

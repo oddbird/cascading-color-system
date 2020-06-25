@@ -2,7 +2,7 @@
   "name": "cascading-color-systems",
   "version": "0.1.0-beta.12",
   "description": "generate dynamic color palettes with custom properties",
-  "title": "Cascading Color Systems",
+  "title": "Cascading Colors",
   "main": "dist.js",
   "module": "index.js",
   "homepage": "https://cascading-colors.netlify.app/",
