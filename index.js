@@ -104,12 +104,12 @@ export default function () {
     return Number(getComputedStyle(root).getPropertyValue('--ccs-mode').trim());
   };
   const changeMode = (scheme) => {
-    const schemeMap = {
+    const schemeDict = {
       light: 1,
       dark: -1,
       auto: 0,
     };
-    const setting = schemeMap[scheme];
+    const setting = schemeDict[scheme];
     if (setting) {
       setValue('mode', setting);
     } else {
@@ -118,7 +118,14 @@ export default function () {
       root.style.removeProperty(props.mode);
     }
   };
-  const toggleMode = () => setValue('mode', getMode() * -1);
+  const toggleMode = () => {
+    const modeDict = {
+      1: modeLight,
+      [-1]: modeDark,
+    };
+    setValue('mode', getMode() * -1)
+    modeDict[getMode()].checked = true;
+  };
 
   // initialize everything
   const initMenu = () => {
@@ -139,18 +146,17 @@ export default function () {
   const initMode = () => {
     let to = localStorage.getItem(store.mode);
     if (to) {
-      const modeMap = {
+      const modeDict = {
         1: modeLight,
         [-1]: modeDark,
       };
       setValue('mode', to);
       unsetBtn.removeAttribute('hidden');
-      modeMap[to].checked = true
+      modeDict[to].checked = true
     }
     else { 
       modeAuto.checked = true
     } 
-
   };
 
   /* init defaults */
