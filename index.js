@@ -96,6 +96,7 @@ export default function () {
     clearProps();
     resetSelect();
     unsetBtn.setAttribute('hidden', '');
+    modeAuto.checked = true
   };
 
   // modes
@@ -138,9 +139,18 @@ export default function () {
   const initMode = () => {
     let to = localStorage.getItem(store.mode);
     if (to) {
+      const modeMap = {
+        1: modeLight,
+        [-1]: modeDark,
+      };
       setValue('mode', to);
       unsetBtn.removeAttribute('hidden');
+      modeMap[to].checked = true
     }
+    else { 
+      modeAuto.checked = true
+    } 
+
   };
 
   /* init defaults */
