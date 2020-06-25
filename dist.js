@@ -46,8 +46,8 @@
       setValue(type, selection);
 
       if (type === 'theme' && unsetTheme) {
-        clearThemeValues(); // resetSelect();
-
+        clearThemeValues();
+        resetSelect();
         clearStore();
       }
 
@@ -91,9 +91,15 @@
       light: 'ccsLight',
       contrast: 'ccsContrast'
     };
-    const themeValues = Object.values(store).filter(k => k !== 'ccsMode');
 
     const clearThemeValues = () => {
+      const themeValues = Object.values(store).filter(k => k !== store.mode);
+      const themeProps = Object.values(props).filter(p => p !== props.mode);
+      Object.values(props).forEach(prop => {
+        if (themeProps.includes(prop)) {
+          root.style.removeProperty(prop);
+        }
+      });
       themeValues.forEach(item => localStorage.removeItem(item));
     };
 

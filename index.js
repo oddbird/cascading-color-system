@@ -2,7 +2,7 @@ export default function () {
   // elements
   const root = document.querySelector('[data-ccs="root"]');
   const themeMenu = document.querySelector('[data-ccs="menu"]');
-  const unsetTheme = document.querySelector('[data-ccs-field~="unset-theme"]')
+  const unsetTheme = document.querySelector('[data-ccs-field~="unset-theme"]');
   const invertBtn = document.querySelector('[data-ccs-input="mode"]');
   const modeLight = document.querySelector('[data-ccs-input="light-mode"]');
   const modeDark = document.querySelector('[data-ccs-input="dark-mode"]');
@@ -28,7 +28,7 @@ export default function () {
     setValue(type, selection);
     if (type === 'theme' && unsetTheme) {
       clearThemeValues();
-      // resetSelect();
+      resetSelect();
       clearStore();
     }
     setValue(type, selection);
@@ -69,10 +69,17 @@ export default function () {
     light: 'ccsLight',
     contrast: 'ccsContrast',
   };
-  const themeValues = Object.values(store).filter(k => k !== 'ccsMode')
+
   const clearThemeValues = () => {
-    themeValues.forEach(item => localStorage.removeItem(item))
-  }
+    const themeValues = Object.values(store).filter((k) => k !== store.mode);
+    const themeProps = Object.values(props).filter((p) => p !== props.mode);
+    Object.values(props).forEach((prop) => {
+      if (themeProps.includes(prop)) {
+        root.style.removeProperty(prop);
+      }
+    });
+    themeValues.forEach((item) => localStorage.removeItem(item));
+  };
 
   const clearProps = () =>
     Object.keys(props).forEach((prop) =>
