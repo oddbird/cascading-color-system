@@ -706,7 +706,7 @@ button:active {
   font-style: italic;
 }
 
-input,
+[type=range],
 select {
   width: 100%;
 }
