@@ -2,7 +2,6 @@ export default function () {
   // elements
   const root = document.querySelector('[data-ccs="root"]');
   const themeMenu = document.querySelector('[data-ccs="menu"]');
-  // const unsetTheme = document.querySelector('[data-ccs-input~="unset-theme"]');
   const invertBtn = document.querySelector('[data-ccs-input="mode"]');
   const modeLight = document.querySelector('[data-ccs-input="light-mode"]');
   const modeDark = document.querySelector('[data-ccs-input="dark-mode"]');
@@ -18,7 +17,7 @@ export default function () {
     contrast: document.querySelector('[data-ccs-input="contrast"]'),
   };
 
-  const unsetTheme = selectElements.theme.dataset.ccsInput.includes('unset-theme');
+  const unsetTheme = selectElements.theme?.dataset.ccsInput.includes('unset-theme');
 
   const resetSelect = () =>
     Object.keys(selectElements).forEach((type) => {
@@ -35,6 +34,12 @@ export default function () {
     }
     setValue(type, selection);
   };
+  
+  const unsetSelections = () => {
+    if (unsetBtn) {
+      unsetBtn.removeAttribute('hidden');
+    }
+  }
   // set a value
   const setValue = (type, to, toStore = true) => {
     if (to) {
@@ -46,7 +51,7 @@ export default function () {
 
       if (toStore && store[type]) {
         localStorage.setItem(store[type], to);
-        unsetBtn.removeAttribute('hidden');
+        unsetSelections();
       }
     }
   };
@@ -97,8 +102,12 @@ export default function () {
     clearStore();
     clearProps();
     resetSelect();
-    unsetBtn.setAttribute('hidden', '');
-    modeAuto.checked = true
+    if (unsetBtn) {
+      unsetBtn.setAttribute('hidden', '');
+    }
+    if (modeAuto) {
+      modeAuto.checked = true
+    }
   };
 
   // modes
@@ -126,7 +135,9 @@ export default function () {
       [-1]: modeDark,
     };
     setValue('mode', getMode() * -1)
-    modeDict[getMode()].checked = true;
+    if (modeLight || modeDark ) {
+      modeDict[getMode()].checked = true;
+    }
   };
 
   // initialize everything
@@ -142,7 +153,7 @@ export default function () {
     if (to) {
       setValue(type, to, false);
       selectElements[type].value = to;
-      unsetBtn.removeAttribute('hidden');
+      unsetSelections();
     }
   };
   const initMode = () => {
@@ -153,10 +164,10 @@ export default function () {
         [-1]: modeDark,
       };
       setValue('mode', to);
-      unsetBtn.removeAttribute('hidden');
+      unsetSelections();
       modeDict[to].checked = true
     }
-    else {
+    else if (modeAuto) {
       modeAuto.checked = true
     }
   };
@@ -166,11 +177,11 @@ export default function () {
   document.onload = initMode();
 
   /* attach eventlistners */
-  invertBtn.addEventListener('click', () => toggleMode());
-  modeLight.addEventListener('click', () => changeMode('light'));
-  modeDark.addEventListener('click', () => changeMode('dark'));
-  modeAuto.addEventListener('click', () => changeMode('auto'));
-  unsetBtn.addEventListener('click', () => unset());
+  invertBtn && invertBtn.addEventListener('click', () => toggleMode());
+  modeLight && modeLight.addEventListener('click', () => changeMode('light'));
+  modeDark && modeDark.addEventListener('click', () => changeMode('dark'));
+  modeAuto && modeAuto.addEventListener('click', () => changeMode('auto'));
+  unsetBtn && unsetBtn.addEventListener('click', () => unset());
   Object.keys(selectElements).forEach((type) => {
     if (selectElements[type]) {
       document.onload = initValue(type);
