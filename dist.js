@@ -202,9 +202,9 @@
     /* attach eventlistners */
 
     invertBtn && invertBtn.addEventListener('click', () => toggleMode());
-    modeLight && modeLight.addEventListener('click', () => changeMode('light'));
-    modeDark && modeDark.addEventListener('click', () => changeMode('dark'));
-    modeAuto && modeAuto.addEventListener('click', () => changeMode('auto'));
+    modeLight && modeLight.addEventListener('change', () => changeMode('light'));
+    modeDark && modeDark.addEventListener('change', () => changeMode('dark'));
+    modeAuto && modeAuto.addEventListener('change', () => changeMode('auto'));
     unsetBtn && unsetBtn.addEventListener('click', () => unset());
     Object.keys(selectElements).forEach(type => {
       if (selectElements[type]) {
