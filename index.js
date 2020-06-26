@@ -2,7 +2,7 @@ export default function () {
   // elements
   const root = document.querySelector('[data-ccs="root"]');
   const themeMenu = document.querySelector('[data-ccs="menu"]');
-  const unsetTheme = document.querySelector('[data-ccs-field~="unset-theme"]');
+  const unsetTheme = document.querySelector('[data-ccs-input~="unset-theme"]');
   const invertBtn = document.querySelector('[data-ccs-input="mode"]');
   const modeLight = document.querySelector('[data-ccs-input="light-mode"]');
   const modeDark = document.querySelector('[data-ccs-input="dark-mode"]');
@@ -154,9 +154,9 @@ export default function () {
       unsetBtn.removeAttribute('hidden');
       modeDict[to].checked = true
     }
-    else { 
+    else {
       modeAuto.checked = true
-    } 
+    }
   };
 
   /* init defaults */
