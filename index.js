@@ -26,10 +26,8 @@ export default function () {
     });
 
   const setSelection = (type, selection) => {
-    setValue(type, selection);
     if (type === 'theme' && unsetTheme) {
       clearThemeValues();
-      resetSelect();
       clearStore();
     }
     setValue(type, selection);
