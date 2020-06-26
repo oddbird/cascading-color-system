@@ -40,5 +40,8 @@
     "index.js",
     "dist.js",
     "docs/"
-  ]
+  ],
+  "dependencies": {
+    "@stencil/core": "1.15.0"
+  }
 }
