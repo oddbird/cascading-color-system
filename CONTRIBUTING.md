@@ -21,7 +21,7 @@ The following scripts can help you work:
 - `yarn build-sass`: compiles the `output` file to `css/ccs.css`
 - `yarn build-docs`: compiles SassDoc/Herman documentation
 - `yarn build-js`: compiles `dist.js` for packaging
-- `yarn build-site`: compiles the demo site styles
+- `yarn build-demo`: compiles the demo site styles
 - `yarn build` or `yarn commit`: all the build steps at once
 - `yarn watch`: a watcher for the site styles
 
