@@ -267,20 +267,48 @@ import ccs from "cascading-color-systems";
 ccs();
 ```
 
-We provide several hooks for the JS to use
+### HTML Attributes
+
+We provide several attributes
+that can be used to build
+a user-interface for changing colors.
+The `root` attribute is required:
 
 - `[data-ccs="root"]`:
   where user settings should be applied
+
+#### General Controls:
+
 - `[data-ccs="menu"]`:
-  if you hide the settings by default,
-  we'll show them when the JS is available
+  You can hide the settings menu by default,
+  and we'll show them when the JS is available
+- `[data-ccs-input="unset"]`:
+  A button to unset all user preferences
+  and clear related local storage
+
+#### Light/Dark Mode:
+
+Mode can be toggled with a button:
+
 - `[data-ccs-input="mode"]`:
   a button to toggle light/dark modes
-- `[data-ccs-input="unset"]`:
-  a button to unset all user preferences
-  and clear related local storage
-- `[data-ccs-input="theme"]`:
-  Allow users to select from available `theme` options
+
+Or mode can be set explicitly using radio inputs:
+
+- `[data-ccs-input="light-mode"]`:
+  set light mode when checked
+- `[data-ccs-input="dark-mode"]`:
+  set dark mode when checked
+- `[data-ccs-input="auto-mode"]`:
+  unset explicit mode when checked,
+  and fallback on browser/operating-system settings
+
+#### Themes & Values:
+
+- `[data-ccs-input~="theme"]`:
+  Allow users to select from available `theme` options.
+  Add `unset-values` to revert all other theme values
+  when changing themes.
 - `[data-ccs-input="hue"]`:
   Allow users to change the primary hue
 - `[data-ccs-input="saturation"]`:
@@ -290,11 +318,11 @@ We provide several hooks for the JS to use
 - `[data-ccs-input="contrast"]`:
   Allow users to adjust the contrast range
 
-Themes can also use the `[data-ccs-field]` on wrappers,
-to show and hide inputs/labels directly in the CSS
-based on a given theme.
+Themes can also use `[data-ccs-field]` attributes
+with the values above,
+to show and hide inputs/labels based on a given theme.
 For example, a high-contrast theme
-might not accept `contrast` input:
+might not accept user `contrast` input:
 
 ```scss
 [data-ccs-theme="contrast"] {

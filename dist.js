@@ -89,7 +89,7 @@
     });
 
     const setSelection = (type, selection) => {
-      const unsetTheme = selectElements.theme?.dataset.ccsInput.includes('unset-theme');
+      const unsetTheme = selectElements.theme?.dataset.ccsInput.includes('unset-values');
 
       if (type === 'theme' && unsetTheme) {
         clearProps(subTheme);

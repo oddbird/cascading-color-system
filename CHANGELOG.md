@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-beta.13 - UNRELEASED
+
+- NEW: All form inputs & buttons are now optional
+- NEW: Support radio-inputs for `light`/`dark`/`auto` modes:
+  - `[data-ccs-input="light-mode"]`
+  - `[data-ccs-input="dark-mode"]`
+  - `[data-ccs-input="auto-mode"]`
+- NEW: Optionally unset theme-related user values when changing themes:
+  - Add `unset` to theme input: `[data-ccs-input~="theme unset-values"]`
+
 ## 0.1.0-beta.12 - 2020/6/23
 
 - INTERNAL: Upgrade dev dependencies
