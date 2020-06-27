@@ -24,6 +24,7 @@ export default function () {
         : unsetBtn.setAttribute('hidden', '')
     }
   }
+
   // set a value
   const setValue = (type, to, toStore = true) => {
     if (to) {
