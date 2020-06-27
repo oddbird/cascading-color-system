@@ -17,25 +17,11 @@ export default function () {
     contrast: document.querySelector('[data-ccs-input="contrast"]'),
   };
 
-  const unsetTheme = selectElements.theme?.dataset.ccsInput.includes('unset-theme');
-
-  const resetSelect = () =>
-    Object.keys(selectElements).forEach((type) => {
-      const el = selectElements[type];
-      selectElements[type].value = el.getAttribute('data-default');
-    });
-
-  const setSelection = (type, selection) => {
-    if (type === 'theme' && unsetTheme) {
-      clearThemeValues();
-      clearStore();
-    }
-    setValue(type, selection);
-  };
-  
-  const unsetSelections = () => {
+  const showUnsetBtn = (show = true) => {
     if (unsetBtn) {
-      unsetBtn.removeAttribute('hidden');
+      show
+        ? unsetBtn.removeAttribute('hidden')
+        : unsetBtn.setAttribute('hidden', '')
     }
   }
   // set a value
@@ -49,7 +35,7 @@ export default function () {
 
       if (toStore && store[type]) {
         localStorage.setItem(store[type], to);
-        unsetSelections();
+        showUnsetBtn();
       }
     }
   };
@@ -75,24 +61,45 @@ export default function () {
     contrast: 'ccsContrast',
   };
 
-  const clearThemeValues = () => {
-    const themeValues = Object.values(store).filter((k) => k !== store.mode);
-    const themeProps = Object.values(props).filter((p) => p !== props.mode);
-    Object.values(props).forEach((prop) => {
-      if (themeProps.includes(prop)) {
-        root.style.removeProperty(prop);
-      }
-    });
-    themeValues.forEach((item) => localStorage.removeItem(item));
+  const subTheme = [
+    'hue',
+    'sat',
+    'light',
+    'contrast',
+  ]
+
+  const resetSelect = (sub = null) =>
+  Object.keys(selectElements).forEach((type) => {
+    if (!sub || sub.includes(type)) {
+      const el = selectElements[type];
+      selectElements[type].value = el.getAttribute('data-default');
+    }
+  });
+
+  const setSelection = (type, selection) => {
+    const unsetTheme = selectElements.theme?.dataset.ccsInput.includes('unset-theme');
+
+    if (type === 'theme' && unsetTheme) {
+      clearProps(subTheme);
+      clearStore(subTheme);
+      resetSelect(subTheme);
+    }
+    setValue(type, selection);
   };
 
-  const clearProps = () =>
-    Object.keys(props).forEach((prop) =>
-      root.style.removeProperty(props[prop])
-    );
+  const clearProps = (sub = null) =>
+    Object.keys(props).forEach((prop) => {
+      if (!sub || sub.includes(prop)) {
+        root.style.removeProperty(props[prop])
+      }
+    });
 
-  const clearStore = () =>
-    Object.keys(store).forEach((type) => localStorage.removeItem(store[type]));
+  const clearStore = (sub = null) =>
+    Object.keys(store).forEach((type) => {
+      if (!sub || sub.includes(type)) {
+        localStorage.removeItem(store[type])
+      }
+    });
 
   // clear all settings on reset
   const unset = () => {
@@ -100,9 +107,7 @@ export default function () {
     clearStore();
     clearProps();
     resetSelect();
-    if (unsetBtn) {
-      unsetBtn.setAttribute('hidden', '');
-    }
+    showUnsetBtn(false);
     if (modeAuto) {
       modeAuto.checked = true
     }
@@ -151,7 +156,7 @@ export default function () {
     if (to) {
       setValue(type, to, false);
       selectElements[type].value = to;
-      unsetSelections();
+      showUnsetBtn();
     }
   };
   const initMode = () => {
@@ -162,7 +167,7 @@ export default function () {
         [-1]: modeDark,
       };
       setValue('mode', to);
-      unsetSelections();
+      showUnsetBtn();
       modeDict[to].checked = true
     }
     else if (modeAuto) {
