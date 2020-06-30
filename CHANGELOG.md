@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0-beta.13 - UNRELEASED
+## 0.1.0-beta.13 - 2020/6/30
 
 - NEW: All form inputs & buttons are now optional
 - NEW: Support radio-inputs for `light`/`dark`/`auto` modes:
