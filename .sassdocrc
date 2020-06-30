@@ -31,7 +31,7 @@ herman:
     - name: 'GitHub Source'
       url: 'https://github.com/oddbird/cascading-color-system'
     - name: 'OddBird'
-      url: 'http://oddbird.net/'
+      url: 'https://www.oddbird.net/'
   sass:
     implementation: sass
     includepaths:
