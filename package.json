@@ -16,9 +16,9 @@
   ],
   "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
-    "@babel/cli": "^7.10.3",
-    "@babel/core": "^7.10.3",
-    "@babel/plugin-transform-modules-umd": "^7.10.1",
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-transform-modules-umd": "^7.10.4",
     "cssremedy": "^0.1.0-beta.2",
     "sass": "^1.26.9",
     "sassdoc": "^2.7.2",

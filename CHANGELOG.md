@@ -9,6 +9,7 @@
   - `[data-ccs-input="auto-mode"]`
 - NEW: Optionally unset theme-related user values when changing themes:
   - Add `unset-values` to theme input: `[data-ccs-input="theme unset-values"]`
+- INTERNAL: Upgrade dev dependencies
 
 ## 0.1.0-beta.12 - 2020/6/23
 
