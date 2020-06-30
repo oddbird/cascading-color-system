@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="site/css/styles.css">
-  <title>Cascading Color Systems</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Cascading Colors</title>
 </head>
 <body>
-  <h1><a href="https://cascading-colors.netlify.app/" rel="home">Cascading Color Systems</a></h1>
+  <h1><a href="https://cascading-colors.netlify.app/" rel="home">Cascading Colors</a></h1>
 
   <nav>
     <ul>
       <li><a href="https://github.com/oddbird/cascading-color-system">GitHub</a></li>
-      <li><a href="docs/">Documentation</a></li>
+      <li><a href="../docs/index.html">Documentation</a></li>
     </ul>
   </nav>
 
@@ -47,10 +47,25 @@
       </button>
     </div>
 
+    <div class="radio-group">
+      <div class="radio-option" data-ccs-colors="light">
+        <input type="radio" name="drone" data-ccs-input="light-mode" id="light-mode">
+        <label for="light-mode" class="radio-btn">light</label>
+      </div>
+      <div class="radio-option" data-ccs-colors="dark">
+        <input type="radio" name="drone" data-ccs-input="dark-mode" id="dark-mode">
+        <label for="dark-mode" class="radio-btn">dark</label>
+      </div>
+      <div class="radio-option" data-ccs-colors>
+        <input type="radio" name="drone" data-ccs-input="auto-mode" id="auto-mode">
+        <label for="auto-mode" class="radio-btn">auto</label>
+      </div>
+    </div>
+
     <div class="color-fields">
       <label for="theme" data-ccs-field="theme">
         <span data-label>theme:</span>
-        <select name="theme" id="theme" data-ccs-input="theme">
+        <select name="theme" id="theme" data-ccs-input="theme unset-values">
           <option value="default">
             default
           </option>
@@ -118,10 +133,10 @@
   </main>
 
   <footer>
-    <p>Copyright © 2019–2020 <a href="https://oddbird.net/">OddBird</a></p>
+    <p>Copyright © 2019–2020 <a href="https://www.oddbird.net/">OddBird</a></p>
   </footer>
 
-  <script type="text/javascript" src="dist.js"></script>
+  <script type="text/javascript" src="../dist.js"></script>
   <script type="text/javascript">
     ccs.default();
   </script>

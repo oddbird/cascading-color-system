@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <title>Cascading Color Systems Documentation</title>
+  <title>Cascading Colors Documentation</title>
 
   <link href="assets/img/favicon.ico" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
@@ -40,7 +40,7 @@
 
 
       <div class="project-title">
-        <a href="index.html" rel="home" class="project-name">Cascading Color Systems</a>
+        <a href="index.html" rel="home" class="project-name">Cascading Colors</a>
         
           <span class="project-version">0.1.0-beta.12</span>
         
@@ -57,7 +57,7 @@
     <div class="nav-subsection">
       <h3 class="nav-home">
         
-        <a href="index.html" data-nav="is-active">Cascading Color<span class="widont">&nbsp;</span>Systems</a>
+        <a href="index.html" data-nav="is-active">Cascading Colors</a>
       </h3>
 
       
@@ -151,7 +151,7 @@
             </li>
           
             <li class="nav-item">
-              <a href="http://oddbird.net/" data-nav="is-not-active">OddBird</a>
+              <a href="https://www.oddbird.net/" data-nav="is-not-active">OddBird</a>
             </li>
           
         </ul>
@@ -206,7 +206,7 @@
 
   
     <div class="text-block">
-      <h1 id="cascading-color-systems">Cascading Color Systems</h1>
+      <h1 id="cascading-colors">Cascading Colors</h1>
 <p><a href="https://cascading-colors.netlify.app/">Demo Site</a></p>
 <p>Generate dynamic and themable color palettes using CSS custom properties,
 and allow (persistent) user-adjustments with a bit of light-weight<span class="widont">&nbsp;</span>JS.</p>
@@ -312,7 +312,7 @@ to generate a larger<span class="widont">&nbsp;</span>palette:</p>
 <ul>
 <li><code>--ccs-h--*</code>:
 the calculated hue for each color,
-afterresolving user-settings, theme-settings, and global<span class="widont">&nbsp;</span>configuration</li>
+after resolving user-settings, theme-settings, and global<span class="widont">&nbsp;</span>configuration</li>
 <li><code>--ccs-contrast</code>:
 the calculated contrast range
 based on theme, user, and global<span class="widont">&nbsp;</span>settings</li>
@@ -410,20 +410,46 @@ if you have a modern build system with ES Module<span class="widont">&nbsp;</spa
 
 ccs();
 </code></pre>
-<p>We provide several hooks for the JS to<span class="widont">&nbsp;</span>use</p>
+<h3 id="html-attributes">HTML Attributes</h3>
+<p>We provide several attributes
+that can be used to build
+a user-interface for changing colors.
+The <code>root</code> attribute is<span class="widont">&nbsp;</span>required:</p>
 <ul>
 <li><code>[data-ccs=&quot;root&quot;]</code>:
 where user settings should be<span class="widont">&nbsp;</span>applied</li>
+</ul>
+<h4 id="general-controls-">General Controls:</h4>
+<ul>
 <li><code>[data-ccs=&quot;menu&quot;]</code>:
-if you hide the settings by default,
-we’ll show them when the JS is<span class="widont">&nbsp;</span>available</li>
-<li><code>[data-ccs-input=&quot;mode&quot;]</code>:
-a button to toggle light/dark<span class="widont">&nbsp;</span>modes</li>
+You can hide the settings menu and unset buttons by default,
+and we’ll show them when the JS is<span class="widont">&nbsp;</span>available</li>
 <li><code>[data-ccs-input=&quot;unset&quot;]</code>:
-a button to unset all user preferences
+A button to unset all user preferences
 and clear related local<span class="widont">&nbsp;</span>storage</li>
-<li><code>[data-ccs-input=&quot;theme&quot;]</code>:
-Allow users to select from available <code>theme</code> options</li>
+</ul>
+<h4 id="light-dark-mode-">Light/Dark Mode:</h4>
+<p>Mode can be toggled with a<span class="widont">&nbsp;</span>button:</p>
+<ul>
+<li><code>[data-ccs-input=&quot;mode&quot;]</code>:
+A button to toggle light/dark<span class="widont">&nbsp;</span>modes</li>
+</ul>
+<p>Or mode can be set explicitly using radio<span class="widont">&nbsp;</span>inputs:</p>
+<ul>
+<li><code>[data-ccs-input=&quot;light-mode&quot;]</code>:
+Set light mode when<span class="widont">&nbsp;</span>checked</li>
+<li><code>[data-ccs-input=&quot;dark-mode&quot;]</code>:
+Set dark mode when<span class="widont">&nbsp;</span>checked</li>
+<li><code>[data-ccs-input=&quot;auto-mode&quot;]</code>:
+Unset explicit mode when checked,
+and fallback on browser/operating-system<span class="widont">&nbsp;</span>settings</li>
+</ul>
+<h4 id="themes-values-">Themes &amp; Values:</h4>
+<ul>
+<li><code>[data-ccs-input~=&quot;theme&quot;]</code>:
+Allow users to select from available <code>theme</code> options.
+Add <code>unset-values</code> to revert all other theme values
+when changing<span class="widont">&nbsp;</span>themes.</li>
 <li><code>[data-ccs-input=&quot;hue&quot;]</code>:
 Allow users to change the primary<span class="widont">&nbsp;</span>hue</li>
 <li><code>[data-ccs-input=&quot;saturation&quot;]</code>:
@@ -433,11 +459,11 @@ Allow users to adjust the baseline<span class="widont">&nbsp;</span>lightness</l
 <li><code>[data-ccs-input=&quot;contrast&quot;]</code>:
 Allow users to adjust the contrast<span class="widont">&nbsp;</span>range</li>
 </ul>
-<p>Themes can also use the <code>[data-ccs-field]</code> on wrappers,
-to show and hide inputs/labels directly in the CSS
-based on a given theme.
+<p>Themes can also use <code>[data-ccs-field]</code> attributes
+with the values above
+to show and hide inputs/labels based on a given theme.
 For example, a high-contrast theme
-might not accept <code>contrast</code> input:</p>
+might not accept user <code>contrast</code> input:</p>
 <pre><code class="lang-scss">[data-ccs-theme=&quot;contrast&quot;] {
   --ccs-contrast: 200%; /* override all other contrast settings */
   --ccs-custom-contrast: none; /* hide [data-ccs-field=&quot;contrast&quot;] */

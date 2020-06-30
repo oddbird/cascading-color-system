@@ -21,7 +21,7 @@ The following scripts can help you work:
 - `yarn build-sass`: compiles the `output` file to `css/ccs.css`
 - `yarn build-docs`: compiles SassDoc/Herman documentation
 - `yarn build-js`: compiles `dist.js` for packaging
-- `yarn build-site`: compiles the demo site styles
+- `yarn build-demo`: compiles the demo site styles
 - `yarn build` or `yarn commit`: all the build steps at once
 - `yarn watch`: a watcher for the site styles
 
@@ -30,7 +30,7 @@ The following scripts can help you work:
 1. Create a new branch for each feature/bug being addressed
 2. Make any changes required
 3. Update inline documentation as you go
-4. Document changes in [CHANGELOG.md](./CHANGELOG.md)
+4. Document changes in [CHANGELOG.md](https://github.com/oddbird/cascading-color-system/blob/main/CHANGELOG.md)
 5. Run `yarn commit`
 6. Commit your changes
 7. Create a Pull Request on GitHub

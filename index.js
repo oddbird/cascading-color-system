@@ -1,53 +1,52 @@
 export default function () {
-  // elements
+  // root elements
   const root = document.querySelector('[data-ccs="root"]');
   const themeMenu = document.querySelector('[data-ccs="menu"]');
-  const modeToggle = document.querySelector('[data-ccs-input="mode"]');
+  const invertBtn = document.querySelector('[data-ccs-input="mode"]');
+  const modeLight = document.querySelector('[data-ccs-input="light-mode"]');
+  const modeDark = document.querySelector('[data-ccs-input="dark-mode"]');
+  const modeAuto = document.querySelector('[data-ccs-input="auto-mode"]');
   const unsetBtn = document.querySelector('[data-ccs-input="unset"]');
 
-  // elements
-  const selectElements = {
-    theme: document.querySelector('[data-ccs-input="theme"]'),
+  // controls
+  const controls = {
+    theme: document.querySelector('[data-ccs-input~="theme"]'),
     hue: document.querySelector('[data-ccs-input="hue"]'),
     sat: document.querySelector('[data-ccs-input="saturation"]'),
     light: document.querySelector('[data-ccs-input="lightness"]'),
     contrast: document.querySelector('[data-ccs-input="contrast"]'),
   };
 
+  const showUnsetBtn = (show = true) => {
+    if (unsetBtn) {
+      show
+        ? unsetBtn.removeAttribute("hidden")
+        : unsetBtn.setAttribute("hidden", "");
+    }
+  };
+
   // attributes
   const attrs = {
-    theme: 'data-ccs-theme',
+    theme: "data-ccs-theme",
   };
 
   // properties
   const props = {
-    hue: '--ccs-prime--user',
-    sat: '--ccs-s--user',
-    light: '--ccs-l--user',
-    contrast: '--ccs-contrast--user',
-    mode: '--ccs-mode--user',
+    hue: "--ccs-prime--user",
+    sat: "--ccs-s--user",
+    light: "--ccs-l--user",
+    contrast: "--ccs-contrast--user",
+    mode: "--ccs-mode--user",
   };
 
   // local storage
   const store = {
-    theme: 'ccsTheme',
-    mode: 'ccsMode',
-    hue: 'ccsHue',
-    sat: 'ccsSat',
-    light: 'ccsLight',
-    contrast: 'ccsContrast',
-  };
-
-  // clear all settings
-  const clearColors = () => {
-    setValue('theme', selectElements.theme.getAttribute('data-default'), false);
-    Object.keys(store).forEach(type => localStorage.removeItem(store[type]));
-    Object.keys(props).forEach(prop => root.style.removeProperty(props[prop]));
-    Object.keys(selectElements).forEach(type => {
-      const el = selectElements[type];
-      selectElements[type].value = el.getAttribute('data-default');
-    });
-    unsetBtn.setAttribute('hidden', '');
+    theme: "ccsTheme",
+    mode: "ccsMode",
+    hue: "ccsHue",
+    sat: "ccsSat",
+    light: "ccsLight",
+    contrast: "ccsContrast",
   };
 
   // set a value
@@ -61,61 +60,147 @@ export default function () {
 
       if (toStore && store[type]) {
         localStorage.setItem(store[type], to);
-        unsetBtn.removeAttribute('hidden');
+        showUnsetBtn();
       }
     }
   };
 
-  // toggle mode
-  const getMode = () => {
-    return Number(
-      getComputedStyle(root)
-        .getPropertyValue('--ccs-mode')
-        .trim(),
-    );
+  const clearProps = (sub = null) =>
+    Object.keys(props).forEach((prop) => {
+      if (!sub || sub.includes(prop)) {
+        root.style.removeProperty(props[prop]);
+      }
+    });
+
+  const clearStore = (sub = null) =>
+    Object.keys(store).forEach((type) => {
+      if (!sub || sub.includes(type)) {
+        localStorage.removeItem(store[type]);
+      }
+    });
+
+  const resetControls = (sub = null) =>
+    Object.keys(controls).forEach((type) => {
+      if (!sub || sub.includes(type)) {
+        const el = controls[type];
+        if (el) {
+          el.value = el.getAttribute("data-default");
+        }
+      }
+    });
+
+  const subTheme = ["hue", "sat", "light", "contrast"];
+
+  const setSelection = (type, selection) => {
+    const unsetTheme =
+      controls.theme &&
+      controls.theme.dataset.ccsInput &&
+      controls.theme.dataset.ccsInput.includes("unset-values");
+
+    if (type === "theme" && unsetTheme) {
+      clearProps(subTheme);
+      clearStore(subTheme);
+      resetControls(subTheme);
+    }
+    setValue(type, selection);
   };
 
-  const changeMode = () => {
-    setValue('mode', getMode() * -1, true);
+  // clear all settings on reset
+  const unset = () => {
+    if (controls.theme) {
+      setValue("theme", controls.theme.getAttribute("data-default"), false);
+    }
+    clearStore();
+    clearProps();
+    resetControls();
+    showUnsetBtn(false);
+    if (modeAuto) {
+      modeAuto.checked = true;
+    }
+  };
+
+  // modes
+  const getMode = () =>
+    parseInt(getComputedStyle(root).getPropertyValue("--ccs-mode").trim(), 10);
+
+  const changeMode = (scheme) => {
+    const schemeDict = {
+      light: 1,
+      dark: -1,
+      auto: 0,
+    };
+    const setting = schemeDict[scheme];
+    if (setting) {
+      setValue("mode", setting);
+    } else {
+      // if auto, remove mode props from root and store
+      clearStore(["mode"]);
+      clearProps(["mode"]);
+    }
+  };
+
+  const toggleMode = () => {
+    const modeDict = {
+      1: modeLight,
+      [-1]: modeDark,
+    };
+    const mode = getMode();
+    setValue("mode", mode * -1);
+    const modeBtn = modeDict[mode * -1];
+    if (modeBtn) {
+      modeBtn.checked = true;
+    }
   };
 
   // initialize everything
   const initMenu = () => {
-    themeMenu.removeAttribute('hidden');
+    if (themeMenu) {
+      themeMenu.removeAttribute("hidden");
+    }
   };
-
-  const initValue = type => {
-    selectElements[type].setAttribute('data-default', selectElements[type].value);
-
+  const initMode = () => {
+    let to = localStorage.getItem(store.mode);
+    if (to) {
+      const modeDict = {
+        1: modeLight,
+        [-1]: modeDark,
+      };
+      const modeBtn = modeDict[to];
+      setValue("mode", to);
+      if (modeBtn) {
+        modeBtn.checked = true;
+      }
+    } else if (modeAuto) {
+      modeAuto.checked = true;
+    }
+  };
+  const initValue = (type) => {
+    controls[type].setAttribute("data-default", controls[type].value);
     const to = localStorage.getItem(store[type]);
     if (to) {
       setValue(type, to, false);
-      selectElements[type].value = to;
-      unsetBtn.removeAttribute('hidden');
+      controls[type].value = to;
+      showUnsetBtn();
     }
   };
 
-  const initMode = () => {
-    let to = localStorage.getItem(store.mode);
+  /* init defaults */
+  window.onload = initMenu();
+  window.onload = initMode();
 
-    if (to) {
-      setValue('mode', to);
-      unsetBtn.removeAttribute('hidden');
-    }
-  };
+  /* attach event listeners */
+  invertBtn && invertBtn.addEventListener("click", toggleMode);
+  modeLight && modeLight.addEventListener("change", () => changeMode("light"));
+  modeDark && modeDark.addEventListener("change", () => changeMode("dark"));
+  modeAuto && modeAuto.addEventListener("change", () => changeMode("auto"));
+  unsetBtn && unsetBtn.addEventListener("click", unset);
 
-  // init & events
-  document.onload = initMenu();
-  document.onload = initMode();
-  modeToggle.addEventListener('click', () => changeMode());
-  unsetBtn.addEventListener('click', () => clearColors());
-
-  Object.keys(selectElements).forEach(type => {
-    if (selectElements[type]) {
-      document.onload = initValue(type);
-      selectElements[type].addEventListener('input', () =>
-        setValue(type, selectElements[type].value),
+  Object.keys(controls).forEach((type) => {
+    if (controls[type]) {
+      window.onload = initValue(type);
+      controls[type].addEventListener("change", (e) =>
+        setSelection(type, e.target.value)
       );
     }
   });
-};
+}

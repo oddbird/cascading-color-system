@@ -633,6 +633,44 @@ a:hover, a:focus, a:active {
   text-decoration-color: var(--ccs-accent);
 }
 
+.radio-group {
+  --radius: 0.25em;
+  display: flex;
+  margin: 1em 0;
+}
+
+.radio-option {
+  border-radius: var(--first, 0) var(--last, 0) var(--last, 0) var(--first, 0);
+  display: flex;
+  flex: auto;
+}
+.radio-option:first-child {
+  --first: var(--radius);
+}
+.radio-option + .radio-option {
+  margin-left: 0.125em;
+}
+.radio-option:last-child {
+  --last: var(--radius);
+}
+
+[type=radio] {
+  opacity: 0;
+  position: absolute;
+}
+[type=radio]:checked ~ * {
+  --checked: var(--ccs-prime--fg1);
+}
+
+.radio-btn {
+  border: 0.25em solid var(--checked, transparent);
+  border-radius: var(--first, 0) var(--last, 0) var(--last, 0) var(--first, 0);
+  cursor: pointer;
+  flex: auto;
+  padding: 0.5em 1em;
+  text-align: center;
+}
+
 menu {
   background: var(--callout);
   padding: 1em;
@@ -668,7 +706,7 @@ button:active {
   font-style: italic;
 }
 
-input,
+[type=range],
 select {
   width: 100%;
 }
