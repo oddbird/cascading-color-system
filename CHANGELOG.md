@@ -8,7 +8,7 @@
   - `[data-ccs-input="dark-mode"]`
   - `[data-ccs-input="auto-mode"]`
 - NEW: Optionally unset theme-related user values when changing themes:
-  - Add `unset` to theme input: `[data-ccs-input~="theme unset-values"]`
+  - Add `unset-values` to theme input: `[data-ccs-input="theme unset-values"]`
 
 ## 0.1.0-beta.12 - 2020/6/23
 

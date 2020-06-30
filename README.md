@@ -144,7 +144,7 @@ to generate a larger palette:
 
 - `--ccs-h--*`:
   the calculated hue for each color,
-  afterresolving user-settings, theme-settings, and global configuration
+  after resolving user-settings, theme-settings, and global configuration
 - `--ccs-contrast`:
   the calculated contrast range
   based on theme, user, and global settings
@@ -280,7 +280,7 @@ The `root` attribute is required:
 #### General Controls:
 
 - `[data-ccs="menu"]`:
-  You can hide the settings menu by default,
+  You can hide the settings menu and unset buttons by default,
   and we'll show them when the JS is available
 - `[data-ccs-input="unset"]`:
   A button to unset all user preferences
@@ -291,16 +291,16 @@ The `root` attribute is required:
 Mode can be toggled with a button:
 
 - `[data-ccs-input="mode"]`:
-  a button to toggle light/dark modes
+  A button to toggle light/dark modes
 
 Or mode can be set explicitly using radio inputs:
 
 - `[data-ccs-input="light-mode"]`:
-  set light mode when checked
+  Set light mode when checked
 - `[data-ccs-input="dark-mode"]`:
-  set dark mode when checked
+  Set dark mode when checked
 - `[data-ccs-input="auto-mode"]`:
-  unset explicit mode when checked,
+  Unset explicit mode when checked,
   and fallback on browser/operating-system settings
 
 #### Themes & Values:
@@ -319,7 +319,7 @@ Or mode can be set explicitly using radio inputs:
   Allow users to adjust the contrast range
 
 Themes can also use `[data-ccs-field]` attributes
-with the values above,
+with the values above
 to show and hide inputs/labels based on a given theme.
 For example, a high-contrast theme
 might not accept user `contrast` input:

@@ -312,7 +312,7 @@ to generate a larger<span class="widont">&nbsp;</span>palette:</p>
 <ul>
 <li><code>--ccs-h--*</code>:
 the calculated hue for each color,
-afterresolving user-settings, theme-settings, and global<span class="widont">&nbsp;</span>configuration</li>
+after resolving user-settings, theme-settings, and global<span class="widont">&nbsp;</span>configuration</li>
 <li><code>--ccs-contrast</code>:
 the calculated contrast range
 based on theme, user, and global<span class="widont">&nbsp;</span>settings</li>
@@ -422,7 +422,7 @@ where user settings should be<span class="widont">&nbsp;</span>applied</li>
 <h4 id="general-controls-">General Controls:</h4>
 <ul>
 <li><code>[data-ccs=&quot;menu&quot;]</code>:
-You can hide the settings menu by default,
+You can hide the settings menu and unset buttons by default,
 and we’ll show them when the JS is<span class="widont">&nbsp;</span>available</li>
 <li><code>[data-ccs-input=&quot;unset&quot;]</code>:
 A button to unset all user preferences
@@ -432,16 +432,16 @@ and clear related local<span class="widont">&nbsp;</span>storage</li>
 <p>Mode can be toggled with a<span class="widont">&nbsp;</span>button:</p>
 <ul>
 <li><code>[data-ccs-input=&quot;mode&quot;]</code>:
-a button to toggle light/dark<span class="widont">&nbsp;</span>modes</li>
+A button to toggle light/dark<span class="widont">&nbsp;</span>modes</li>
 </ul>
 <p>Or mode can be set explicitly using radio<span class="widont">&nbsp;</span>inputs:</p>
 <ul>
 <li><code>[data-ccs-input=&quot;light-mode&quot;]</code>:
-set light mode when<span class="widont">&nbsp;</span>checked</li>
+Set light mode when<span class="widont">&nbsp;</span>checked</li>
 <li><code>[data-ccs-input=&quot;dark-mode&quot;]</code>:
-set dark mode when<span class="widont">&nbsp;</span>checked</li>
+Set dark mode when<span class="widont">&nbsp;</span>checked</li>
 <li><code>[data-ccs-input=&quot;auto-mode&quot;]</code>:
-unset explicit mode when checked,
+Unset explicit mode when checked,
 and fallback on browser/operating-system<span class="widont">&nbsp;</span>settings</li>
 </ul>
 <h4 id="themes-values-">Themes &amp; Values:</h4>
@@ -460,7 +460,7 @@ Allow users to adjust the baseline<span class="widont">&nbsp;</span>lightness</l
 Allow users to adjust the contrast<span class="widont">&nbsp;</span>range</li>
 </ul>
 <p>Themes can also use <code>[data-ccs-field]</code> attributes
-with the values above,
+with the values above
 to show and hide inputs/labels based on a given theme.
 For example, a high-contrast theme
 might not accept user <code>contrast</code> input:</p>
