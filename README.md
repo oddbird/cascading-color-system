@@ -1,6 +1,7 @@
 # Cascading Colors
 
 [Demo Site](https://cascading-colors.netlify.app/)
+[Documentation](https://www.oddbird.net/cascading-colors/docs/)
 
 Generate dynamic and themable color palettes using CSS custom properties,
 and allow (persistent) user-adjustments with a bit of light-weight JS.

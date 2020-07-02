@@ -5,7 +5,7 @@
   "title": "Cascading Colors",
   "main": "dist.js",
   "module": "index.js",
-  "homepage": "https://oddbird.net/cascading-colors/",
+  "homepage": "https://www.oddbird.net/cascading-colors/",
   "repository": {
     "type": "git",
     "url": "https://github.com/oddbird/cascading-color-system.git"
