@@ -5,7 +5,7 @@
   "title": "Cascading Colors",
   "main": "dist.js",
   "module": "index.js",
-  "homepage": "https://cascading-colors.netlify.app/",
+  "homepage": "https://oddbird.net/cascading-colors/",
   "repository": {
     "type": "git",
     "url": "https://github.com/oddbird/cascading-color-system.git"
