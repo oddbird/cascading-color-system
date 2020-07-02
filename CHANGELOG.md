@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0-beta.14 - UNRELEASED
+## 0.1.0-beta.14 - 2020/7/2
 
 - INTERNAL: Update homepage & documentation links
 
