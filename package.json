@@ -35,7 +35,7 @@
     "build-docs": "sassdoc sass/",
     "build-js": "yarn babel index.js --out-file dist.js",
     "build-demo-styles": "sass demo/sass/styles.scss demo/css/styles.css",
-    "build-demo-js": "cp dist.js demo/",
+    "build-demo-js": "cp dist.js demo/js/",
     "build-demo": "yarn build-js && yarn build-demo-js && yarn build-demo-styles",
     "build": "yarn build-sass && yarn build-docs && yarn build-demo",
     "commit": "yarn build",
