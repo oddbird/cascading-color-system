@@ -1,3 +1,7 @@
+# Demo site built files
+demo/js/
+demo/css/
+
 # Logs
 logs
 *.log

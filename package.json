@@ -1,6 +1,6 @@
 {
   "name": "cascading-color-systems",
-  "version": "0.1.0-beta.14",
+  "version": "0.1.0-beta.15",
   "description": "generate dynamic color palettes with custom properties",
   "title": "Cascading Colors",
   "main": "dist.js",
@@ -16,20 +16,28 @@
   ],
   "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
-    "@babel/cli": "^7.10.4",
-    "@babel/core": "^7.10.4",
-    "@babel/plugin-transform-modules-umd": "^7.10.4",
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-modules-umd": "^7.12.1",
     "cssremedy": "^0.1.0-beta.2",
-    "sass": "^1.26.9",
-    "sassdoc": "^2.7.2",
+    "sass": "^1.27.0",
+    "sassdoc": "^2.7.3",
     "sassdoc-theme-herman": "^3.2.0"
+  },
+  "resolutions": {
+    "marked": "^0.7.0",
+    "sassdoc-theme-herman/nunjucks/chokidar": ">=3.0.0",
+    "sassdoc-theme-herman/nunjucks/yargs": "^13.2",
+    "sassdoc-theme-herman/typogr/mkdirp": "^0.5.5"
   },
   "scripts": {
     "build-sass": "sass sass/_output.scss css/ccs.css",
     "build-docs": "sassdoc sass/",
     "build-js": "yarn babel index.js --out-file dist.js",
-    "build-demo": "sass demo/sass/styles.scss demo/css/styles.css",
-    "build": "yarn build-sass && yarn build-docs && yarn build-js && yarn build-demo",
+    "build-demo-styles": "sass demo/sass/styles.scss demo/css/styles.css",
+    "build-demo-js": "mkdir -p demo/js && cp dist.js demo/js/",
+    "build-demo": "yarn build-js && yarn build-demo-js && yarn build-demo-styles",
+    "build": "yarn build-sass && yarn build-docs && yarn build-demo",
     "commit": "yarn build",
     "watch": "sass --watch demo/sass/:demo/css/"
   },
