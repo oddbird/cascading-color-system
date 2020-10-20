@@ -11,7 +11,7 @@ Run `yarn` to install dependencies…
   - `partials/`: all the logic and output
   - `_ccs.scss`: forwards the combined Sass module
   - `_output.scss`: generates the default CSS output
-- `site/`: Styles for the demo site (also used for testing)
+- `demo/`: Styles for the demo site (also used for testing)
 - `_index.scss`: Root-level index file for importing the module
 
 ## Development

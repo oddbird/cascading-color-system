@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0-beta.15 - 2020/10/20
+
+- INTERNAL: Update dependencies & fix demo site
+
 ## 0.1.0-beta.14 - 2020/7/2
 
 - INTERNAL: Update homepage & documentation links

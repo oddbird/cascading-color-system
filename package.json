@@ -1,6 +1,6 @@
 {
   "name": "cascading-color-systems",
-  "version": "0.1.0-beta.14",
+  "version": "0.1.0-beta.15",
   "description": "generate dynamic color palettes with custom properties",
   "title": "Cascading Colors",
   "main": "dist.js",
@@ -34,8 +34,10 @@
     "build-sass": "sass sass/_output.scss css/ccs.css",
     "build-docs": "sassdoc sass/",
     "build-js": "yarn babel index.js --out-file dist.js",
-    "build-demo": "sass demo/sass/styles.scss demo/css/styles.css",
-    "build": "yarn build-sass && yarn build-docs && yarn build-js && yarn build-demo",
+    "build-demo-styles": "sass demo/sass/styles.scss demo/css/styles.css",
+    "build-demo-js": "cp dist.js demo/",
+    "build-demo": "yarn build-js && yarn build-demo-js && yarn build-demo-styles",
+    "build": "yarn build-sass && yarn build-docs && yarn build-demo",
     "commit": "yarn build",
     "watch": "sass --watch demo/sass/:demo/css/"
   },
