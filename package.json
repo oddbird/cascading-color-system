@@ -22,7 +22,7 @@
     "cssremedy": "^0.1.0-beta.2",
     "sass": "^1.27.0",
     "sassdoc": "^2.7.3",
-    "sassdoc-theme-herman": "^3.2.0"
+    "sassdoc-theme-herman": "^4.0.0"
   },
   "resolutions": {
     "marked": "^0.7.0",
