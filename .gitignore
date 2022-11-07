@@ -2,6 +2,9 @@
 demo/js/
 demo/css/
 
+# Docs
+docs/
+
 # Logs
 logs
 *.log
