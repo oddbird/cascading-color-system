@@ -46,7 +46,6 @@
     "sass/**/*.scss",
     "_index.scss",
     "index.js",
-    "dist.js",
-    "docs/"
+    "dist.js"
   ]
 }

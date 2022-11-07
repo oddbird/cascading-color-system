@@ -1,5 +1,9 @@
 # Changelog
 
+## UNRELEASED
+
+- 🏠 INTERNAL: Remove documentation from npm package
+
 ## 0.1.0-beta.15 - 2020/10/20
 
 - INTERNAL: Update dependencies & fix demo site
