@@ -1,6 +1,6 @@
 {
   "name": "cascading-color-systems",
-  "version": "0.1.0-beta.15",
+  "version": "0.1.0-beta.16",
   "description": "generate dynamic color palettes with custom properties",
   "title": "Cascading Colors",
   "main": "dist.js",
@@ -16,19 +16,13 @@
   ],
   "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-transform-modules-umd": "^7.12.1",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/plugin-transform-modules-umd": "^7.18.6",
     "cssremedy": "^0.1.0-beta.2",
-    "sass": "^1.27.0",
-    "sassdoc": "^2.7.3",
-    "sassdoc-theme-herman": "^3.2.0"
-  },
-  "resolutions": {
-    "marked": "^0.7.0",
-    "sassdoc-theme-herman/nunjucks/chokidar": ">=3.0.0",
-    "sassdoc-theme-herman/nunjucks/yargs": "^13.2",
-    "sassdoc-theme-herman/typogr/mkdirp": "^0.5.5"
+    "sass": "^1.56.2",
+    "sassdoc": "^2.7.4",
+    "sassdoc-theme-herman": "^5.0.0"
   },
   "scripts": {
     "build-sass": "sass sass/_output.scss css/ccs.css",

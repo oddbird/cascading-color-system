@@ -1,13 +1,13 @@
 [data-ccs-colors],
 [data-ccs-colors=light] {
-  background-color: #f3f2f2;
-  color: #0d0c0d;
+  background-color: hsl(330deg, 5%, 95%);
+  color: hsl(330deg, 5%, 5%);
 }
 
 [data-ccs-colors=invert],
 [data-ccs-colors=dark] {
-  background-color: #0d0c0d;
-  color: #f3f2f2;
+  background-color: hsl(330deg, 5%, 5%);
+  color: hsl(330deg, 5%, 95%);
 }
 
 [data-ccs-colors] {

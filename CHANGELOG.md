@@ -1,8 +1,9 @@
 # Changelog
 
-## UNRELEASED
+## 0.1.0-beta.16 - 2022/12/14
 
 - 🏠 INTERNAL: Remove documentation from npm package
+- 🏠 INTERNAL: Upgrade dependencies
 
 ## 0.1.0-beta.15 - 2020/10/20
 
