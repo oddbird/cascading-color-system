@@ -16,13 +16,13 @@
   ],
   "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.20.5",
-    "@babel/plugin-transform-modules-umd": "^7.18.6",
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-modules-umd": "^7.25.9",
     "cssremedy": "^0.1.0-beta.2",
-    "sass": "^1.56.2",
+    "sass": "^1.80.6",
     "sassdoc": "^2.7.4",
-    "sassdoc-theme-herman": "^5.0.0"
+    "sassdoc-theme-herman": "^6.0.1"
   },
   "scripts": {
     "build-sass": "sass sass/_output.scss css/ccs.css",
@@ -41,5 +41,6 @@
     "_index.scss",
     "index.js",
     "dist.js"
-  ]
+  ],
+  "packageManager": "yarn@4.5.1"
 }

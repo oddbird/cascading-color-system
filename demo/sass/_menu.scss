@@ -1,3 +1,5 @@
+@use 'sass:list';
+
 menu {
   background: var(--callout);
   padding: 1em;
@@ -79,7 +81,7 @@ select {
 
 $rainbow: ();
 @for $hue from 1 through 36 {
-  $rainbow: append($rainbow, hsl($hue * 10, 80%, 40%), comma);
+  $rainbow: list.append($rainbow, hsl($hue * 10, 80%, 40%), comma);
 }
 
 [type='range'] {

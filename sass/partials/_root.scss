@@ -1,4 +1,5 @@
 @use '../config';
+@use 'sass:meta';
 
 /// # CSS Global Settings
 /// Global configuration options will be defined
@@ -46,6 +47,6 @@
   }
 
   @if (config.$fades) {
-    --ccs-fade: #{if(type-of(config.$fades) == 'number', config.$fades, 1)};
+    --ccs-fade: #{if(meta.type-of(config.$fades) == 'number', config.$fades, 1)};
   }
 }

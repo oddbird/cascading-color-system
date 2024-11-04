@@ -1,4 +1,6 @@
 @use '../config';
+@use 'sass:list';
+@use 'sass:map';
 @use 'sass:string';
 
 // Colors
@@ -8,7 +10,7 @@
 /// dynamically based on the inherited hue, saturation, lightness,
 /// mode (light/dark), and accent theme.
 ///
-/// @param {list | string} $colors [map-keys($hues)] -
+/// @param {list | string} $colors [map.keys($hues)] -
 ///   The color names to generate
 /// @param {integer} $steps [$steps or 4] -
 ///   The number (each) of tints and shades to generate
@@ -29,7 +31,7 @@
 ///   and accent theme.
 /// @group palettes
 @mixin colors(
-  $colors: map-keys(config.$hues),
+  $colors: map.keys(config.$hues),
   $steps: config.$steps or 4,
   $fades: config.$fades,
   $gradients: config.$gradients,
@@ -81,7 +83,7 @@
 /// Generate striped CSS gradients for each palette.
 /// These are useful for visualizing the available generated colors.
 ///
-/// @param {list | string} $colors [map-keys($hues)] -
+/// @param {list | string} $colors [map.keys($hues)] -
 ///   The color names to generate
 /// @param {integer} $steps [$steps or 4] -
 ///   The number (each) of tints and shades to generate
@@ -93,7 +95,7 @@
 ///   adding transparency to the faded palette.
 /// @group palettes
 @mixin gradient(
-  $colors: map-keys(config.$hues),
+  $colors: map.keys(config.$hues),
   $steps: config.$steps or 4,
   $fades: config.$fades,
 ) {
@@ -108,29 +110,29 @@
     $fade: if($var != '', '#{$var}-fade', '--fade');
 
     @each $color in $colors {
-      $main: map-get($gradients, '#{$color}-main') or ();
-      $faded: map-get($gradients, '#{$color}-fade') or ();
+      $main: map.get($gradients, '#{$color}-main') or ();
+      $faded: map.get($gradients, '#{$color}-fade') or ();
 
-      $main: append($main, var(--ccs-#{$color}#{$var}) $stops, comma);
-      $faded: append($faded, var(--ccs-#{$color}#{$fade}) $stops, comma);
+      $main: list.append($main, var(--ccs-#{$color}#{$var}) $stops, comma);
+      $faded: list.append($faded, var(--ccs-#{$color}#{$fade}) $stops, comma);
 
       $map: (
         '#{$color}-main': $main,
         '#{$color}-fade': $faded,
       );
 
-      $gradients: map-merge($gradients, $map);
+      $gradients: map.merge($gradients, $map);
     }
   }
 
   --stop: calc(100% / (#{$steps} * 2 + 1));
 
   @each $color in $colors {
-    $main: map-get($gradients, '#{$color}-main');
+    $main: map.get($gradients, '#{$color}-main');
     --#{$color}-gradient: linear-gradient(to right, #{$main});
 
     @if ($fades) {
-      $faded: map-get($gradients, '#{$color}-fade');
+      $faded: map.get($gradients, '#{$color}-fade');
       --#{$color}-gradient--fade: linear-gradient(to right, #{$faded});
     }
   }
