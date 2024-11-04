@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.0-beta.17 - 2024/11/04
+
+- 🏠 INTERNAL: Use Sass modules instead of global functions
+- 🏠 INTERNAL: Upgrade dependencies
+
 ## 0.1.0-beta.16 - 2022/12/14
 
 - 🏠 INTERNAL: Remove documentation from npm package

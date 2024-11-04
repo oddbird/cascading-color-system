@@ -1,8 +1,11 @@
+@use 'sass:map';
+@use 'sass:meta';
+
 // Hues
 // ----
 /// The colors to generate, and optional default hues for each color.
 /// To set both color-names and hues, provide an explicit map.
-/// - If you provide a songle hue value,
+/// - If you provide a single hue value,
 ///   we'll assign it to the required `prime` key.
 /// - If you provide a list of color names, we
 ///   we'll assign them all default `null` hue values.
@@ -20,21 +23,21 @@ $hues: (
 ) !default;
 
 // Convert $hues to a map, or error on invalid hues
-@if (type-of($hues) != 'map') {
-  @if (type-of($hues) == 'list') or (type-of($hues) == 'string') {
+@if (meta.type-of($hues) != 'map') {
+  @if (meta.type-of($hues) == 'list') or (meta.type-of($hues) == 'string') {
     $hues-list: $hues;
     $hues: ();
 
     @each $color in $hues-list {
-      $hues: map-merge($hues, ($color: null));
+      $hues: map.merge($hues, ($color: null));
     }
-  } @else if (type-of($hues) == 'number') or (not $hues) {
+  } @else if (meta.type-of($hues) == 'number') or (not $hues) {
     $hues: ('prime': $hues);
   }
 }
 
 // Require a prime hue
-@if not (map-has-key($hues, 'prime')) {
+@if not (map.has-key($hues, 'prime')) {
   @error 'Please provide a `prime` hue';
 }
 
@@ -112,13 +115,13 @@ $neutral-saturation: null !default;
 /// for browsers that don't support
 /// CSS custom properties.
 /// The default value is based on
-/// `map-get($hues, 'prime')`, `$saturation`, `$lightness`,
+/// `map.get($hues, 'prime')`, `$saturation`, `$lightness`,
 /// and maximum `$contrast`.
 ///
 /// @type color
 /// @group config
 $fallback-dark: hsl(
-  map-get($hues, 'prime') or 330,
+  map.get($hues, 'prime') or 330,
   ($saturation or 50%) - ($contrast or 45%),
   ($lightness or 50%) - ($contrast or 45%)
 ) !default;
@@ -129,13 +132,13 @@ $fallback-dark: hsl(
 /// for browsers that don't support
 /// CSS custom properties.
 /// The default value is based on
-/// `map-get($hues, 'prime')`, `$saturation`, `$lightness`,
+/// `map.get($hues, 'prime')`, `$saturation`, `$lightness`,
 /// and maximum `$contrast`.
 ///
 /// @type color
 /// @group config
 $fallback-light: hsl(
-  map-get($hues, 'prime') or 330,
+  map.get($hues, 'prime') or 330,
   ($saturation or 50%) - ($contrast or 45%),
   ($lightness or 50%) + ($contrast or 45%)
 ) !default;
