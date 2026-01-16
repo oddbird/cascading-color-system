@@ -25,8 +25,8 @@
   --ccs--fg-full: hsl(0, 0%, calc(100% * var(--ccs-invert)));
 
   @each $color, $hue in config.$hues {
-    $default: if($color == 'prime', $hue or 330, var(--ccs-h--prime));
-    $s: if(string.index($color, 'neutral'), '--neutral', null);
+    $default: if(sass($color == 'prime'): $hue or 330; else: var(--ccs-h--prime));
+    $s: if(sass(string.index($color, 'neutral')): '--neutral'; else: null);
 
     --ccs-h--#{$color}: var(--ccs-#{$color}--user, var(--ccs-#{$color}--theme, var(--ccs-#{$color}--config, #{$default})));
 

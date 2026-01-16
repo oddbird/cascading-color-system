@@ -54,7 +54,7 @@
     // color steps
     @each $color in $colors {
       $h: var(--ccs-h--#{$color});
-      $s: if(string.index($color, 'neutral'), 'neutral', null);
+      $s: if(sass(string.index($color, 'neutral')): 'neutral'; else: null);
       $l-fg: var(--ccs-l--#{$fg});
       $l-bg: var(--ccs-l--#{$bg});
       $s-fg: var(--ccs-s--#{$s or $fg});
@@ -105,9 +105,9 @@
     $n: $i + $steps;
     $pos: abs($i);
     $stops: calc(var(--stop) * #{$n}) calc(var(--stop) * #{$n + 1});
-    $var: if($i == $pos, '--fg', '--bg');
-    $var: if($i == 0, '', '#{$var}#{$pos}');
-    $fade: if($var != '', '#{$var}-fade', '--fade');
+    $var: if(sass($i == $pos): '--fg'; else: '--bg');
+    $var: if(sass($i == 0): ''; else: '#{$var}#{$pos}');
+    $fade: if(sass($var != ''): '#{$var}-fade'; else: '--fade');
 
     @each $color in $colors {
       $main: map.get($gradients, '#{$color}-main') or ();
