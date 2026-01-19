@@ -1,0 +1,27 @@
+version: 2
+
+updates:
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: weekly
+      time: '04:00'
+      timezone: America/New_York
+
+  - package-ecosystem: npm
+    directory: '/'
+    versioning-strategy: increase
+    schedule:
+      interval: weekly
+      time: '04:00'
+      timezone: America/New_York
+    cooldown:
+      default-days: 7
+    groups:
+      npm-major-upgrades:
+        update-types:
+          - 'major'
+      npm-minor-upgrades:
+        update-types:
+          - 'minor'
+          - 'patch'
