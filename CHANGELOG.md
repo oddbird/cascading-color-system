@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.0-beta.18 - 2026/1/19
+
+- 🏠 INTERNAL: Address Sass deprecation warnings
+- 🏠 INTERNAL: Upgrade dev dependencies
+
 ## 0.1.0-beta.17 - 2024/11/04
 
 - 🏠 INTERNAL: Use Sass modules instead of global functions
