@@ -47,6 +47,6 @@
   }
 
   @if (config.$fades) {
-    --ccs-fade: #{if(meta.type-of(config.$fades) == 'number', config.$fades, 1)};
+    --ccs-fade: #{if(sass(meta.type-of(config.$fades) == 'number'): config.$fades; else: 1)};
   }
 }
