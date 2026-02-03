@@ -20,7 +20,7 @@
     "@babel/core": "^7.28.6",
     "@babel/plugin-transform-modules-umd": "^7.27.1",
     "cssremedy": "^0.1.0-beta.2",
-    "sass": "^1.97.2",
+    "sass": "^1.97.3",
     "sassdoc": "^2.7.4",
     "sassdoc-theme-herman": "^7.0.1"
   },
