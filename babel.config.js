@@ -1,4 +1,7 @@
 module.exports = {
-  plugins: ["@babel/plugin-transform-modules-umd"],
-  moduleId: 'ccs',
+  plugins: [
+    ["@babel/plugin-transform-modules-umd", {
+      moduleId: 'ccs',
+    }],
+  ],
 };
