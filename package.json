@@ -16,11 +16,11 @@
   ],
   "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
-    "@babel/cli": "^8.0.4",
-    "@babel/core": "^8.0.1",
+    "@babel/cli": "^8.0.5",
+    "@babel/core": "^8.0.5",
     "@babel/plugin-transform-modules-umd": "^8.0.1",
     "cssremedy": "^0.1.0-beta.2",
-    "sass": "^1.104.0",
+    "sass": "^1.104.1",
     "sassdoc": "^2.7.4",
     "sassdoc-theme-herman": "^7.0.1"
   },
